@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"dad.immuneDefense.turrets.Model","l":"BaseTurret"},{"p":"dad.immuneDefense.turrets.Model","l":"CostTurret"},{"p":"dad.immuneDefense.turrets.Model","l":"Turret"}];updateSearchResults();
