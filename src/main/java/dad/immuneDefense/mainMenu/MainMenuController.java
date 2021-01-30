@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 	public class MainMenuController {
@@ -16,7 +18,10 @@ import javafx.scene.layout.BorderPane;
 	    private Button ajustesB;
 
 	    @FXML
-	    private Button sonidoB;
+	    private ToggleButton sonidoB;
+	   
+	    @FXML
+	    private ImageView imagenSonido;
 
 	    @FXML
 	    private Button nuevaPartidaB;
