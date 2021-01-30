@@ -1,7 +1,7 @@
 #view{
-	-fx-background-image: url("/../Images/fondo.jpg");
+	-fx-background-image: url("/Images/fondo_3.jpg");
 	-fx-background-repeat: stretch;
-	-fx-background-size:800 600;
+	-fx-background-size: 1920 1080;
 	-fx-background-position: center center;
 	-fx-effect: dropshadow(three-pass-box,black,30,0.5,0,0);
 }
