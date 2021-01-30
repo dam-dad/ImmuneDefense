@@ -21,6 +21,8 @@ public class BaseTurret extends Turret {
 	
 	private BooleanProperty base_exists;
 	
+	private IntegerProperty fireRate;
+	
 	/**
 	 * Este es el constructor vacío que inicializa  las variables,
 	 * pero no les da ningún valor.
@@ -29,6 +31,7 @@ public class BaseTurret extends Turret {
 		super();
 		base_exists = new SimpleBooleanProperty();
 		damage = new SimpleIntegerProperty();
+		fireRate = new SimpleIntegerProperty();
 	}
 	
 	/**
@@ -37,17 +40,24 @@ public class BaseTurret extends Turret {
 	 * 
 	 * @param damage La cual representa el daño de la torreta.
 	 * @param base_exists Representando si la base existe o no.
+	 * @param fireRate Es una variable dirigida a la cantidad de balas las cuales puede disparar una torreta por segundo, 
+     * en caso de las torretas tipo daño constante, la misma será -1.
 	 */
-	public BaseTurret(int damage, boolean base_exists) {
-		super(damage);
+	public BaseTurret(int damage, int fireRate, boolean base_exists) {
+		super(damage,fireRate);
 		this.base_exists = new SimpleBooleanProperty(base_exists);
 		this.damage = new SimpleIntegerProperty(damage);
+		this.fireRate = new SimpleIntegerProperty(fireRate);
 	}
 	
 	public IntegerProperty getDamage() {
 		return damage;
 	}
-
+	
+	public IntegerProperty getFireRate() {
+		return fireRate;
+	}
+	
 	public BooleanProperty getBase_exists() {
 		return base_exists;
 	}

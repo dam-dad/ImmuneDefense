@@ -15,6 +15,8 @@ public class CostTurret extends Turret {
 	
 	private IntegerProperty damage;
 	
+	private IntegerProperty fireRate;
+	
 	private IntegerProperty cost;
 	
 	private IntegerProperty numberShots;
@@ -27,6 +29,11 @@ public class CostTurret extends Turret {
 	 */
 	public CostTurret() {
 		super();
+		damage = new SimpleIntegerProperty();
+		fireRate = new SimpleIntegerProperty();
+		cost = new SimpleIntegerProperty();
+		numberShots = new SimpleIntegerProperty();
+		maxNumberShots = new SimpleIntegerProperty();
 	}
 	
 	/**
@@ -34,14 +41,17 @@ public class CostTurret extends Turret {
 	 * valores pasados por parámetros.
 	 * 
 	 * @param damage Usada para determinar el daño que hacen las torretas.
+	 * @param fireRate Es una variable dirigida a la cantidad de balas las cuales puede disparar una torreta por segundo, 
+     * en caso de las torretas tipo daño constante, la misma será -1.
 	 * @param cost Determina el coste de las torretas.
 	 * @param numberShots En este caso determina la cantidad de disparos que lleva.
 	 * @param maxNumberShots Esta variable se usa para determinar la cantidad máxima de disparos
 	 * antes de que se destruya automaticamente.
 	 */
-	public CostTurret(int damage, int cost, int numberShots, int maxNumberShots) {
-		super(damage);
+	public CostTurret(int damage, int fireRate, int cost, int numberShots, int maxNumberShots) {
+		super(damage,fireRate);
 		this.damage = new SimpleIntegerProperty(damage);
+		this.fireRate = new SimpleIntegerProperty(fireRate);
 		this.cost = new SimpleIntegerProperty(cost);
 		this.numberShots = new SimpleIntegerProperty(numberShots);
 		this.maxNumberShots = new SimpleIntegerProperty(maxNumberShots);
@@ -51,6 +61,10 @@ public class CostTurret extends Turret {
 		return damage;
 	}
 
+	public IntegerProperty getFireRate() {
+		return fireRate;
+	}
+	
 	public IntegerProperty getCost() {
 		return cost;
 	}
