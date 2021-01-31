@@ -13,7 +13,7 @@
    <top>
       <HBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ajustesB" mnemonicParsing="false" onAction="#onOptions">
+            <Button id="opciones" fx:id="ajustesB" mnemonicParsing="false" onAction="#onOptions" stylesheets="@../Estilos/MainMenu.css">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0">
                      <image>
@@ -21,9 +21,9 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <ToggleButton fx:id="sonidoB" mnemonicParsing="false" onAction="#onDesactivarSonido">
+            <ToggleButton id="sonido" fx:id="sonidoB" mnemonicParsing="false" onAction="#onDesactivarSonido" stylesheets="@../Estilos/MainMenu.css">
                <graphic>
-                  <ImageView fx:id="imagenSonido" fitHeight="16.0" fitWidth="16.0">
+                  <ImageView id="imagenSonido" fx:id="imagenSonido" fitHeight="16.0" fitWidth="16.0">
                      <image>
                         <Image url="@../Images/musica.png" />
                      </image>
@@ -41,9 +41,9 @@
    <center>
       <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="nuevaPartidaB" mnemonicParsing="false" onAction="#onNewGame" text="Nuevo Juego" />
-            <Button fx:id="cargarB" mnemonicParsing="false" onAction="#onLoadGame" text="Cargar Partida" />
-            <Button fx:id="masB" mnemonicParsing="false" onAction="#onMoreB" text="Más..." />
+            <Button id="botonesPrincipales" fx:id="nuevaPartidaB" mnemonicParsing="false" onAction="#onNewGame" stylesheets="@../Estilos/MainMenu.css" text="Nuevo Juego" />
+            <Button id="botonesPrincipales" fx:id="cargarB" mnemonicParsing="false" onAction="#onLoadGame" stylesheets="@../Estilos/MainMenu.css" text="Cargar Partida" />
+            <Button id="botonesPrincipales" fx:id="masB" mnemonicParsing="false" onAction="#onMoreB" stylesheets="@../Estilos/MainMenu.css" text="Más..." />
          </children>
       </VBox>
    </center>

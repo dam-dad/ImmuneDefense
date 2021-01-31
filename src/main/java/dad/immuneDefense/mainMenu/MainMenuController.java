@@ -1,17 +1,31 @@
 package dad.immuneDefense.mainMenu;
 
-	import java.io.IOException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-	public class MainMenuController {
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
+	public class MainMenuController implements Initializable {
+		//Sonido
+	    private  Clip audio;
+	    private InputStream ruta;
+	    private Image offMusic=new Image(getClass().getResourceAsStream("/Images/no_musica.png"));
+		//Vista
 	    @FXML
 	    private BorderPane view;
 	    @FXML
@@ -40,10 +54,29 @@ import javafx.scene.layout.BorderPane;
 		public BorderPane getView() {
 			return this.view;
 		}
-
+		
+		public void initialize(URL location, ResourceBundle resources) {
+			ruta=getClass().getResourceAsStream("/SoundTrack/MainMenu.wav");
+            try {
+				audio = AudioSystem.getClip();
+				audio.open(AudioSystem.getAudioInputStream(ruta)) ;
+				audio.loop(Clip.LOOP_CONTINUOUSLY);
+			} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+				e.printStackTrace();
+			}
+            
+	    	sonidoB.setOnAction(event->{
+	    		if(sonidoB.isSelected()) {
+	    			audio.stop();
+	    		}else {
+	    			audio.loop(Clip.LOOP_CONTINUOUSLY);
+	    		}
+	    	});
+            
+		}
 	    @FXML
 	    void onDesactivarSonido(ActionEvent event) {
-
+	    	imagenSonido.setImage(offMusic);
 	    }
 
 	    @FXML
@@ -65,6 +98,7 @@ import javafx.scene.layout.BorderPane;
 	    void onOptions(ActionEvent event) {
 
 	    }
+
 
 	}
 
