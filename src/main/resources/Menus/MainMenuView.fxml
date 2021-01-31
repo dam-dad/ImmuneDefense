@@ -21,7 +21,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <ToggleButton id="sonido" fx:id="sonidoB" mnemonicParsing="false" onAction="#onDesactivarSonido" stylesheets="@../Estilos/MainMenu.css">
+            <ToggleButton id="sonido" fx:id="sonidoB" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css">
                <graphic>
                   <ImageView id="imagenSonido" fx:id="imagenSonido" fitHeight="16.0" fitWidth="16.0">
                      <image>
