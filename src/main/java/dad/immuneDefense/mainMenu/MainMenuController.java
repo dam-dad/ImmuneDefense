@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -25,6 +26,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 	    private  Clip audio;
 	    private InputStream ruta;
 	    private Image offMusic=new Image(getClass().getResourceAsStream("/Images/no_musica.png"));
+	    private Image onMusic=new Image(getClass().getResourceAsStream("/Images/musica.png"));
 		//Vista
 	    @FXML
 	    private BorderPane view;
@@ -61,6 +63,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
             try {
 				audio = AudioSystem.getClip();
 				audio.open(AudioSystem.getAudioInputStream(ruta)) ;
+				FloatControl gainControl = 
+					    (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
+					gainControl.setValue(-10.0f);
 				audio.loop(Clip.LOOP_CONTINUOUSLY);
 			} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 				e.printStackTrace();
@@ -69,17 +74,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 	    	sonidoB.setOnAction(event->{
 	    		if(sonidoB.isSelected()) {
 	    			audio.stop();
+	    			imagenSonido.setImage(offMusic);
 	    		}else {
 	    			audio.loop(Clip.LOOP_CONTINUOUSLY);
+	    			imagenSonido.setImage(onMusic);
 	    		}
 	    	});
             
 		}
-	    @FXML
-	    void onDesactivarSonido(ActionEvent event) {
-	    	imagenSonido.setImage(offMusic);
-	    }
-
 	    @FXML
 	    void onLoadGame(ActionEvent event) {
 
