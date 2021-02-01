@@ -28,6 +28,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 		//Vista
 	    @FXML
 	    private BorderPane view;
+	    
 	    @FXML
 	    private Button ajustesB;
 
