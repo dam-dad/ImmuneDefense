@@ -3,6 +3,7 @@ package dad.immuneDefense;
 import dad.immuneDefense.mainMenu.MainMenuController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -16,7 +17,8 @@ public class App extends Application {
 		scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Immune Defense");
-	
+		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image ("/Images/Logo.png"));
 		primaryStage.show();
 		
 	}
