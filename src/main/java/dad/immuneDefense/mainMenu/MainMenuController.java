@@ -65,7 +65,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 				audio.open(AudioSystem.getAudioInputStream(ruta)) ;
 				FloatControl gainControl = 
 					    (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
-					gainControl.setValue(-10.0f);
+					gainControl.setValue(-40.0f);
 				audio.loop(Clip.LOOP_CONTINUOUSLY);
 			} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 				e.printStackTrace();
