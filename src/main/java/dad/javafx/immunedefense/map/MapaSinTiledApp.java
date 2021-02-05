@@ -48,19 +48,7 @@ public class MapaSinTiledApp extends Application {
 
 		canvas = new Canvas(800, 600);
 		root.getChildren().add(canvas);	
-
-		/*
-		 * PruebaMenu.getPaneCanvas().getChildren().add(canvas);
-		 * canvas.widthProperty().bind(PruebaMenu.getPaneCanvas().widthProperty());
-		 * canvas.heightProperty().bind(PruebaMenu.getPaneCanvas().heightProperty());
-		 * 
-		 * 
-		 * // redraw when resized canvas.widthProperty().addListener(event ->
-		 * draw(canvas)); canvas.heightProperty().addListener(event -> draw(canvas));
-		 * draw(canvas);
-		 */
-
-
+		
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 		/*
 		 * gc.setFill( Color.RED ); gc.setStroke( Color.BLACK ); gc.setLineWidth(2);

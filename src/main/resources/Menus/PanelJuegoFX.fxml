@@ -3,11 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 
-<BorderPane fx:id="vistaBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="vistaBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
-      <HBox prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="HBox_Buttons" prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="boton1" mnemonicParsing="false" onAction="#onBoton1Action" prefHeight="51.0" prefWidth="90.0" text="Button" />
             <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="85.0" text="Button" />
@@ -19,7 +18,4 @@
          </children>
       </HBox>
    </bottom>
-   <center>
-      <Pane fx:id="paneCanvas" prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>

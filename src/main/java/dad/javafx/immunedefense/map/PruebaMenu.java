@@ -30,24 +30,6 @@ public class PruebaMenu implements Initializable {
 
     }
 
-	public static void main(String[] arguments) {
-
-    // Put canvas in the center of the window
-    //Canvas canvas = new Canvas();
-   // paneCanvas.getChildren().add(canvas);
-    // Bind the width/height property to the wrapper Pane
-    //canvas.widthProperty().bind(paneCanvas.widthProperty());
-    //canvas.heightProperty().bind(paneCanvas.heightProperty());
-    
-    /*
-    // redraw when resized
-    canvas.widthProperty().addListener(event -> draw(canvas));
-    canvas.heightProperty().addListener(event -> draw(canvas));
-    draw(canvas);
-    */
-	}
-	
-
 	public PruebaMenu() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
