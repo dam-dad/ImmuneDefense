@@ -40,8 +40,9 @@ import org.mapeditor.view.IsometricRenderer;
  */
 public class TMXViewer
 {
-    public static void main(String[] arguments) {
-        String fileToOpen ="F:\\Cosas del tower defense\\mapas\\MapaCamino.tmx";   
+    public static void main(String[] arguments) throws Exception {
+        String pathname;
+		File fileToOpen = new File("src\\main\\resources\\mapas\\MapaCamino.tmx"); 
         		//"F:\\Cosas del tower defense\\mapas\\MapaCamino.tmx";
 
         for (String arg : arguments) {
@@ -53,7 +54,7 @@ public class TMXViewer
                 printHelpMessage();
                 return;
             } else if (fileToOpen == null) {
-                fileToOpen = arg;
+                arg = fileToOpen.getPath();
             }
         }
 
@@ -63,13 +64,16 @@ public class TMXViewer
         }
 
         Map map;
-        try {
+        //try {
             TMXMapReader mapReader = new TMXMapReader();
-            map = mapReader.readMap(fileToOpen);
-        } catch (Exception e) {
+            //En esta línea da error
+            System.out.println(fileToOpen.toString());
+            System.out.println(fileToOpen.exists());
+            map = mapReader.readMap(fileToOpen.getPath());
+        /*} catch (Exception e) {
             System.out.println("Error while reading the map:\n" + e.getMessage());
             return;
-        }
+        }*/
 
         System.out.println(map.toString() + " loaded");
       /*  TileLayer tl = new TileLayer();

@@ -97,5 +97,4 @@ public class SpriteSencillo {
 		this.height = height;
 	}
 	
-	
 }

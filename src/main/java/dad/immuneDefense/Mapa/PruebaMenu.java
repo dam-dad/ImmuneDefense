@@ -49,7 +49,7 @@ public class PruebaMenu implements Initializable {
 	
 
 	public PruebaMenu() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/PanelJuegoFX.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
 
 		loader.load();
