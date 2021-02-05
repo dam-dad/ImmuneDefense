@@ -1,19 +1,19 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 
-import dad.immuneDefense.enemies.SpriteSencillo;
+import dad.javafx.immunedefense.enemies.Sprite;
 import javafx.scene.canvas.GraphicsContext;
 
 public class DispararBalas extends Thread{
 	
-	private SpriteSencillo bala;
+	private Sprite bala;
 	
-	private SpriteSencillo virus;
+	private Sprite virus;
 	
 	private GraphicsContext gc;
 	
 	private double t;
 	
-	public DispararBalas(SpriteSencillo bala, SpriteSencillo virus,GraphicsContext gc, double t) {
+	public DispararBalas(Sprite bala, Sprite virus,GraphicsContext gc, double t) {
 		this.bala = bala;
 		this.virus = virus;
 		this.gc = gc;

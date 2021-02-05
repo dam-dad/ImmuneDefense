@@ -1,4 +1,4 @@
-package dad.immuneDefense.mainMenu;
+package dad.javafx.immunedefense.mainmenu;
 
 	import java.io.IOException;
 

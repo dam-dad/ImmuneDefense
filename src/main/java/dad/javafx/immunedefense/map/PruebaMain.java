@@ -1,9 +1,9 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 
 public class PruebaMain {
 
 	public static void main(String[] args) {
-		MapaSinTiled.main(args);
+		MapaSinTiledApp.main(args);
 	}
 
 }

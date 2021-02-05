@@ -1,9 +1,11 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import dad.immuneDefense.enemies.SpriteSencillo;
+import dad.javafx.immunedefense.enemies.Sprite;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -11,28 +13,23 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class MapaSinTiled extends Application {
+public class MapaSinTiledApp extends Application {
 
 	private PruebaMenu vista;
 
 	private Canvas canvas;
 	
 	//Virus Components
-	private SpriteSencillo virus;
-	private FileInputStream inputStreamVirus;
-	private Image virusImage;
+	private Sprite virus;
 	
 	//Torreta Components
-	private SpriteSencillo torreta;
-	private FileInputStream inputStreamTorreta;
-	private Image imageTorreta;
+	private Sprite torreta;
 	
 	//Balas Components
-	private SpriteSencillo bala;
-	private FileInputStream inputStreamBala;
-	private Image imageBala;
+	private Sprite bala;
 	
 	//Current Time
 	private long startNanoTime;
@@ -43,16 +40,14 @@ public class MapaSinTiled extends Application {
 	
 	public void start(Stage theStage) throws IOException {
 		theStage.setTitle("Canvas Example");
+		theStage.setResizable(false);
 
-		/*
-		 * //NUeEVO vista = new PruebaMenu(); Scene scene = new
-		 * Scene(vista.getVistaBorderPane());
-		 */
 		Group root = new Group();
 		Scene theScene = new Scene(root);
 		theStage.setScene(theScene);
 
-		canvas = new Canvas(1920, 1080);
+		canvas = new Canvas(800, 600);
+		root.getChildren().add(canvas);	
 
 		/*
 		 * PruebaMenu.getPaneCanvas().getChildren().add(canvas);
@@ -65,7 +60,6 @@ public class MapaSinTiled extends Application {
 		 * draw(canvas);
 		 */
 
-		root.getChildren().add(canvas);
 
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 		/*
@@ -75,14 +69,10 @@ public class MapaSinTiled extends Application {
 		 * "Hello, World!", 60, 50 );
 		 */
 
-		FileInputStream inputstream = new FileInputStream("src\\main\\resources\\mapImages\\Terrain.png");
-		final Image earth = new Image(inputstream);
+		final Image earth = new Image("/mapImages/Terrain.png");
 
 		// Virus moviendose
-		virus = new SpriteSencillo();
-		inputStreamVirus = new FileInputStream("src\\main\\resources\\mapImages\\Virus Guille.png");
-		virusImage = new Image(inputStreamVirus);
-		virus.setImage(virusImage);
+		virus = new Sprite("/mapImages/Virus Guille.png");
 		virus.setPositionX(600);
 		virus.setPositionY(300);
 		virus.setVelocityX(0.05);
@@ -90,36 +80,53 @@ public class MapaSinTiled extends Application {
 		virus.setHeight(200);
 
 		// Torreta quieta
-		torreta = new SpriteSencillo();
-		inputStreamTorreta = new FileInputStream("src\\main\\resources\\mapImages\\Turret.png");
-		imageTorreta = new Image(inputStreamTorreta);
-		torreta.setImage(imageTorreta);
+		torreta = new Sprite("/mapImages/Turret.png");
 		torreta.setPositionX(50);
 		torreta.setPositionY(200);
 		torreta.setHeight(200);
 		torreta.setWidth(200);
 
 		// Balas torreta
-		bala = new SpriteSencillo();
-		inputStreamBala = new FileInputStream("src\\main\\resources\\mapImages\\Proyectile.png");
-		imageBala = new Image(inputStreamBala);
+		bala = new Sprite("/mapImages/Proyectile.png");
 		bala.setHeight(1);
 		bala.setWidth(1);
-		bala.setImage(imageBala);
 		bala.setPositionX(50);
 		bala.setPositionY(300);
-		bala.setVelocityX(0.2);
+		bala.setVelocityX(120);
 		bala.setHeight(200);
 		bala.setWidth(200);
 
 		startNanoTime = System.nanoTime();
 		
+		List<Sprite> sprites = new ArrayList<>();
+		sprites.add(torreta);
+		sprites.add(virus);
+		sprites.add(bala);
+		
+		
 		new AnimationTimer() {
+			double time = 0.0; 			
+			
 			public void handle(long currentNanoTime) {
+				double timeDiff = (currentNanoTime - startNanoTime) / 1000000000.0; // time difference between frames in seconds
 				
+				time += timeDiff;
+				if (time > 2) {
+					Sprite bala = new Sprite("/mapImages/Proyectile.png");
+					bala.setHeight(1);
+					bala.setWidth(1);
+					bala.setPositionX(50);
+					bala.setPositionY(300);
+					bala.setVelocityX(120);
+					bala.setHeight(200);
+					bala.setWidth(200);
+					sprites.add(bala);
+					time = 0.0;
+				}
+				
+				// draw background
 				gc.drawImage(earth, 0, 0);
 
-				double t = (currentNanoTime - startNanoTime) / 1000000000.0;
 				/*
 				if (virus.getPositionX() > 201) {
 					virus.setVelocityY(0.5);
@@ -132,10 +139,10 @@ public class MapaSinTiled extends Application {
 				}
 				*/
 				
-				torreta.render(gc);
-				fireRate = new DispararBalas(bala,virus,gc,t);
-				fireRate.run();
+				sprites.stream().forEach(s -> s.update(timeDiff));
+				sprites.stream().forEach(s -> s.render(gc));
 				
+				startNanoTime = currentNanoTime;
 			}
 		}.start();
 

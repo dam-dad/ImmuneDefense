@@ -1,4 +1,4 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;

@@ -1,4 +1,4 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

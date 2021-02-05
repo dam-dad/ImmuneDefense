@@ -1,4 +1,4 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 
 import javafx.application.Application;
 import javafx.scene.*;
