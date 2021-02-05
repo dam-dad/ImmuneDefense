@@ -1,6 +1,6 @@
-package dad.immuneDefense;
+package dad.javafx.immunedefense;
 
-import dad.immuneDefense.mainMenu.MainMenuController;
+import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
