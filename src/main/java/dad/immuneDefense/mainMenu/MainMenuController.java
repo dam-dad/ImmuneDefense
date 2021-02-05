@@ -22,6 +22,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 	public class MainMenuController implements Initializable {
+		//SubControllers
+		OptionController options=new OptionController();
 		//Sonido
 	    private  Clip audio;
 	    private InputStream ruta;
@@ -79,8 +81,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 	    			audio.loop(Clip.LOOP_CONTINUOUSLY);
 	    			imagenSonido.setImage(onMusic);
 	    		}
-	    	});
-            
+	    	});            
 		}
 	    @FXML
 	    void onLoadGame(ActionEvent event) {
@@ -99,7 +100,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 	    @FXML
 	    void onOptions(ActionEvent event) {
-
+	    	
 	    }
 
 
