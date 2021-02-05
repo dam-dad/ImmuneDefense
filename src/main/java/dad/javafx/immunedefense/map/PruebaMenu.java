@@ -1,4 +1,4 @@
-package dad.immuneDefense.Mapa;
+package dad.javafx.immunedefense.map;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,7 +49,7 @@ public class PruebaMenu implements Initializable {
 	
 
 	public PruebaMenu() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/PanelJuegoFX.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
 
 		loader.load();

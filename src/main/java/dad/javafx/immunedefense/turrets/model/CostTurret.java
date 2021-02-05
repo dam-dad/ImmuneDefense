@@ -1,4 +1,4 @@
-package dad.immuneDefense.turrets.Model;
+package dad.javafx.immunedefense.turrets.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
