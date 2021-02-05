@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 public class App extends Application {
 	private MainMenuController controller;
 	
+	
+	
 	public void start(Stage primaryStage) throws Exception {
-		
 		controller=new MainMenuController();
 		
 		Scene scene=new Scene(controller.getView(),800,600);
@@ -20,8 +21,8 @@ public class App extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image ("/Images/Logo.png"));
 		primaryStage.show();
-		
 	}
+
 	public static void main(String[] args) {
 		
 			launch(args);

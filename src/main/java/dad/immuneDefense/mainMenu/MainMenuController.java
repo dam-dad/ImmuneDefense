@@ -51,6 +51,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 	    @FXML
 	    private Button masB;
 	    
+	    
 	    public MainMenuController() throws IOException{
 			FXMLLoader loader=new FXMLLoader(getClass().getResource("/Menus/MainMenuView.fxml"));
 			loader.setController(this);
