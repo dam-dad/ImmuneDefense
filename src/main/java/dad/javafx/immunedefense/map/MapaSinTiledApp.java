@@ -73,11 +73,12 @@ public class MapaSinTiledApp extends Application {
 
 		// Virus moviendose
 		virus = new Sprite("/mapImages/Virus Guille.png");
-		virus.setPositionX(600);
-		virus.setPositionY(300);
-		virus.setVelocityX(0.05);
+		virus.setPositionX(0);
+		virus.setPositionY(0);
+		virus.setVelocityX(20);
 		virus.setWidth(200);
 		virus.setHeight(200);
+		virus.setHealth(3);
 
 		// Torreta quieta
 		torreta = new Sprite("/mapImages/Turret.png");
@@ -110,6 +111,8 @@ public class MapaSinTiledApp extends Application {
 			public void handle(long currentNanoTime) {
 				double timeDiff = (currentNanoTime - startNanoTime) / 1000000000.0; // time difference between frames in seconds
 				
+				//List<Sprite> balasLista = new ArrayList<>();
+				
 				time += timeDiff;
 				if (time > 2) {
 					Sprite bala = new Sprite("/mapImages/Proyectile.png");
@@ -121,26 +124,70 @@ public class MapaSinTiledApp extends Application {
 					bala.setHeight(200);
 					bala.setWidth(200);
 					sprites.add(bala);
+					
 					time = 0.0;
 				}
 				
 				// draw background
 				gc.drawImage(earth, 0, 0);
 
-				/*
-				if (virus.getPositionX() > 201) {
-					virus.setVelocityY(0.5);
+				//moviemiento del viruzaso
+				if (virus.getPositionX() > 290) {
+					virus.setVelocityY(16);
 					virus.setVelocityX(0);
 				}
 
-				if (virus.getPositionY() > 201) {
+				if (virus.getPositionY() >= 200) {
 					virus.setVelocityY(0);
-					virus.setVelocityX(0.09);
+					virus.setVelocityX(10);
 				}
-				*/
+				
+				
+				//choque de bala con virus
+				
+				for(int i=2;i<sprites.size();i++) {
+					
+					if(virus.intersects(sprites.get(i))==true & virus.getHealth()==1) {
+						sprites.remove(virus);
+						sprites.remove(i);
+						virus.setHealth(0);
+						
+						//modo cutre de que no entorpezca el paso
+						virus.setPositionX(-1);
+						virus.setPositionY(-1);
+					}
+					
+					if(virus.intersects(sprites.get(i))==true & virus.getHealth()>1) {
+						virus.setHealth(virus.getHealth()-1);
+						
+						//modo cutre de que no entorpezca el paso
+						sprites.get(i).setPositionX(-5);
+						sprites.get(i).setPositionY(-5);
+												
+						sprites.remove(i);
+						
+						System.out.println("ME DEBILITO");
+					}
+					
+				}
+				
+				//metodo para que dejen de renderizar las balas cuando salgan (solo por el lado de la izquierda funciona)
+				for(int i=0;i<sprites.size();i++) {
+					
+					if(sprites.get(i).getPositionX()>canvas.getWidth()) {
+						sprites.remove(i);
+						System.out.println("PUERTO RICO ME LO REGALO");
+						
+					}
+					
+				}
+				
+				
 				
 				sprites.stream().forEach(s -> s.update(timeDiff));
 				sprites.stream().forEach(s -> s.render(gc));
+				
+				
 				
 				startNanoTime = currentNanoTime;
 			}
@@ -149,6 +196,9 @@ public class MapaSinTiledApp extends Application {
 		theStage.show();
 	}
 
+	
+	
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

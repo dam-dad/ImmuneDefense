@@ -13,6 +13,15 @@ public class Sprite {
 	private double velocityY;
 	private double width;
 	private double height;
+	private int health;
+
+	public final int getHealth() {
+		return health;
+	}
+
+	public final void setHealth(int health) {
+		this.health = health;
+	}
 
 	public Sprite(String urlImage) {
 		// TODO Auto-generated constructor stub
