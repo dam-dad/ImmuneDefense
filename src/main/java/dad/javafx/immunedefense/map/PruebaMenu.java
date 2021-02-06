@@ -21,10 +21,10 @@ public class PruebaMenu implements Initializable {
 
     @FXML
     private Button boton1;
-
+    
     @FXML
-    private static Pane paneCanvas;
-
+    private Canvas canvas_center;
+    
     @FXML
     void onBoton1Action(ActionEvent event) {
 
@@ -33,37 +33,23 @@ public class PruebaMenu implements Initializable {
 	public PruebaMenu() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
-
 		loader.load();
-
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-		paneCanvas = new Pane();
 		
-		/*MapaSinTiled mapa = new MapaSinTiled();
-		 Canvas canvas=mapa.getCanvas();
-		
-		 paneCanvas.getChildren().add(canvas);
-		 
-		   canvas.widthProperty().bind(paneCanvas.widthProperty());
-		    canvas.heightProperty().bind(paneCanvas.heightProperty());
-*/
 	}
 
 	public final BorderPane getVistaBorderPane() {
 		return vistaBorderPane;
 	}
 
-	public static  void setPaneCanvas(Pane paneCanvas) {
-		PruebaMenu.paneCanvas = paneCanvas;
+	public Canvas getCanvas_center() {
+		return canvas_center;
 	}
 
-	public static  Pane getPaneCanvas() {
-		return paneCanvas;
+	public void setCanvas_center(Canvas canvas_center) {
+		this.canvas_center = canvas_center;
 	}
-
-
-
-
+	
 }

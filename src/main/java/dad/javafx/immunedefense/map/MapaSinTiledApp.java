@@ -9,6 +9,7 @@ import dad.javafx.immunedefense.enemies.Sprite;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -34,16 +35,20 @@ public class MapaSinTiledApp extends Application {
 	//Current Time
 	private long startNanoTime;
 	
-	//Proceso FireRate
-	private DispararBalas fireRate;
-	
 	
 	public void start(Stage theStage) throws IOException {
 		theStage.setTitle("Canvas Example");
 		theStage.setResizable(false);
-
+		
+		vista = new PruebaMenu();
+		
+		vista.setCanvas_center(canvas);
+		
 		Group root = new Group();
 		Scene theScene = new Scene(root);
+		
+		Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
+		
 		theStage.setScene(theScene);
 
 		canvas = new Canvas(800, 600);
@@ -169,8 +174,6 @@ public class MapaSinTiledApp extends Application {
 					}
 					
 				}
-				
-				
 				
 				sprites.stream().forEach(s -> s.update(timeDiff));
 				sprites.stream().forEach(s -> s.render(gc));

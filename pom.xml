@@ -1,20 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ImmuneDefense</groupId>
-  <artifactId>ImmuneDefense</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
- 
-    <name>ImmuneDefense</name>
- 	<description>Juego Tower Defense con temática del cuerpo humano y su lucha contra enfermedades. </description>
-  
-  	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ImmuneDefense</groupId>
+	<artifactId>ImmuneDefense</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>ImmuneDefense</name>
+	<description>Juego Tower Defense con temática del cuerpo humano y su lucha contra enfermedades. </description>
+
+	<properties>
 		<maven.compiler.target>14</maven.compiler.target>
 		<maven.compiler.source>14</maven.compiler.source>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>	
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<exec.mainClass>dad.immuneDefense.Main</exec.mainClass>
 	</properties>
-  
-  	<dependencies>
+
+	<dependencies>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
@@ -25,18 +27,26 @@
 			<artifactId>javafx-fxml</artifactId>
 			<version>15.0.1</version>
 		</dependency>
-			<dependency>
-    <groupId>org.mapeditor</groupId>
-    <artifactId>libtiled</artifactId>
-    <version>1.2.3</version>
-</dependency>
-
-
-<dependency>
-    <groupId>org.tiledreader</groupId>
-    <artifactId>TiledReader</artifactId>
-    <version>1.1.0</version>
-</dependency>
+		<dependency>
+			<groupId>org.mapeditor</groupId>
+			<artifactId>libtiled</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>javazoom</groupId>
+			<artifactId>jlayer</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tiledreader</groupId>
+			<artifactId>TiledReader</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-media</artifactId>
+			<version>16-ea+6</version>
+		</dependency>
 	</dependencies>
 
 </project>

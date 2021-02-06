@@ -28,9 +28,23 @@ import javafx.scene.control.ComboBox;
 			loader.setController(this);
 			loader.load();
 		}
+	    
 		public BorderPane getView() {
 			return this.view;
 		}
+
+		public Slider getVolumenSlider() {
+			return volumenSlider;
+		}
+
+		public TextField getVolumenText() {
+			return volumenText;
+		}
+
+		public ComboBox<?> getPantallaCombo() {
+			return pantallaCombo;
+		}
+		
 	}
 
 
