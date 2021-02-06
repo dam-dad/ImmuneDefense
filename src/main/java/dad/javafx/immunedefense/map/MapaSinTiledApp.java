@@ -159,10 +159,10 @@ public class MapaSinTiledApp extends Application {
 					
 				}
 				
-				//metodo para que dejen de renderizar las balas cuando salgan (solo por el lado de la izquierda funciona)
+				//metodo para que dejen de renderizar las balas cuando salgan (no funciona por todos los lados creo)
 				for(int i=0;i<sprites.size();i++) {
 					
-					if(sprites.get(i).getPositionX()>canvas.getWidth()) {
+					if(sprites.get(i).getPositionX()>canvas.getWidth() | sprites.get(i).getPositionY()>canvas.getHeight()) {
 						sprites.remove(i);
 						System.out.println("PUERTO RICO ME LO REGALO");
 						
