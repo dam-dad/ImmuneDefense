@@ -10,14 +10,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 
 public class PruebaMenu implements Initializable {
 	
     @FXML
-    private  BorderPane vistaBorderPane;
+    private BorderPane vistaBorderPane;
+
+    @FXML
+    private HBox HBox_Buttons;
 
     @FXML
     private Button boton1;
@@ -25,11 +30,21 @@ public class PruebaMenu implements Initializable {
     @FXML
     private Canvas canvas_center;
     
+    private ImageView vida;
+
+    @FXML
+    private ImageView puntosParaComprar;
+
     @FXML
     void onBoton1Action(ActionEvent event) {
 
     }
+    
+    private MapaSinTiledApp mapa;
 
+    @FXML
+    private Canvas canvasMenu;
+    
 	public PruebaMenu() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
@@ -38,6 +53,14 @@ public class PruebaMenu implements Initializable {
 
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		//probar ambas
+		vistaBorderPane.setCenter(mapa.getCanvas());    
+		canvasMenu=mapa.getCanvas();
+		
+		
+		/*MapaSinTiled mapa = new MapaSinTiled();
+		 Canvas canvas=mapa.getCanvas();
+		*/
 	}
 
 	public final BorderPane getVistaBorderPane() {
@@ -52,4 +75,10 @@ public class PruebaMenu implements Initializable {
 		this.canvas_center = canvas_center;
 	}
 	
+
+
+
+
+
+
 }

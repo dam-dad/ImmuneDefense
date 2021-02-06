@@ -2,12 +2,17 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="vistaBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="vistaBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
+
       <HBox fx:id="HBox_Buttons" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+
+      <HBox fx:id="HBox_Buttons" prefHeight="63.0" prefWidth="792.0" BorderPane.alignment="CENTER">
+
          <children>
             <Button fx:id="boton1" mnemonicParsing="false" onAction="#onBoton1Action" prefHeight="51.0" prefWidth="90.0" text="Button" />
             <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="85.0" text="Button" />
@@ -20,6 +25,18 @@
       </HBox>
    </bottom>
    <center>
+
       <Canvas fx:id="canvas_center" height="650.0" width="800.0" BorderPane.alignment="CENTER" />
    </center>
+
+      <Canvas fx:id="canvasMenu" height="600.0" width="800.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox prefHeight="91.0" prefWidth="792.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="vida" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="puntosParaComprar" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
