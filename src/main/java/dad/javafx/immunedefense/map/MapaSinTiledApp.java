@@ -22,40 +22,39 @@ public class MapaSinTiledApp extends Application {
 	private PruebaMenu vista;
 
 	private Canvas canvas;
-	
-	//Virus Components
+
+	// Virus Components
 	private Sprite virus;
-	
-	//Torreta Components
+
+	// Torreta Components
 	private Sprite torreta;
-	
-	//Balas Components
+
+	// Balas Components
 	private Sprite bala;
-	
-	//Current Time
+
+	// Current Time
 	private long startNanoTime;
-	
+
 	private List<Sprite> sprites;
-	
-	
+
 	public void start(Stage theStage) throws IOException {
 		theStage.setTitle("Canvas Example");
 		theStage.setResizable(false);
-		
-		//vista = new PruebaMenu();
-		
-		//vista.setCanvas_center(canvas);
-		
+
+		// vista = new PruebaMenu();
+
+		// vista.setCanvas_center(canvas);
+
 		Group root = new Group();
 		Scene theScene = new Scene(root);
-		
-		//Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
-		
+
+		// Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
+
 		theStage.setScene(theScene);
 
 		canvas = new Canvas(800, 600);
-		root.getChildren().add(canvas);	
-		
+		root.getChildren().add(canvas);
+
 		/*
 		 * gc.setFill( Color.RED ); gc.setStroke( Color.BLACK ); gc.setLineWidth(2);
 		 * Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
@@ -63,7 +62,16 @@ public class MapaSinTiledApp extends Application {
 		 * "Hello, World!", 60, 50 );
 		 */
 
+		// Aquí se determinan los sprite principales
+		SpritesPrincipales();
 
+		// Aquí empieza la parte de las animaciones
+		AnimacionesYSprites();
+
+		theStage.show();
+	}
+
+	private void SpritesPrincipales() {
 		// Virus moviendose
 		virus = new Sprite("/mapImages/Virus Guille.png");
 		virus.setPositionX(0);
@@ -91,32 +99,27 @@ public class MapaSinTiledApp extends Application {
 		bala.setWidth(200);
 
 		startNanoTime = System.nanoTime();
-		
+
 		sprites = new ArrayList<>();
 		sprites.add(torreta);
 		sprites.add(virus);
 		sprites.add(bala);
-		
-		//Aquí empieza la parte de las animaciones
-		
-		AnimacionesYSprites();
-		
-		theStage.show();
 	}
-	
+
 	private void AnimacionesYSprites() {
 		new AnimationTimer() {
-			double time = 0.0; 			
-			
+			double time = 0.0;
+
 			public void handle(long currentNanoTime) {
 				final GraphicsContext gc = canvas.getGraphicsContext2D();
-				
+
 				final Image earth = new Image("/mapImages/Terrain.png");
-				
-				double timeDiff = (currentNanoTime - startNanoTime) / 1000000000.0; // time difference between frames in seconds
-				
-				//List<Sprite> balasLista = new ArrayList<>();
-				
+
+				double timeDiff = (currentNanoTime - startNanoTime) / 1000000000.0; // time difference between frames in
+																					// seconds
+
+				// List<Sprite> balasLista = new ArrayList<>();
+
 				time += timeDiff;
 				if (time > 2) {
 					Sprite bala = new Sprite("/mapImages/Proyectile.png");
@@ -128,14 +131,14 @@ public class MapaSinTiledApp extends Application {
 					bala.setHeight(200);
 					bala.setWidth(200);
 					sprites.add(bala);
-					
+
 					time = 0.0;
 				}
-				
+
 				// draw background
 				gc.drawImage(earth, 0, 0);
 
-				//moviemiento del viruzaso
+				// moviemiento del viruzaso
 				if (virus.getPositionX() > 290) {
 					virus.setVelocityY(16);
 					virus.setVelocityX(0);
@@ -145,61 +148,60 @@ public class MapaSinTiledApp extends Application {
 					virus.setVelocityY(0);
 					virus.setVelocityX(10);
 				}
-				
-				
-				//choque de bala con virus
-				
-				for(int i=2;i<sprites.size();i++) {
-					
-					if(virus.intersects(sprites.get(i))==true & virus.getHealth()==1) {
+
+				// choque de bala con virus
+
+				for (int i = 2; i < sprites.size(); i++) {
+
+					if (virus.intersects(sprites.get(i)) == true & virus.getHealth() == 1) {
 						sprites.remove(virus);
 						sprites.remove(i);
 						virus.setHealth(0);
-						
-						//modo cutre de que no entorpezca el paso
+
+						// modo cutre de que no entorpezca el paso
 						virus.setPositionX(-1);
 						virus.setPositionY(-1);
 					}
-					
-					if(virus.intersects(sprites.get(i))==true & virus.getHealth()>1) {
-						virus.setHealth(virus.getHealth()-1);
-						
-						//modo cutre de que no entorpezca el paso
+
+					if (virus.intersects(sprites.get(i)) == true & virus.getHealth() > 1) {
+						virus.setHealth(virus.getHealth() - 1);
+
+						// modo cutre de que no entorpezca el paso
 						sprites.get(i).setPositionX(-5);
 						sprites.get(i).setPositionY(-5);
-												
+
 						sprites.remove(i);
-						
+
 						System.out.println("ME DEBILITO");
 					}
-					
+
 				}
-				
-				//metodo para que dejen de renderizar las balas cuando salgan (no funciona por todos los lados creo)
-				for(int i=0;i<sprites.size();i++) {
-					
-					if(sprites.get(i).getPositionX()>canvas.getWidth() | sprites.get(i).getPositionY()>canvas.getHeight()) {
+
+				// metodo para que dejen de renderizar las balas cuando salgan (no funciona por
+				// todos los lados creo)
+				for (int i = 0; i < sprites.size(); i++) {
+
+					if (sprites.get(i).getPositionX() > canvas.getWidth()
+							| sprites.get(i).getPositionY() > canvas.getHeight()) {
 						sprites.remove(i);
 						System.out.println("PUERTO RICO ME LO REGALO");
-						
+
 					}
-					
+
 				}
-				
+
 				sprites.stream().forEach(s -> s.update(timeDiff));
 				sprites.stream().forEach(s -> s.render(gc));
-				
-				
-				
+
 				startNanoTime = currentNanoTime;
 			}
 		}.start();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	public final Canvas getCanvas() {
 		return canvas;
 	}
