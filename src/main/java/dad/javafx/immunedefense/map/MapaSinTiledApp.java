@@ -35,26 +35,27 @@ public class MapaSinTiledApp extends Application {
 	//Current Time
 	private long startNanoTime;
 	
+	private List<Sprite> sprites;
+	
 	
 	public void start(Stage theStage) throws IOException {
 		theStage.setTitle("Canvas Example");
 		theStage.setResizable(false);
 		
-		vista = new PruebaMenu();
+		//vista = new PruebaMenu();
 		
-		vista.setCanvas_center(canvas);
+		//vista.setCanvas_center(canvas);
 		
 		Group root = new Group();
 		Scene theScene = new Scene(root);
 		
-		Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
+		//Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
 		
 		theStage.setScene(theScene);
 
 		canvas = new Canvas(800, 600);
 		root.getChildren().add(canvas);	
 		
-		final GraphicsContext gc = canvas.getGraphicsContext2D();
 		/*
 		 * gc.setFill( Color.RED ); gc.setStroke( Color.BLACK ); gc.setLineWidth(2);
 		 * Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
@@ -62,7 +63,6 @@ public class MapaSinTiledApp extends Application {
 		 * "Hello, World!", 60, 50 );
 		 */
 
-		final Image earth = new Image("/mapImages/Terrain.png");
 
 		// Virus moviendose
 		virus = new Sprite("/mapImages/Virus Guille.png");
@@ -92,16 +92,27 @@ public class MapaSinTiledApp extends Application {
 
 		startNanoTime = System.nanoTime();
 		
-		List<Sprite> sprites = new ArrayList<>();
+		sprites = new ArrayList<>();
 		sprites.add(torreta);
 		sprites.add(virus);
 		sprites.add(bala);
 		
+		//Aquí empieza la parte de las animaciones
 		
+		AnimacionesYSprites();
+		
+		theStage.show();
+	}
+	
+	private void AnimacionesYSprites() {
 		new AnimationTimer() {
 			double time = 0.0; 			
 			
 			public void handle(long currentNanoTime) {
+				final GraphicsContext gc = canvas.getGraphicsContext2D();
+				
+				final Image earth = new Image("/mapImages/Terrain.png");
+				
 				double timeDiff = (currentNanoTime - startNanoTime) / 1000000000.0; // time difference between frames in seconds
 				
 				//List<Sprite> balasLista = new ArrayList<>();
@@ -183,12 +194,7 @@ public class MapaSinTiledApp extends Application {
 				startNanoTime = currentNanoTime;
 			}
 		}.start();
-
-		theStage.show();
 	}
-
-	
-	
 	
 	public static void main(String[] args) {
 		launch(args);

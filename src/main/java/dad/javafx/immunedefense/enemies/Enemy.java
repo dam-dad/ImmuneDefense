@@ -1,63 +1,68 @@
 package dad.javafx.immunedefense.enemies;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
 public class Enemy {
 
-	private double positionX, positionY, velocityX, velocityY, width, height;
+	private DoubleProperty positionX, positionY, velocityX, velocityY, width, height;
 	
 	public Enemy(double positionX, double positionY, double velocityX, double velocityY, double width, double height) {
-		this.positionX = positionX;
-		this.positionY = positionY;
-		this.velocityX = velocityX;
-		this.velocityY = velocityY;
-		this.width = width;
-		this.height = height;
+		this.positionX = new SimpleDoubleProperty(positionX);
+		this.positionY = new SimpleDoubleProperty(positionY);;
+		this.velocityX = new SimpleDoubleProperty(velocityX);;
+		this.velocityY = new SimpleDoubleProperty(velocityY);
+		this.width = new SimpleDoubleProperty(width);
+		this.height = new SimpleDoubleProperty(height);
 	}
 
-	public double getPositionX() {
+	public DoubleProperty getPositionX() {
 		return positionX;
 	}
 
-	public void setPositionX(double positionX) {
+	public void setPositionX(DoubleProperty positionX) {
 		this.positionX = positionX;
 	}
 
-	public double getPositionY() {
+	public DoubleProperty getPositionY() {
 		return positionY;
 	}
 
-	public void setPositionY(double positionY) {
+	public void setPositionY(DoubleProperty positionY) {
 		this.positionY = positionY;
 	}
 
-	public double getVelocityX() {
+	public DoubleProperty getVelocityX() {
 		return velocityX;
 	}
 
-	public void setVelocityX(double velocityX) {
+	public void setVelocityX(DoubleProperty velocityX) {
 		this.velocityX = velocityX;
 	}
 
-	public double getVelocityY() {
+	public DoubleProperty getVelocityY() {
 		return velocityY;
 	}
 
-	public void setVelocityY(double velocityY) {
+	public void setVelocityY(DoubleProperty velocityY) {
 		this.velocityY = velocityY;
 	}
 
-	public double getWidth() {
+	public DoubleProperty getWidth() {
 		return width;
 	}
 
-	public void setWidth(double width) {
+	public void setWidth(DoubleProperty width) {
 		this.width = width;
 	}
 
-	public double getHeight() {
+	public DoubleProperty getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(DoubleProperty height) {
 		this.height = height;
 	}
+
+	
 }

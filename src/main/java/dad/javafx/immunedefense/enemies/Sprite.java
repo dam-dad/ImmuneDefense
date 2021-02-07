@@ -15,23 +15,10 @@ public class Sprite {
 	private double height;
 	private int health;
 
-	public final int getHealth() {
-		return health;
-	}
-
-	public final void setHealth(int health) {
-		this.health = health;
-	}
-
 	public Sprite(String urlImage) {
-		// TODO Auto-generated constructor stub
 		setImage(new Image(urlImage));
 	}
 	
-	// ...
-	// methods omitted for brevity
-	// ...
-
 	public void update(double time) {
 		positionX += velocityX * time;
 		positionY += velocityY * time;
@@ -105,4 +92,11 @@ public class Sprite {
 		this.height = height;
 	}
 
+	public final int getHealth() {
+		return health;
+	}
+
+	public final void setHealth(int health) {
+		this.health = health;
+	}
 }
