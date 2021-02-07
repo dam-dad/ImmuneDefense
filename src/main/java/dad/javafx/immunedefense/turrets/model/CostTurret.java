@@ -1,6 +1,8 @@
 package dad.javafx.immunedefense.turrets.model;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 /**
@@ -15,7 +17,7 @@ public class CostTurret extends Turret {
 	
 	private IntegerProperty damage;
 	
-	private IntegerProperty fireRate;
+	private DoubleProperty fireRate;
 	
 	private IntegerProperty cost;
 	
@@ -30,7 +32,7 @@ public class CostTurret extends Turret {
 	public CostTurret() {
 		super();
 		damage = new SimpleIntegerProperty();
-		fireRate = new SimpleIntegerProperty();
+		fireRate = new SimpleDoubleProperty();
 		cost = new SimpleIntegerProperty();
 		numberShots = new SimpleIntegerProperty();
 		maxNumberShots = new SimpleIntegerProperty();
@@ -51,7 +53,7 @@ public class CostTurret extends Turret {
 	public CostTurret(int damage, int fireRate, int cost, int numberShots, int maxNumberShots) {
 		super(damage,fireRate);
 		this.damage = new SimpleIntegerProperty(damage);
-		this.fireRate = new SimpleIntegerProperty(fireRate);
+		this.fireRate = new SimpleDoubleProperty(fireRate);
 		this.cost = new SimpleIntegerProperty(cost);
 		this.numberShots = new SimpleIntegerProperty(numberShots);
 		this.maxNumberShots = new SimpleIntegerProperty(maxNumberShots);
@@ -61,7 +63,7 @@ public class CostTurret extends Turret {
 		return damage;
 	}
 
-	public IntegerProperty getFireRate() {
+	public DoubleProperty getFireRate() {
 		return fireRate;
 	}
 	

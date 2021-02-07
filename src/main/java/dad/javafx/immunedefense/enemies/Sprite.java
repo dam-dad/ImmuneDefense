@@ -5,7 +5,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Sprite {
-
+	
+	/*
+	 * Posible cambio propuesto por JJ:
+	 * Cambiar las variables a propiedades para la mejor conexión entre clases
+	 * */
+	
 	private Image image;
 	private double positionX;
 	private double positionY;

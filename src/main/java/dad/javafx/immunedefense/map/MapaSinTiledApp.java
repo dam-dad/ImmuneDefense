@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dad.javafx.immunedefense.enemies.Enemy;
 import dad.javafx.immunedefense.enemies.Sprite;
+import dad.javafx.immunedefense.turrets.model.BaseTurret;
+import dad.javafx.immunedefense.turrets.model.Turret;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -35,7 +38,20 @@ public class MapaSinTiledApp extends Application {
 	// Current Time
 	private long startNanoTime;
 
+	//Lista de Sprites
 	private List<Sprite> sprites;
+	
+	//Lista de Torretas
+	private List<Turret> turrets;
+	
+	//Torreta de Base
+	private Turret baseTurret;
+	
+	//Lista de Enemigos distintos
+	private List<Enemy> enemys;
+	
+	//Enemigo apareciendo
+	private Enemy rhinitis;
 
 	public void start(Stage theStage) throws IOException {
 		theStage.setTitle("Canvas Example");
@@ -62,7 +78,7 @@ public class MapaSinTiledApp extends Application {
 		 * "Hello, World!", 60, 50 );
 		 */
 
-		// Aquí se determinan los sprite principales
+		// Aquí se declaran los sprite principales
 		SpritesPrincipales();
 
 		// Aquí empieza la parte de las animaciones
@@ -80,6 +96,11 @@ public class MapaSinTiledApp extends Application {
 		virus.setWidth(200);
 		virus.setHeight(200);
 		virus.setHealth(3);
+		
+		rhinitis = new Enemy(virus.getVelocityX(),virus.getVelocityY(),virus.getHealth());
+		
+		enemys = new ArrayList<Enemy>();
+		enemys.add(rhinitis);
 
 		// Torreta quieta
 		torreta = new Sprite("/mapImages/Turret.png");
@@ -87,6 +108,11 @@ public class MapaSinTiledApp extends Application {
 		torreta.setPositionY(200);
 		torreta.setHeight(200);
 		torreta.setWidth(200);
+		
+		baseTurret = new BaseTurret(1,0.5,true);
+		
+		turrets = new ArrayList<Turret>();
+		turrets.add(baseTurret);
 
 		// Balas torreta
 		bala = new Sprite("/mapImages/Proyectile.png");
@@ -104,6 +130,7 @@ public class MapaSinTiledApp extends Application {
 		sprites.add(torreta);
 		sprites.add(virus);
 		sprites.add(bala);
+		
 	}
 
 	private void AnimacionesYSprites() {
@@ -138,24 +165,31 @@ public class MapaSinTiledApp extends Application {
 				// draw background
 				gc.drawImage(earth, 0, 0);
 
-				// moviemiento del viruzaso
+				// movimiento del viruzaso
 				if (virus.getPositionX() > 290) {
 					virus.setVelocityY(16);
 					virus.setVelocityX(0);
+					
+					rhinitis.getVelocityX().set(virus.getVelocityX());
+					rhinitis.getVelocityY().set(virus.getVelocityY());
 				}
 
 				if (virus.getPositionY() >= 200) {
 					virus.setVelocityY(0);
 					virus.setVelocityX(10);
+					
+					rhinitis.getVelocityX().set(virus.getVelocityX());
+					rhinitis.getVelocityY().set(virus.getVelocityY());
 				}
 
 				// choque de bala con virus
 
-				for (int i = 2; i < sprites.size(); i++) {
+				for (int i = 2; i <= sprites.size() - 1; i++) {
 
 					if (virus.intersects(sprites.get(i)) == true & virus.getHealth() == 1) {
 						sprites.remove(virus);
 						sprites.remove(i);
+						
 						virus.setHealth(0);
 
 						// modo cutre de que no entorpezca el paso
@@ -167,14 +201,14 @@ public class MapaSinTiledApp extends Application {
 						virus.setHealth(virus.getHealth() - 1);
 
 						// modo cutre de que no entorpezca el paso
+
 						sprites.get(i).setPositionX(-5);
 						sprites.get(i).setPositionY(-5);
-
+						
 						sprites.remove(i);
 
 						System.out.println("ME DEBILITO");
 					}
-
 				}
 
 				// metodo para que dejen de renderizar las balas cuando salgan (no funciona por
@@ -186,6 +220,12 @@ public class MapaSinTiledApp extends Application {
 						sprites.remove(i);
 						System.out.println("PUERTO RICO ME LO REGALO");
 
+					}
+					//Método a probar para que funcione por los lados restantes
+					else if (sprites.get(i).getPositionX() <= -sprites.get(i).getWidth()/2
+							| sprites.get(i).getPositionY() <= -sprites.get(i).getHeight()/2) {
+						sprites.remove(i);
+						System.out.println("DOMINICANA YA REPLICÓ");
 					}
 
 				}
