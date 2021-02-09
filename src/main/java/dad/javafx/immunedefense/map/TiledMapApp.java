@@ -29,7 +29,7 @@ import org.mapeditor.io.TMXMapReader;
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 
-public class ProbandoMapa extends Application {
+public class TiledMapApp extends Application {
 
     Pane mainPane;
     Scene scene;

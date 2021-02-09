@@ -1,4 +1,4 @@
-package dad.javafx.immunedefense.enemies;
+package dad.javafx.immunedefense.model;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
