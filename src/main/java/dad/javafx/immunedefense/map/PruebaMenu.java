@@ -28,8 +28,9 @@ public class PruebaMenu implements Initializable {
     private Button boton1;
     
     @FXML
-    private Canvas canvas_center;
+    private Canvas canvasMenu;
     
+    @FXML
     private ImageView vida;
 
     @FXML
@@ -41,9 +42,6 @@ public class PruebaMenu implements Initializable {
     }
     
     private MapaSinTiledApp mapa;
-
-    @FXML
-    private Canvas canvasMenu;
     
 	public PruebaMenu() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
@@ -53,9 +51,12 @@ public class PruebaMenu implements Initializable {
 
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		mapa = new MapaSinTiledApp();
+		
 		//probar ambas
 		vistaBorderPane.setCenter(mapa.getCanvas());    
 		canvasMenu=mapa.getCanvas();
+		
 		
 		
 		/*MapaSinTiled mapa = new MapaSinTiled();
@@ -67,18 +68,32 @@ public class PruebaMenu implements Initializable {
 		return vistaBorderPane;
 	}
 
-	public Canvas getCanvas_center() {
-		return canvas_center;
+	public HBox getHBox_Buttons() {
+		return HBox_Buttons;
 	}
 
-	public void setCanvas_center(Canvas canvas_center) {
-		this.canvas_center = canvas_center;
+	public Button getBoton1() {
+		return boton1;
+	}
+
+	public Canvas getCanvasMenu() {
+		return canvasMenu;
 	}
 	
+	public void setCanvasMenu(Canvas canvasMenu) {
+		this.canvasMenu = canvasMenu;
+	}
 
+	public ImageView getVida() {
+		return vida;
+	}
 
+	public ImageView getPuntosParaComprar() {
+		return puntosParaComprar;
+	}
 
-
-
+	public MapaSinTiledApp getMapa() {
+		return mapa;
+	}
 
 }

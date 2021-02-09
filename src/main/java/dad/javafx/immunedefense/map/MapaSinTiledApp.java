@@ -57,18 +57,21 @@ public class MapaSinTiledApp extends Application {
 		theStage.setTitle("Canvas Example");
 		theStage.setResizable(false);
 
-		// vista = new PruebaMenu();
+		vista = new PruebaMenu();
 
 		// vista.setCanvas_center(canvas);
 
 		Group root = new Group();
 		Scene theScene = new Scene(root);
 
-		// Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
+		Scene sceneCanvas = new Scene(vista.getVistaBorderPane());
 
-		theStage.setScene(theScene);
-
-		canvas = new Canvas(800, 600);
+		theStage.setScene(sceneCanvas);
+		
+		canvas = new Canvas(800,600);
+		
+		vista.getVistaBorderPane().setCenter(canvas);
+		
 		root.getChildren().add(canvas);
 
 		/*
