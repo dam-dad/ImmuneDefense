@@ -7,7 +7,6 @@ import javafx.animation.Interpolator;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -20,13 +19,9 @@ public class App extends Application {
 	
 	private FadeTransition fadeOut;
 	
-	private FadeTransition fadeIn;
-	
 	private Scene scene;
 	
 	private Scene transitionScene;
-	
-	private long startMillisTime;
 	
 	public void start(Stage primaryStage) throws Exception {
 		controller=new MainMenuController();
@@ -34,7 +29,6 @@ public class App extends Application {
 		menuTransition = new MenuTransition();
 		
 		fadeOut = new FadeTransition();
-		fadeIn = new FadeTransition();
 		
 		//Scene después de FadeOut
 		scene=new Scene(controller.getView(),800,600);
