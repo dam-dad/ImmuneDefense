@@ -30,3 +30,7 @@
 	-fx-border-style: solid;
 	-fx-background-radius:0px 400px 400px 0px / 0px 300px 300px 0px;
 }
+
+#view_transition{
+	-fx-background-color: #000000;
+}
