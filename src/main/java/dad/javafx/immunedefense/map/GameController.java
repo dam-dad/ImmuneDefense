@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import dad.javafx.immunedefense.model.BackgroundSprite;
+import dad.javafx.immunedefense.model.Background;
 import dad.javafx.immunedefense.model.Bullet;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
@@ -29,7 +29,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 	
 	private List<Sprite> sprites = new ArrayList<>();
-	private BackgroundSprite background; 
+	private Background background; 
 
 	// view
 
@@ -56,7 +56,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	private void spritesPrincipales() {
 		
-		background = new BackgroundSprite();
+		background = new Background();
 		background.setPositionX(0);
 		background.setPositionY(0);
 		background.setWidth(canvas.getWidth());
