@@ -1,5 +1,7 @@
 package dad.javafx.immunedefense;
 
+import java.io.IOException;
+
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import dad.javafx.immunedefense.map.GameController;
 import dad.javafx.immunedefense.transitions.MenuTransition;
@@ -36,12 +38,15 @@ public class App extends Application {
 		
 		fadeOut = new FadeTransition();
 		
-		gameController = new GameController();
-		
-		mapScene = new Scene(gameController.getView());
-		
 		controller.getNuevaPartidaB().setOnAction(e -> {
-			primaryStage.setScene(mapScene);
+			try {
+				gameController = new GameController();
+				mapScene = new Scene(gameController.getView());
+				primaryStage.setScene(mapScene);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		});
 		
 		//Scene después de FadeOut

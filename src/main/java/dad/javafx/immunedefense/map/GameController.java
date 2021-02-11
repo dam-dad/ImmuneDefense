@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import dad.javafx.immunedefense.model.Background;
+import dad.javafx.immunedefense.model.BackgroundSprite;
 import dad.javafx.immunedefense.model.Bullet;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
@@ -19,8 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
 public class GameController extends AnimationTimer implements Initializable {
@@ -31,7 +29,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 	
 	private List<Sprite> sprites = new ArrayList<>();
-	private Background background; 
+	private BackgroundSprite background; 
 
 	// view
 
@@ -58,7 +56,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	private void spritesPrincipales() {
 		
-		background = new Background();
+		background = new BackgroundSprite();
 		background.setPositionX(0);
 		background.setPositionY(0);
 		background.setWidth(canvas.getWidth());
@@ -104,7 +102,6 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		// choque de bala con virus
 
-<<<<<<< HEAD
 //		for (int i = 2; i <= sprites.size() - 1; i++) {
 //
 //			if (virus.intersects(sprites.get(i)) == true & virus.getHealth() == 1) {
