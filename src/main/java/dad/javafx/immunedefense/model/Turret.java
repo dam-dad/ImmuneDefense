@@ -2,8 +2,12 @@ package dad.javafx.immunedefense.model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Esta es la clase de la cual heredan las demás torretas, las cuales van a
@@ -13,10 +17,12 @@ import javafx.beans.property.SimpleIntegerProperty;
  *
  */
 public class Turret extends Sprite {
+	
+	private double time = 0;
 
 	private IntegerProperty damage = new SimpleIntegerProperty();
-
 	private DoubleProperty fireRate = new SimpleDoubleProperty();
+	private ListProperty<Bullet> firedBullets = new SimpleListProperty<>(FXCollections.observableArrayList());
 
 	/**
 	 * Este es el constructor de la clase Turrets, en el cual se pide los distintos
@@ -56,6 +62,35 @@ public class Turret extends Sprite {
 
 	public final void setFireRate(final double fireRate) {
 		this.fireRateProperty().set(fireRate);
+	}
+
+	public final ListProperty<Bullet> firedBulletsProperty() {
+		return this.firedBullets;
+	}
+
+	public final ObservableList<Bullet> getFiredBullets() {
+		return this.firedBulletsProperty().get();
+	}
+
+	public final void setFiredBullets(final ObservableList<Bullet> firedBullets) {
+		this.firedBulletsProperty().set(firedBullets);
+	}
+	
+	@Override
+	public void update(double timeDiff) {
+
+		time += timeDiff;
+		if (time > 2) {
+			Bullet bullet = new Bullet();
+			bullet.setTurret(this);
+			bullet.setPositionX(this.getPositionX() + (this.getWidth() / 2));
+			bullet.setPositionY(this.getPositionY() + (this.getHeight() / 2));
+			bullet.setVelocityX(120);
+			bullet.setGame(getGame());
+			time = 0.0;
+		}
+		
+		super.update(time);
 	}
 
 }

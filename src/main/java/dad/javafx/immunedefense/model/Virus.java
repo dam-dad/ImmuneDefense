@@ -23,4 +23,18 @@ public class Virus extends Sprite {
 		super.update(time);
 	}
 	
+	public void impact(Bullet bullet) {
+		System.out.println("impacto!");
+		
+		setHealth(getHealth() - bullet.getTurret().getDamage());
+		
+		bullet.kill();
+
+		// comprueba si el virus está muerto
+		if (getHealth() <= 0) {
+			kill();
+		}		
+		
+	}
+	
 }

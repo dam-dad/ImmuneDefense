@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
+import dad.javafx.immunedefense.model.Background;
 import dad.javafx.immunedefense.model.Bullet;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
@@ -27,17 +29,9 @@ public class GameController extends AnimationTimer implements Initializable {
 	
 	private double time = 0.0; 
 	private double lastNanoTime;
-
-	// Lista de Torretas
-	private List<Turret> turrets;
-
-	// Lista de Enemigos distintos
-	private List<Virus> enemies;
-
-	// Lista Sprites
-	private List<Sprite> sprites;
-
-	private Image earth = new Image("/mapImages/Terrain.png");
+	
+	private List<Sprite> sprites = new ArrayList<>();
+	private Background background; 
 
 	// view
 
@@ -63,31 +57,38 @@ public class GameController extends AnimationTimer implements Initializable {
 	}
 
 	private void spritesPrincipales() {
+		
+		background = new Background();
+		background.setPositionX(0);
+		background.setPositionY(0);
+		background.setWidth(canvas.getWidth());
+		background.setHeight(canvas.getHeight());
+		background.setGame(this);
 
 		Virus rhinitis = new Virus();
 		rhinitis.setPositionX(0);
 		rhinitis.setPositionY(0);
-		rhinitis.setVelocityX(20);
+		rhinitis.setVelocityX(50);
+		rhinitis.setVelocityY(25);
 		rhinitis.setWidth(200);
 		rhinitis.setHeight(200);
+		rhinitis.setGame(this);
 
-		enemies = new ArrayList<Virus>();
-		enemies.add(rhinitis);
-
-		// Torreta quieta
 		Turret turret = new Turret(1, 0.5);
 		turret.setPositionX(50);
 		turret.setPositionY(200);
 		turret.setHeight(200);
 		turret.setWidth(200);
+		turret.setGame(this);
 
-		turrets = new ArrayList<Turret>();
-		turrets.add(turret);
-
-		sprites = new ArrayList<>();
-		sprites.add(turret);
-		sprites.add(rhinitis);
-
+	}
+	
+	public <T extends Sprite> List<T> getSprites(Class<T> type) {
+		return sprites.stream().filter(s -> s.getClass().equals(type)).map(s -> type.cast(s)).collect(Collectors.toList());
+	}
+	
+	public List<Sprite> getSprites() {
+		return sprites;
 	}
 
 	public Parent getView() {
@@ -101,27 +102,9 @@ public class GameController extends AnimationTimer implements Initializable {
 		double timeDiff = (now - lastNanoTime) / 1000000000.0; // time difference between frames in
 																			// seconds
 
-		// List<Sprite> balasLista = new ArrayList<>();
-
-		time += timeDiff;
-		if (time > 2) {
-			Bullet bala = new Bullet();
-			bala.setPositionX(50);
-			bala.setPositionY(300);
-			bala.setVelocityX(120);
-			bala.setHeight(200);
-			bala.setWidth(200);
-			sprites.add(bala);
-
-			time = 0.0;
-		}
-
-		// draw background
-		gc.drawImage(earth, 0, 0);
-
-
 		// choque de bala con virus
 
+<<<<<<< HEAD
 //		for (int i = 2; i <= sprites.size() - 1; i++) {
 //
 //			if (virus.intersects(sprites.get(i)) == true & virus.getHealth() == 1) {
@@ -169,9 +152,37 @@ public class GameController extends AnimationTimer implements Initializable {
 //			}
 //
 //		}
+
+		List<Virus> safeViruses = new ArrayList<>(getSprites(Virus.class));
+		List<Bullet> safeBullets = new ArrayList<>(getSprites(Bullet.class));
 		
-		sprites.stream().forEach(s -> s.update(timeDiff));
-		sprites.stream().forEach(s -> s.render(gc));
+		for (Virus virus : safeViruses) { 
+
+			for (Bullet bullet : safeBullets) {
+
+				// comprueba si colisiona la bala y el virus
+				if (bullet.intersects(virus)) {
+					// la bala impacta en el virus
+					virus.impact(bullet);
+				}
+				
+			}
+			
+		}
+		
+		// metodo para que dejen de renderizar las balas cuando salgan (no funciona por todos los lados creo)
+		for (Bullet bullet : safeBullets) {
+			
+			if (!bullet.intersects(background)) {
+				System.out.println("bala perdida");
+				bullet.kill(); // bala perdida
+			}
+			
+		}
+		
+		List<Sprite> safeSprites = new ArrayList<>(sprites);
+		safeSprites.stream().forEach(s -> s.update(timeDiff));
+		safeSprites.stream().forEach(s -> s.render(gc));
 
 		lastNanoTime = now;
 

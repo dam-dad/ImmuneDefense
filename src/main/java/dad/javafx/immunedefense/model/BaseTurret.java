@@ -21,14 +21,14 @@ public class BaseTurret extends Turret {
 	 * valores. Además que usa las siguientes variables:
 	 * 
 	 * @param damage      La cual representa el daño de la torreta.
-	 * @param base_exists Representando si la base existe o no.
+	 * @param exists      Representando si la base existe o no.
 	 * @param fireRate    Es una variable dirigida a la cantidad de balas las cuales
 	 *                    puede disparar una torreta por segundo, en caso de las
 	 *                    torretas tipo daño constante, la misma será -1.
 	 */
-	public BaseTurret(int damage, double fireRate, boolean base_exists) {
+	public BaseTurret(int damage, double fireRate, boolean exists) {
 		super(damage, fireRate);
-		this.base_exists.set(base_exists);
+		this.base_exists.set(exists);
 	}
 
 	public final BooleanProperty base_existsProperty() {
