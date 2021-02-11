@@ -1,6 +1,7 @@
 package dad.javafx.immunedefense;
 
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
+import dad.javafx.immunedefense.map.GameController;
 import dad.javafx.immunedefense.transitions.MenuTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
@@ -23,12 +24,25 @@ public class App extends Application {
 	
 	private Scene transitionScene;
 	
+	//mapa
+	private Scene mapScene;
+	
+	private GameController gameController;
+	
 	public void start(Stage primaryStage) throws Exception {
 		controller=new MainMenuController();
 		
 		menuTransition = new MenuTransition();
 		
 		fadeOut = new FadeTransition();
+		
+		gameController = new GameController();
+		
+		mapScene = new Scene(gameController.getView());
+		
+		controller.getNuevaPartidaB().setOnAction(e -> {
+			primaryStage.setScene(mapScene);
+		});
 		
 		//Scene después de FadeOut
 		scene=new Scene(controller.getView(),800,600);
@@ -53,10 +67,6 @@ public class App extends Application {
 			}
 		});
 		
-		//primaryStage.setScene(scene);
-		//scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
-		//transition();
-		//scene.getRoot().setId("view");
 	}
 
 	private void transition() {

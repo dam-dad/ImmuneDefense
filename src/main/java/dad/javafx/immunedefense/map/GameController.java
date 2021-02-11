@@ -149,8 +149,8 @@ public class GameController extends AnimationTimer implements Initializable {
 //			}
 //		}
 
-		// metodo para que dejen de renderizar las balas cuando salgan (no funciona por
-		// todos los lados creo)
+		 //metodo para que dejen de renderizar las balas cuando salgan (no funciona por
+		 //todos los lados creo)
 //		List<Sprite> toBeReleased = new ArrayList<>();
 //		sprites.stream().forEach(action);
 //		for (int i = 0; i < sprites.size(); i++) {

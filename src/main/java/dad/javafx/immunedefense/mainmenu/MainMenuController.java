@@ -120,16 +120,55 @@ public class MainMenuController implements Initializable {
 
 	@FXML
 	void onMoreB(ActionEvent event) {
-
-	}
-
-	@FXML
-	void onNewGame(ActionEvent event) {
-
+		
 	}
 
 	@FXML
 	void onOptions(ActionEvent event) {
 
+	}
+
+	public OptionController getOptions() {
+		return options;
+	}
+
+	public Clip getAudio() {
+		return audio;
+	}
+
+	public InputStream getRuta() {
+		return ruta;
+	}
+
+	public Image getOffMusic() {
+		return offMusic;
+	}
+
+	public Image getOnMusic() {
+		return onMusic;
+	}
+
+	public Button getAjustesB() {
+		return ajustesB;
+	}
+
+	public ToggleButton getSonidoB() {
+		return sonidoB;
+	}
+
+	public ImageView getImagenSonido() {
+		return imagenSonido;
+	}
+
+	public Button getNuevaPartidaB() {
+		return nuevaPartidaB;
+	}
+
+	public Button getCargarB() {
+		return cargarB;
+	}
+
+	public Button getMasB() {
+		return masB;
 	}
 }
