@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -9,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -20,13 +20,13 @@
       </Label>
    </top>
    <center>
-      <VBox spacing="50.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
             <HBox spacing="20.0">
                <children>
                   <Label text="Volumen de la música" />
                   <Slider fx:id="volumenSlider" />
-                  <TextField fx:id="volumenText" />
+                  <TextField fx:id="volumenText" prefHeight="25.0" prefWidth="39.0" />
                </children>
             </HBox>
             <HBox spacing="20.0">
@@ -35,6 +35,11 @@
                   <ComboBox fx:id="pantallaCombo" />
                </children>
             </HBox>
+            <Button fx:id="backOption" mnemonicParsing="false" onAction="#onClickBack" text="Volver">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Button>
          </children>
          <padding>
             <Insets top="50.0" />

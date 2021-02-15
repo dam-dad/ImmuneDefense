@@ -12,10 +12,15 @@ import java.util.ResourceBundle;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
@@ -30,6 +35,8 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import dad.javafx.immunedefense.map.GameController;
 
 public class MainMenuController implements Initializable {
 	// SubControllers
@@ -84,6 +91,19 @@ public class MainMenuController implements Initializable {
 			gainControl.setValue(-10.0f);
 			audio.loop(Clip.LOOP_CONTINUOUSLY);
 			
+			options.getVolumenSlider().setValue(audio.getLevel()*100);
+			/**
+			 * APLICANDO SLIDER PARA CONTROLAR EL VOLUMEN DE LA MÚSICA
+			 */
+			/*options.getVolumenSlider().valueProperty().addListener(new InvalidationListener() {
+				@Override
+				public void invalidated(Observable observable) {
+					FloatControl volume = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
+					volume.setValue((float) options.getVolumenSlider().getValue());
+					System.out.println(audio.getLevel()+" "+options.getVolumenSlider().getValue());
+				}
+			});*/
+			
 		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		}
@@ -109,8 +129,7 @@ public class MainMenuController implements Initializable {
 				imagenSonido.setImage(onMusic);
 			}
 		});
-		
-		
+
 	}
 
 	@FXML

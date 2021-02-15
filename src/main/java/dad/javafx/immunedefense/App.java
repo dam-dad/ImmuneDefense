@@ -3,6 +3,7 @@ package dad.javafx.immunedefense;
 import java.io.IOException;
 
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
+import dad.javafx.immunedefense.mainmenu.OptionController;
 import dad.javafx.immunedefense.map.GameController;
 import dad.javafx.immunedefense.transitions.MenuTransition;
 import javafx.animation.FadeTransition;
@@ -18,18 +19,26 @@ import javafx.util.Duration;
 public class App extends Application {
 	private MainMenuController controller;
 	
+	private OptionController optionController;
+	
 	private MenuTransition menuTransition;
 	
 	private FadeTransition fadeOut;
 	
 	private Scene scene;
 	
+	private Scene menuScene;
+	
 	private Scene transitionScene;
 	
 	//mapa
 	private Scene mapScene;
 	
+	private Scene optionScene;
+	
 	private GameController gameController;
+	
+
 	
 	public void start(Stage primaryStage) throws Exception {
 		controller=new MainMenuController();
@@ -48,6 +57,30 @@ public class App extends Application {
 				e1.printStackTrace();
 			}
 		});
+		/**
+		 * Creando iteracciones entre opciones y menú
+		 */
+		controller.getAjustesB().setOnAction(e -> {
+			try {
+				optionController = new OptionController();
+				optionScene = new Scene(optionController.getView());
+				primaryStage.setScene(optionScene);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		/*
+		optionController.getBackOption().setOnAction(e -> {
+			try {
+				controller = new MainMenuController();
+				scene = new Scene(controller.getView());
+				primaryStage.setScene(scene);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});*/
 		
 		//Scene después de FadeOut
 		scene=new Scene(controller.getView(),800,600);
