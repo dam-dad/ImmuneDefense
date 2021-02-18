@@ -37,7 +37,7 @@ public class Turret extends Sprite {
 	 *                 torretas tipo daño constante, la misma será -1.
 	 */
 	public Turret(int damage, double fireRate) {
-		super("/mapImages/Turret1.png");
+		super("/mapImages/Turret.png");
 		this.damage.set(damage);
 		this.fireRate.set(fireRate);
 	}
