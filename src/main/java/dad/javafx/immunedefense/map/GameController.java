@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import dad.javafx.immunedefense.model.Background;
 import dad.javafx.immunedefense.model.Base;
 import dad.javafx.immunedefense.model.Bullet;
+import dad.javafx.immunedefense.model.Explotion;
 import dad.javafx.immunedefense.model.Muro;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
@@ -364,6 +365,10 @@ public class GameController extends AnimationTimer implements Initializable {
 				if (bullet.intersects(virus)) {
 					// la bala impacta en el virus
 					virus.impact(bullet);
+					Explotion expltion = new Explotion();
+					expltion.setPositionX(virus.getPositionX());
+					expltion.setPositionY(virus.getPositionY());
+					expltion.setGame(this);
 				}
 				
 			}
