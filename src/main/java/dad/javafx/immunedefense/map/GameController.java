@@ -11,15 +11,18 @@ import java.util.stream.Collectors;
 import dad.javafx.immunedefense.model.Background;
 import dad.javafx.immunedefense.model.Base;
 import dad.javafx.immunedefense.model.Bullet;
+import dad.javafx.immunedefense.model.Explotion;
 import dad.javafx.immunedefense.model.Muro;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
 import dad.javafx.immunedefense.model.Virus;
 import javafx.animation.AnimationTimer;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
@@ -29,6 +32,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -71,12 +75,23 @@ public class GameController extends AnimationTimer implements Initializable {
     
     //Placements turrets
     @FXML
-    private Button botonLugar1;
+    private Button botonLugarTorreta1;
+    
+    @FXML
+    private Button botonLugarTorreta2;
+    
+    @FXML
+    private Button botonCoordenadasMuro;
     
     
+    //coordenadas
      private double x;
     
     private double y;
+    
+    
+    //lista botones
+    List<Button> botones = new ArrayList<>();
     
     
     @FXML
@@ -116,31 +131,95 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     void OnMuroAction(ActionEvent event) {
-
+    	if(x!=0 & y!=0 ) {	
     	Muro muro = new Muro();
     	muro.setPositionX(x);
     	muro.setPositionY(y);
-    	muro.setGame(this);
     	
-    }
+    	
+    	
+    	List<Muro> PLacementMuros = new ArrayList<>(getSprites(Muro.class));
+		boolean colocar=true;
+		
+		for (Muro muros : PLacementMuros) {
+    	if(muro.intersects(muros)) {
+    		colocar=false;
+        	
+    	}
+		}
+		if (colocar==true) {
+			muro.setGame(this);
+			//botonCoordenadasMuro.setVisible(false);
+			//botonCoordenadasMuro.setDisable(true);
+		}
+		x=0;
+    	y=0;
+        }
+    	   	
+    	}
+    
     
     
     @FXML
     void obtenerCoordenadas(MouseEvent event) {
 
-
+    	Bounds boundsInScreen = botonLugarTorreta1.localToScene(botonLugarTorreta1.getBoundsInLocal());
+    	int xRedondeo=(int)boundsInScreen.getMinX();
+    	int yRedondeo=(int)boundsInScreen.getMinY();
+    	
+   	 x=xRedondeo;
+    	
+    	y=yRedondeo;
+    	    
+   	
+   	System.out.println(x);
+   	System.out.println(y);
     	//x=event.getSceneX();
     	
     	//y=event.getSceneY();
-    	
-    	
-    	System.out.println(x);
-    	System.out.println(y);
+    	    	
     	
     	//coordenadas buenas
-    	x=551.0;
-    	y=127.0;
+    	//x=551.0;
+    	//y=127.0;
     }
+    
+    @FXML
+    void obtenerCoordenadas2(MouseEvent event) {
+    	Bounds boundsInScreen = botonLugarTorreta2.localToScene(botonLugarTorreta2.getBoundsInLocal());
+    	
+    	
+       	int xRedondeo=(int)boundsInScreen.getMinX();
+    	int yRedondeo=(int)boundsInScreen.getMinY();
+    	
+   	 x=xRedondeo;
+    	
+    	y=yRedondeo;
+    	    
+   	
+   	System.out.println(x);
+   	System.out.println(y);
+     	
+    }
+  
+    @FXML
+    void obtenerCoordenadas3(MouseEvent event) {
+    	Bounds boundsInScreen = botonCoordenadasMuro.localToScene(botonCoordenadasMuro.getBoundsInLocal());
+    	
+    	
+       	int xRedondeo=(int)boundsInScreen.getMinX();
+    	int yRedondeo=(int)boundsInScreen.getMinY();
+    	
+   	 x=xRedondeo;
+    	
+    	y=yRedondeo;
+    	    
+   	
+   	System.out.println(x);
+   	System.out.println(y);
+     	
+    }
+      
     
     @FXML
     void onColocarTorreta(ActionEvent event) {
@@ -153,7 +232,7 @@ public class GameController extends AnimationTimer implements Initializable {
     	
 		List<Turret> PLacementTorretas = new ArrayList<>(getSprites(Turret.class));
 		boolean colocar=true;
-		
+		//comprobar si ya hay una torreta
 		for (Turret turret : PLacementTorretas) {
     	if(torreta.intersects(turret)) {
     		colocar=false;
@@ -162,7 +241,19 @@ public class GameController extends AnimationTimer implements Initializable {
 		}
 		if (colocar==true) {
        	torreta.setGame(this);
-       	botonLugar1.setVisible(false);
+       	
+       	//bucle con lista de todos los botones y les pillamos las coordenadas el que coincida con las que tenemos lo hace invisible
+       	
+    	for (Button boton : botones) {
+
+			// comprobar el redondeo
+    		//System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX());
+     		//System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinY());
+			if (x==(int)boton.localToScene(boton.getBoundsInLocal()).getMinX()-1& y==(int)boton.localToScene(boton.getBoundsInLocal()).getMinY()-1) {
+				boton.setVisible(false);
+			}
+    	}
+       	
 		}
 		x=0;
     	y=0;
@@ -192,7 +283,16 @@ public class GameController extends AnimationTimer implements Initializable {
 		
 		
 		//quitar los bordes del boton
-		botonLugar1.setPadding(new Insets(-1,-1,-1,-1));
+		botonLugarTorreta1.setPadding(new Insets(-1,-1,-1,-1));
+		botonLugarTorreta2.setPadding(new Insets(-1,-1,-1,-1));
+		
+	//cambia el fondo del boton
+		botonCoordenadasMuro.setStyle("-fx-background-color: #00ff00");
+		
+		//añadir botones a la lista
+		botones.add(botonLugarTorreta1);
+		botones.add(botonLugarTorreta2);
+		botones.add(botonCoordenadasMuro);
 		
 		start(); // inicia el animationtimer
 		
@@ -241,10 +341,6 @@ public class GameController extends AnimationTimer implements Initializable {
 	public Parent getView() {
 		return view;
 	}
-	
-	public Button getBotonReiniciar() {
-		return botonReiniciar;
-	}
 
 	@Override
 	public void handle(long now) {
@@ -269,6 +365,10 @@ public class GameController extends AnimationTimer implements Initializable {
 				if (bullet.intersects(virus)) {
 					// la bala impacta en el virus
 					virus.impact(bullet);
+					Explotion expltion = new Explotion();
+					expltion.setPositionX(virus.getPositionX());
+					expltion.setPositionY(virus.getPositionY());
+					expltion.setGame(this);
 				}
 				
 			}
@@ -366,28 +466,47 @@ public class GameController extends AnimationTimer implements Initializable {
 	}
 	
 	//hacer visible el placement de nuevo
-	if(botonLugar1.isVisible()==false ) {
-		
-	    	
 	
-		boolean colocar=true;
-		
-		for (Turret turret : safeTorretas) {
-    	if(turret.getPositionX()==551 & turret.getPositionY()==127.0  ) {
-    		colocar=false;
-        	
-    	}
+	for (Button boton : botones) {
+		if(boton.isVisible()==false ) {
+			visiblePlacement(boton);
 		}
-		if (colocar==true) {
-       	
-       	botonLugar1.setVisible(true);
-		}
-		
 	}
 	
 
 		lastNanoTime = now;
 
 	}
+	
+	
+	//metodo visible el placement
+public void  visiblePlacement(Button boton) {
+	
+	Bounds boundsInScreen = boton.localToScene(boton.getBoundsInLocal());
+	
+	//pongo esto por que me rondeo el hijo de la gran puta
+int posX=(int) boundsInScreen.getMinX()-1;
+int posY=(int) boundsInScreen.getMinY()-1;
+	boolean colocar=true;
+
+	List<Turret> safeTorretas = new ArrayList<>(getSprites(Turret.class));
+	
+	for (Turret turret : safeTorretas) {
+
+	if(turret.getPositionX()==posX & turret.getPositionY()== posY  ) {
+		colocar=false;
+		
+	}
+	}
+	if (colocar==true) {
+		
+		boton.setVisible(true);
+	}
+	
+	
+	
+	
+}
+	
 
 }
