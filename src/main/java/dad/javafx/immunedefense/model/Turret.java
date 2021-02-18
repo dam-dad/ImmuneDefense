@@ -18,7 +18,9 @@ import javafx.collections.ObservableList;
  */
 public class Turret extends Sprite {
 	
-	private double time = 0;
+	private double timeShoot = 0;
+	
+	private double lifeTime = 0;
 
 	private IntegerProperty damage = new SimpleIntegerProperty();
 	private DoubleProperty fireRate = new SimpleDoubleProperty();
@@ -78,9 +80,9 @@ public class Turret extends Sprite {
 	
 	@Override
 	public void update(double timeDiff) {
-
-		time += timeDiff;
-		if (time > 2) {
+		lifeTime += timeDiff;
+		timeShoot += timeDiff;
+		if (timeShoot > 2) {
 			Bullet bullet = new Bullet();
 			bullet.setTurret(this);
 			bullet.setPositionX(this.getPositionX() + (this.getWidth() / 2));
@@ -111,12 +113,21 @@ public class Turret extends Sprite {
 			bulletABAJO.setGame(getGame());
 			
 			
-			time = 0.0;
+			timeShoot = 0.0;
 		
 			
 		}
 		
-		super.update(time);
+		if(lifeTime>7) {
+			
+			this.kill();
+			
+			
+			lifeTime=0;	
+		}
+		
+		super.update(lifeTime);
+		super.update(timeShoot);
 	}
 
 }

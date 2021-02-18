@@ -206,8 +206,11 @@ public class GameController extends AnimationTimer implements Initializable {
 		List<Bullet> safeBullets = new ArrayList<>(getSprites(Bullet.class));
 		List<Muro> safeMuros = new ArrayList<>(getSprites(Muro.class));
 		List<Turret> safeTorretas = new ArrayList<>(getSprites(Turret.class));
+		
+		//Se comprueba las coliciones de los virus con cosas
 		for (Virus virus : safeViruses) { 
 
+			//balas
 			for (Bullet bullet : safeBullets) {
 
 				// comprueba si colisiona la bala y el virus
@@ -217,7 +220,7 @@ public class GameController extends AnimationTimer implements Initializable {
 				}
 				
 			}
-			
+			//muros
 			for (Muro muro : safeMuros) {
 
 				// comprueba si colisiona el murp y el virus
@@ -227,7 +230,7 @@ public class GameController extends AnimationTimer implements Initializable {
 				}
 				
 			}
-			
+			//torretas
 			for (Turret turret : safeTorretas) {
 
 				// comprueba si colisiona el murp y el virus
@@ -236,6 +239,28 @@ public class GameController extends AnimationTimer implements Initializable {
 					virus.choqueTorreta(turret);
 				}
 				
+			}
+			//base
+			if(base.intersects(virus)) {
+				if(base.getHealth()>0) {
+				base.setHealth(base.getHealth()-1);
+				virus.kill();
+				vida.setImage(new Image("/mapImages/vida2.png"));
+				
+				}
+				if(base.getHealth()<1) {
+				 gc.setFill( Color.RED );
+				    gc.setStroke( Color.BLACK );
+				    gc.setLineWidth(2);
+				    Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
+				    gc.setFont( theFont );
+				    gc.fillText( "GAME OVER!", 60, 50 );
+				    gc.strokeText( "GAME OVER!", 60, 50 );
+				    botonReiniciar.setVisible(true);
+				    botonReiniciar.setDisable(false);
+				    stop();
+				}
+			
 			}
 			
 		}
@@ -288,33 +313,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	}
 	
 		
-		
-		//Intento de fin del juego y perder vida la base
-		int i=0;
-		while( i< safeViruses.size()) {
-		
-		if(base.intersects(safeViruses.get(i))) {
-			if(base.getHealth()>0) {
-			base.setHealth(base.getHealth()-1);
-			safeViruses.get(i).kill();
-			vida.setImage(new Image("/mapImages/vida2.png"));
-			
-			}
-			if(base.getHealth()<1) {
-			 gc.setFill( Color.RED );
-			    gc.setStroke( Color.BLACK );
-			    gc.setLineWidth(2);
-			    Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
-			    gc.setFont( theFont );
-			    gc.fillText( "GAME OVER!", 60, 50 );
-			    gc.strokeText( "GAME OVER!", 60, 50 );
-			    botonReiniciar.setVisible(true);
-			    botonReiniciar.setDisable(false);
-			    stop();
-			}
-		}
-		i++;
-		}
+
 		lastNanoTime = now;
 
 	}
