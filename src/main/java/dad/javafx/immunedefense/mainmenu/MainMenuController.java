@@ -43,7 +43,9 @@ public class MainMenuController implements Initializable {
 	OptionController options = new OptionController();
 	// Sonido
 	private Clip audio;
+	private Clip audioLevels;
 	private InputStream ruta;
+	private InputStream rutaLevels;
 	private Image offMusic = new Image(getClass().getResourceAsStream("/Images/no_musica.png"));
 	private Image onMusic = new Image(getClass().getResourceAsStream("/Images/musica.png"));
 
@@ -82,6 +84,7 @@ public class MainMenuController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		ruta = getClass().getResourceAsStream("/SoundTrack/MainMenu.wav");
+		rutaLevels = getClass().getResourceAsStream("/SoundTrack/NormalLevel.wav");
 		
 		try {
 			audio = AudioSystem.getClip();
@@ -96,6 +99,11 @@ public class MainMenuController implements Initializable {
 			/**
 			 * APLICANDO SLIDER PARA CONTROLAR EL VOLUMEN DE LA MÚSICA
 			 */
+			
+			audioLevels = AudioSystem.getClip();
+			audioLevels.open(AudioSystem.getAudioInputStream(rutaLevels));
+			options.getVolumenSlider().setValue(audioLevels.getLevel()*100);
+			
 			/*options.getVolumenSlider().valueProperty().addListener(new InvalidationListener() {
 				@Override
 				public void invalidated(Observable observable) {
@@ -121,11 +129,21 @@ public class MainMenuController implements Initializable {
 		*/
 		sonidoB.setOnAction(event -> {
 			if (sonidoB.isSelected()) {
-				audio.stop();
+				if (audio.isOpen()) {
+					audio.stop();
+				}
+				else {
+					audioLevels.stop();
+				}
 				
 				imagenSonido.setImage(offMusic);
 			} else {
-				audio.loop(Clip.LOOP_CONTINUOUSLY);
+				if (audio.isOpen()) {
+					audio.loop(Clip.LOOP_CONTINUOUSLY);
+				}
+				else {
+					audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
+				}
 				
 				imagenSonido.setImage(onMusic);
 			}
@@ -190,5 +208,17 @@ public class MainMenuController implements Initializable {
 
 	public Button getMasB() {
 		return masB;
+	}
+	
+	public void changeFromMenuToLevelMusic() {
+		audio.stop();
+		audioLevels.setFramePosition(0);
+		audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
+	}
+	
+	public void changeFromLevelToMenuMusic() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+		audioLevels.stop();
+		audio.setFramePosition(0);
+		audio.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 }

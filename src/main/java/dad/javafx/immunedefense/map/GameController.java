@@ -16,7 +16,6 @@ import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
 import dad.javafx.immunedefense.model.Virus;
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +29,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -196,9 +194,6 @@ public class GameController extends AnimationTimer implements Initializable {
 		//quitar los bordes del boton
 		botonLugar1.setPadding(new Insets(-1,-1,-1,-1));
 		
-	
-		
-		
 		start(); // inicia el animationtimer
 		
 	}
@@ -245,6 +240,10 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	public Parent getView() {
 		return view;
+	}
+	
+	public Button getBotonReiniciar() {
+		return botonReiniciar;
 	}
 
 	@Override

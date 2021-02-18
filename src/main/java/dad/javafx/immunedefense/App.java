@@ -2,6 +2,9 @@ package dad.javafx.immunedefense;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import dad.javafx.immunedefense.mainmenu.OptionController;
 import dad.javafx.immunedefense.map.GameController;
@@ -52,11 +55,22 @@ public class App extends Application {
 				gameController = new GameController();
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
+				gameController.getBotonReiniciar().setOnAction((Event) -> {
+					try {
+						primaryStage.setScene(scene);
+						controller.changeFromLevelToMenuMusic();
+					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
+				controller.changeFromMenuToLevelMusic();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
+		
 		/**
 		 * Creando iteracciones entre opciones y menú
 		 */

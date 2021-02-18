@@ -8,40 +8,47 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<Pane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Canvas fx:id="canvas" height="600.0" width="800.0" />
-      <AnchorPane>
+      <Pane prefHeight="600.0" prefWidth="800.0" visible="false" />
+      <StackPane fx:id="view">
          <children>
-            <HBox fx:id="menuPane" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Canvas fx:id="canvas" height="600.0" width="800.0" />
+            <AnchorPane>
                <children>
-                  <Button mnemonicParsing="false" onAction="#Colocar" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 4" />
-                  <Button mnemonicParsing="false" onAction="#OnMuroAction" text="Muro" />
-                  <Button mnemonicParsing="false" onAction="#onColocarTorreta" text="ColocarPLacement" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <HBox fx:id="menuPane" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#Colocar" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 4" />
+                        <Button mnemonicParsing="false" onAction="#OnMuroAction" text="Muro" />
+                        <Button mnemonicParsing="false" onAction="#onColocarTorreta" text="ColocarPLacement" />
+                        <Button mnemonicParsing="false" text="Button" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <Label layoutX="530.0" layoutY="15.0" text="Vida" />
+                  <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" />
+                  <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="botonReiniciar" disable="true" layoutX="347.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnVolverAlMenuAction" prefHeight="64.0" prefWidth="147.0" text="Volver al menu" visible="false" />
+                  <Label layoutX="186.0" layoutY="7.0" text="Monedas:" />
+                  <Button fx:id="botonLugar1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+                     <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mapImages/placement%20pequeno.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="544.0" layoutY="421.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="62.0" text="lugar2" />
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
-            <Label layoutX="530.0" layoutY="15.0" text="Vida" />
-            <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" />
-            <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="botonReiniciar" disable="true" layoutX="347.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnVolverAlMenuAction" prefHeight="64.0" prefWidth="147.0" text="Volver al menu" visible="false" />
-            <Label layoutX="186.0" layoutY="7.0" text="Monedas:" />
-            <Button fx:id="botonLugar1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../mapImages/placement%20pequeno.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="544.0" layoutY="421.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="62.0" text="lugar2" />
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </StackPane>
    </children>
-</StackPane>
+</Pane>
