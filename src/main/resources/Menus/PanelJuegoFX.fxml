@@ -4,6 +4,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,9 +17,9 @@
          <children>
             <HBox fx:id="menuPane" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="botonArrastrar" mnemonicParsing="false" onAction="#Colocar" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 4" />
+                  <Button mnemonicParsing="false" onAction="#Colocar" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 4" />
                   <Button mnemonicParsing="false" onAction="#OnMuroAction" text="Muro" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#onColocarTorreta" text="ColocarPLacement" />
                   <Button mnemonicParsing="false" text="Button" />
                </children>
                <padding>
@@ -29,7 +30,17 @@
             <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" />
             <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="botonReiniciar" disable="true" layoutX="347.0" layoutY="268.0" mnemonicParsing="false" onAction="#OnVolverAlMenuAction" prefHeight="64.0" prefWidth="147.0" text="Volver al menu" visible="false" />
-            <Label layoutX="174.0" layoutY="15.0" text="Monedas:" />
+            <Label layoutX="186.0" layoutY="7.0" text="Monedas:" />
+            <Button fx:id="botonLugar1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/placement%20pequeno.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="544.0" layoutY="421.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="62.0" text="lugar2" />
          </children>
       </AnchorPane>
    </children>

@@ -17,7 +17,7 @@ public class Virus extends Sprite {
 		
 		if (getPositionX() > 300 & chocado==false) {
 			setVelocityY(0);
-			setVelocityX(this.getVelocityX()*1.005);
+			setVelocityX(this.getVelocityX()*1.0005);
 		}
 /*
 		if (getPositionY() >= 200) {

@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -57,19 +58,22 @@ public class GameController extends AnimationTimer implements Initializable {
 	@FXML
 	private Canvas canvas;
 	
-    @FXML
-    private Button botonArrastrar;
-
-        
+   
+        //menu de arriba
     @FXML
     private Label etiquetaTiempo;
 
     @FXML
     private ImageView vida;
    
-    
+    //boton reiniciar
     @FXML
     private Button botonReiniciar;
+    
+    
+    //Placements turrets
+    @FXML
+    private Button botonLugar1;
     
     
      private double x;
@@ -90,14 +94,13 @@ public class GameController extends AnimationTimer implements Initializable {
 
     @FXML
     void MOUSEdragg(MouseEvent event) {
-    	botonArrastrar.getLayoutY();
-    	
-   
+    		
+   /*
     	
     	x=event.getSceneX();
     	
     	y=event.getSceneY();
-    	
+    */	
     
     }
     
@@ -124,6 +127,50 @@ public class GameController extends AnimationTimer implements Initializable {
     }
     
     
+    @FXML
+    void obtenerCoordenadas(MouseEvent event) {
+
+
+    	//x=event.getSceneX();
+    	
+    	//y=event.getSceneY();
+    	
+    	
+    	System.out.println(x);
+    	System.out.println(y);
+    	
+    	//coordenadas buenas
+    	x=551.0;
+    	y=127.0;
+    }
+    
+    @FXML
+    void onColocarTorreta(ActionEvent event) {
+
+        if(x!=0 & y!=0 ) {	
+    	Turret torreta = new Turret(1, 0.25);
+    	torreta.setPositionX(x);
+    	torreta.setPositionY(y);
+    		
+    	
+		List<Turret> PLacementTorretas = new ArrayList<>(getSprites(Turret.class));
+		boolean colocar=true;
+		
+		for (Turret turret : PLacementTorretas) {
+    	if(torreta.intersects(turret)) {
+    		colocar=false;
+        	
+    	}
+		}
+		if (colocar==true) {
+       	torreta.setGame(this);
+       	botonLugar1.setVisible(false);
+		}
+		x=0;
+    	y=0;
+        }
+		
+    }
     
 	public GameController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
@@ -144,6 +191,12 @@ public class GameController extends AnimationTimer implements Initializable {
 		
 		
 		vida.setImage(new Image("/mapImages/vida.png"));
+		
+		
+		//quitar los bordes del boton
+		botonLugar1.setPadding(new Insets(-1,-1,-1,-1));
+		
+	
 		
 		
 		start(); // inicia el animationtimer
@@ -258,6 +311,7 @@ public class GameController extends AnimationTimer implements Initializable {
 				    gc.strokeText( "GAME OVER!", 60, 50 );
 				    botonReiniciar.setVisible(true);
 				    botonReiniciar.setDisable(false);
+				    
 				    stop();
 				}
 			
@@ -312,7 +366,26 @@ public class GameController extends AnimationTimer implements Initializable {
 		
 	}
 	
+	//hacer visible el placement de nuevo
+	if(botonLugar1.isVisible()==false ) {
 		
+	    	
+	
+		boolean colocar=true;
+		
+		for (Turret turret : safeTorretas) {
+    	if(turret.getPositionX()==551 & turret.getPositionY()==127.0  ) {
+    		colocar=false;
+        	
+    	}
+		}
+		if (colocar==true) {
+       	
+       	botonLugar1.setVisible(true);
+		}
+		
+	}
+	
 
 		lastNanoTime = now;
 
