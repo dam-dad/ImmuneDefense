@@ -52,4 +52,19 @@ public class Virus extends Sprite {
 		
 	}
 	
+	public void choqueTorreta (Turret turret) {
+		
+		
+		setHealth(getHealth() - 1);
+		
+		turret.kill();
+
+		// comprueba si el virus está muerto
+		if (getHealth() <= 0) {
+			kill();
+		}		
+		
+	}
+	
+	
 }

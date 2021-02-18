@@ -205,6 +205,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		List<Virus> safeViruses = new ArrayList<>(getSprites(Virus.class));
 		List<Bullet> safeBullets = new ArrayList<>(getSprites(Bullet.class));
 		List<Muro> safeMuros = new ArrayList<>(getSprites(Muro.class));
+		List<Turret> safeTorretas = new ArrayList<>(getSprites(Turret.class));
 		for (Virus virus : safeViruses) { 
 
 			for (Bullet bullet : safeBullets) {
@@ -227,6 +228,16 @@ public class GameController extends AnimationTimer implements Initializable {
 				
 			}
 			
+			for (Turret turret : safeTorretas) {
+
+				// comprueba si colisiona el murp y el virus
+				if (turret.intersects(virus)) {
+					// el muro impacta en el virus
+					virus.choqueTorreta(turret);
+				}
+				
+			}
+			
 		}
 		
 		// metodo para que dejen de renderizar las balas cuando salgan (no funciona por todos los lados creo)
@@ -238,6 +249,17 @@ public class GameController extends AnimationTimer implements Initializable {
 			}
 			
 		}
+		// metodo para que dejen de renderizar los virus al salir del background
+	for (Virus virus : safeViruses) {
+			
+			if (!virus.intersects(background)) {
+				System.out.println("virus perdido");
+				virus.kill(); 
+			}
+			
+		}
+		
+		
 		
 		List<Sprite> safeSprites = new ArrayList<>(sprites);
 		safeSprites.stream().forEach(s -> s.update(timeDiff));
