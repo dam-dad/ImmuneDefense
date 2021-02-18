@@ -6,7 +6,7 @@ public class Bullet extends Sprite {
 	private Turret turret;
 
 	public Bullet() {
-		super("/mapImages/Proyectile.png");
+		super("/mapImages/Proyectile1.png");
 	}
 
 	public Turret getTurret() {

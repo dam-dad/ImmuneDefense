@@ -35,7 +35,7 @@ public class Turret extends Sprite {
 	 *                 torretas tipo daño constante, la misma será -1.
 	 */
 	public Turret(int damage, double fireRate) {
-		super("/mapImages/Turret.png");
+		super("/mapImages/Turret1.png");
 		this.damage.set(damage);
 		this.fireRate.set(fireRate);
 	}
@@ -87,7 +87,33 @@ public class Turret extends Sprite {
 			bullet.setPositionY(this.getPositionY() + (this.getHeight() / 2));
 			bullet.setVelocityX(120);
 			bullet.setGame(getGame());
+			
+			Bullet bulletIZQUIERDA = new Bullet();
+			bulletIZQUIERDA.setTurret(this);
+			bulletIZQUIERDA.setPositionX(this.getPositionX() + (this.getWidth() / 2));
+			bulletIZQUIERDA.setPositionY(this.getPositionY() + (this.getHeight() / 2));
+			bulletIZQUIERDA.setVelocityX(-80);
+			bulletIZQUIERDA.setGame(getGame());
+			
+			
+			Bullet bulletARRIBA = new Bullet();
+			bulletARRIBA.setTurret(this);
+			bulletARRIBA.setPositionX(this.getPositionX() + (this.getWidth() / 2));
+			bulletARRIBA.setPositionY(this.getPositionY() + (this.getHeight() / 2));
+			bulletARRIBA.setVelocityY(-80);
+			bulletARRIBA.setGame(getGame());
+			
+			Bullet bulletABAJO = new Bullet();
+			bulletABAJO.setTurret(this);
+			bulletABAJO.setPositionX(this.getPositionX() + (this.getWidth() / 2));
+			bulletABAJO.setPositionY(this.getPositionY() + (this.getHeight() / 2));
+			bulletABAJO.setVelocityY(80);
+			bulletABAJO.setGame(getGame());
+			
+			
 			time = 0.0;
+		
+			
 		}
 		
 		super.update(time);

@@ -89,6 +89,7 @@ public class MainMenuController implements Initializable {
 			
 			FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(-10.0f);
+			
 			audio.loop(Clip.LOOP_CONTINUOUSLY);
 			
 			options.getVolumenSlider().setValue(audio.getLevel()*100);
