@@ -34,6 +34,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -60,6 +62,11 @@ public class GameController extends AnimationTimer implements Initializable {
 	@FXML
 	private Canvas canvas;
 	
+	@FXML
+    private AnchorPane gameOver;
+	
+	@FXML
+    private Pane backgroundGameOverPane;
    
         //menu de arriba
     @FXML
@@ -269,10 +276,11 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	public void initialize(URL location, ResourceBundle resources) {
 
+		backgroundGameOverPane.setStyle("-fx-background-color: #000000");
+		
 		spritesPrincipales();
 		
 		lastNanoTime = System.nanoTime();
-		
 		
 		//intento de poner el tiempo pero no recuerdo como bindearlo
 		etiquetaTiempo.setText(lastNanoTime+"");
@@ -340,6 +348,10 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	public Parent getView() {
 		return view;
+	}
+	
+	public Button getBotonReiniciar() {
+		return botonReiniciar;
 	}
 
 	@Override
@@ -410,6 +422,7 @@ public class GameController extends AnimationTimer implements Initializable {
 				    gc.strokeText( "GAME OVER!", 60, 50 );
 				    botonReiniciar.setVisible(true);
 				    botonReiniciar.setDisable(false);
+				    gameOver.setVisible(true);
 				    
 				    stop();
 				}
