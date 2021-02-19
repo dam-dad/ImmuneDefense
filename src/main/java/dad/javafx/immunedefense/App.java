@@ -79,6 +79,9 @@ public class App extends Application {
 				optionController = new OptionController();
 				optionScene = new Scene(optionController.getView());
 				primaryStage.setScene(optionScene);
+				
+				volverMenuDesdeOpciones(primaryStage);
+				
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -136,6 +139,17 @@ public class App extends Application {
 		scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
 	}
 
+	
+	private void volverMenuDesdeOpciones(Stage primaryStage) {
+		
+		optionController.getBackOption().setOnAction((Event) -> {
+			
+				primaryStage.setScene(scene);
+			
+		});
+	}
+	
+	
 	public static void main(String[] args) {
 			launch(args);
 	}

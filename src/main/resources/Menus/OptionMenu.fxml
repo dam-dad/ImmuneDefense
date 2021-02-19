@@ -35,7 +35,7 @@
                   <ComboBox fx:id="pantallaCombo" />
                </children>
             </HBox>
-            <Button fx:id="backOption" mnemonicParsing="false" onAction="#onClickBack" text="Volver">
+            <Button fx:id="backOption" mnemonicParsing="false" text="Volver">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>

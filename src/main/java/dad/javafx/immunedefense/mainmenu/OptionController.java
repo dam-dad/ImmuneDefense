@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 	import javafx.scene.control.Slider;
 	import javafx.scene.control.TextField;
 	import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 	public class OptionController {
 
@@ -55,11 +56,8 @@ import javafx.scene.control.ComboBox;
 		}
 
 		
-	    @FXML
-	    void onClickBack(ActionEvent event) {
-
-	    }
-
+	 
+		
 		
 	}
 

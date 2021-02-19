@@ -99,13 +99,8 @@ public class GameController extends AnimationTimer implements Initializable {
     
     //lista botones
     List<Button> botones = new ArrayList<>();
-    
-    
-    @FXML
-    void OnVolverAlMenuAction(ActionEvent event) {
-//poner para volver al incio
-    }
-    
+        
+     
     //prueba fallida pero pienso que tiene que ser esta
     @FXML
     void tienequeDRAgDrop(DragEvent event) {
@@ -126,12 +121,12 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     void Colocar(ActionEvent event) {
-
+/*
     	Turret torreta = new Turret(1, 0.25);
     	torreta.setPositionX(x);
     	torreta.setPositionY(y);
        	torreta.setGame(this);
-
+*/
     	
     	
     }
@@ -378,13 +373,8 @@ public class GameController extends AnimationTimer implements Initializable {
 				
 				}
 				if(base.getHealth()<1) {
-				 gc.setFill( Color.RED );
-				    gc.setStroke( Color.BLACK );
-				    gc.setLineWidth(2);
-				    Font theFont = Font.font( "Times New Roman", FontWeight.BOLD, 48 );
-				    gc.setFont( theFont );
-				    gc.fillText( "GAME OVER!", 60, 50 );
-				    gc.strokeText( "GAME OVER!", 60, 50 );
+			
+					
 				    botonReiniciar.setVisible(true);
 				    botonReiniciar.setDisable(false);
 				    gameOver.setVisible(true);
