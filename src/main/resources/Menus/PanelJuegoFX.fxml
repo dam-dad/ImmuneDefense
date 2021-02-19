@@ -31,7 +31,7 @@
             <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" />
             <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="186.0" layoutY="7.0" text="Monedas:" />
-            <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,7 +40,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="botonLugarTorreta2" layoutX="544.0" layoutY="421.0" mnemonicParsing="false" onMouseClicked="#obtenerCoordenadas2" prefHeight="55.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta2" layoutX="544.0" layoutY="421.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="55.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +49,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#obtenerCoordenadas3" prefHeight="64.0" prefWidth="52.0" />
+            <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="253.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="64.0" prefWidth="52.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="gameOver" prefHeight="600.0" prefWidth="800.0" visible="false">

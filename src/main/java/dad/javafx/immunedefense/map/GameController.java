@@ -162,17 +162,19 @@ public class GameController extends AnimationTimer implements Initializable {
 		x=0;
     	y=0;
         }
-    	   	
+    	 
     	}
     
     
     
     @FXML
-    void obtenerCoordenadas(MouseEvent event) {
+    void obtenerCoordenadas(ActionEvent event) {
+    	
+    	Button botonPulsado= (Button) event.getSource();
 
-    	Bounds boundsInScreen = botonLugarTorreta1.localToScene(botonLugarTorreta1.getBoundsInLocal());
-    	int xRedondeo=(int)boundsInScreen.getMinX();
-    	int yRedondeo=(int)boundsInScreen.getMinY();
+    	Bounds coordenadas = botonPulsado.localToScene(botonPulsado.getBoundsInLocal());
+    	int xRedondeo=(int)coordenadas.getMinX();
+    	int yRedondeo=(int)coordenadas.getMinY();
     	
    	 x=xRedondeo;
     	
@@ -190,44 +192,7 @@ public class GameController extends AnimationTimer implements Initializable {
     	//x=551.0;
     	//y=127.0;
     }
-    
-    @FXML
-    void obtenerCoordenadas2(MouseEvent event) {
-    	Bounds boundsInScreen = botonLugarTorreta2.localToScene(botonLugarTorreta2.getBoundsInLocal());
-    	
-    	
-       	int xRedondeo=(int)boundsInScreen.getMinX();
-    	int yRedondeo=(int)boundsInScreen.getMinY();
-    	
-   	 x=xRedondeo;
-    	
-    	y=yRedondeo;
-    	    
-   	
-   	System.out.println(x);
-   	System.out.println(y);
-     	
-    }
   
-    @FXML
-    void obtenerCoordenadas3(MouseEvent event) {
-    	Bounds boundsInScreen = botonCoordenadasMuro.localToScene(botonCoordenadasMuro.getBoundsInLocal());
-    	
-    	
-       	int xRedondeo=(int)boundsInScreen.getMinX();
-    	int yRedondeo=(int)boundsInScreen.getMinY();
-    	
-   	 x=xRedondeo;
-    	
-    	y=yRedondeo;
-    	    
-   	
-   	System.out.println(x);
-   	System.out.println(y);
-     	
-    }
-      
-    
     @FXML
     void onColocarTorreta(ActionEvent event) {
 
@@ -495,11 +460,11 @@ public class GameController extends AnimationTimer implements Initializable {
 	//metodo visible el placement
 public void  visiblePlacement(Button boton) {
 	
-	Bounds boundsInScreen = boton.localToScene(boton.getBoundsInLocal());
+	Bounds coordenadas = boton.localToScene(boton.getBoundsInLocal());
 	
 	//pongo esto por que me rondeo el hijo de la gran puta
-int posX=(int) boundsInScreen.getMinX()-1;
-int posY=(int) boundsInScreen.getMinY()-1;
+int posX=(int) coordenadas.getMinX()-1;
+int posY=(int) coordenadas.getMinY()-1;
 	boolean colocar=true;
 
 	List<Turret> safeTorretas = new ArrayList<>(getSprites(Turret.class));
@@ -515,10 +480,7 @@ int posY=(int) boundsInScreen.getMinY()-1;
 		
 		boton.setVisible(true);
 	}
-	
-	
-	
-	
+
 }
 	
 
