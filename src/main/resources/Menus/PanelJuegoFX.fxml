@@ -19,7 +19,7 @@
          <children>
             <HBox fx:id="menuPane" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#Colocar" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 2">
+                  <Button mnemonicParsing="false" onAction="#ColocarTorretaDoble" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 2">
                      <tooltip>
                         <Tooltip text="Poner torreta doble " />
                      </tooltip></Button>
@@ -27,7 +27,7 @@
                      <tooltip>
                         <Tooltip text="Poner muro" />
                      </tooltip></Button>
-                  <Button mnemonicParsing="false" onAction="#onColocarTorreta" text="Torreta 4">
+                  <Button mnemonicParsing="false" onAction="#onColocarTorretaCuadruple" text="Torreta 4">
                      <tooltip>
                         <Tooltip text="Poner torreta cuadruple" />
                      </tooltip></Button>
@@ -68,10 +68,15 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="253.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="64.0" prefWidth="52.0">
+            <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
                <tooltip>
-                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
+                  <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip></Button>
+            <Button fx:id="botonCoordenadasMuro1" layoutX="246.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
+               <tooltip>
+                  <Tooltip text="Pulsa para ubicar un muro aquí" />
+               </tooltip>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="gameOver" prefHeight="600.0" prefWidth="800.0" visible="false">

@@ -38,9 +38,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+
 
 public class GameController extends AnimationTimer implements Initializable {
 
@@ -75,13 +73,15 @@ public class GameController extends AnimationTimer implements Initializable {
 
     @FXML
     private ImageView vida;
+    
+
    
     //boton reiniciar
     @FXML
     private Button botonReiniciar;
     
     
-    //Placements turrets
+    //Placements turrets y muros
     @FXML
     private Button botonLugarTorreta1;
     
@@ -91,6 +91,13 @@ public class GameController extends AnimationTimer implements Initializable {
     @FXML
     private Button botonCoordenadasMuro;
     
+    @FXML
+    private Button botonCoordenadasMuro1;
+    
+    
+    //selector torreta-muro
+    boolean esMuro;
+    
     
     //coordenadas
      private double x;
@@ -98,16 +105,18 @@ public class GameController extends AnimationTimer implements Initializable {
     private double y;
     
     
+    
     //lista botones
-    List<Button> botones = new ArrayList<>();
+    List<Button> botonesTorretas = new ArrayList<>();
         
+    List<Button> botonesMuros = new ArrayList<>();
      
-    //prueba fallida pero pienso que tiene que ser esta
+    //prueba fallida pero pienso que tiene que ser esta , lo dejo por si acaso, si no se borra
     @FXML
     void tienequeDRAgDrop(DragEvent event) {
     	System.out.print("SOLTADO");
     }
-
+//intento inicial, lo dejo por si acaso, si no se borra
     @FXML
     void MOUSEdragg(MouseEvent event) {
     		
@@ -120,10 +129,14 @@ public class GameController extends AnimationTimer implements Initializable {
     
     }
     
+
+ 
+    
+    
     @FXML
-    void Colocar(ActionEvent event) {
+    void ColocarTorretaDoble(ActionEvent event) {
     	
-    	if(x!=0 & y!=0 ) {	
+    	if(x!=0 & y!=0 & esMuro==false) {	
         	Turret torreta = new Turret(1, 0.25,2);
         	torreta.setPositionX(x);
         	torreta.setPositionY(y);
@@ -141,9 +154,10 @@ public class GameController extends AnimationTimer implements Initializable {
     		if (colocar==true) {
            	torreta.setGame(this);
            	
+           	//hacer invisible el placement
            	//bucle con lista de todos los botones y les pillamos las coordenadas el que coincida con las que tenemos lo hace invisible
            	
-        	for (Button boton : botones) {
+        	for (Button boton : botonesTorretas) {
 
     			// comprobar el redondeo
         		//System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX());
@@ -156,6 +170,7 @@ public class GameController extends AnimationTimer implements Initializable {
     		}
     		x=0;
         	y=0;
+        	
             }
     		
     	
@@ -163,7 +178,7 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     void OnMuroAction(ActionEvent event) {
-    	if(x!=0 & y!=0 ) {	
+    	if(x!=0 & y!=0 & esMuro==true ) {	
     	Muro muro = new Muro();
     	muro.setPositionX(x);
     	muro.setPositionY(y);
@@ -183,6 +198,23 @@ public class GameController extends AnimationTimer implements Initializable {
 			muro.setGame(this);
 			//botonCoordenadasMuro.setVisible(false);
 			//botonCoordenadasMuro.setDisable(true);
+
+			System.out.println(x+"coordenadas");
+     		System.out.println(y+"coordenadas");
+           	//hacer invisible el placement
+			for (Button boton : botonesMuros) {
+
+    			// comprobar el redondeo
+			
+        		System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX()+"boton");
+         		System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinY()+"boton");
+    			if (x==(int)boton.localToScene(boton.getBoundsInLocal()).getMinX()-1& y==(int)boton.localToScene(boton.getBoundsInLocal()).getMinY()-1) {
+    				boton.setVisible(false);
+    				System.out.println("HOLAAA");
+    			}
+        	}
+			
+			
 		}
 		x=0;
     	y=0;
@@ -204,10 +236,16 @@ public class GameController extends AnimationTimer implements Initializable {
    	 x=xRedondeo;
     	
     	y=yRedondeo;
+    	
+    	 esMuro = false;
     	    
-   	
-   	System.out.println(x);
-   	System.out.println(y);
+    	for (Button boton : botonesMuros) {
+    		if(boton==botonPulsado) {
+    			esMuro=true;
+    		}
+    	}
+    	    	
+    	
     	//x=event.getSceneX();
     	
     	//y=event.getSceneY();
@@ -219,9 +257,9 @@ public class GameController extends AnimationTimer implements Initializable {
     }
   
     @FXML
-    void onColocarTorreta(ActionEvent event) {
+    void onColocarTorretaCuadruple(ActionEvent event) {
 
-        if(x!=0 & y!=0 ) {	
+        if(x!=0 & y!=0 & esMuro==false ) {	
     	Turret torreta = new Turret(1, 0.25,4);
     	torreta.setPositionX(x);
     	torreta.setPositionY(y);
@@ -241,7 +279,7 @@ public class GameController extends AnimationTimer implements Initializable {
        	
        	//bucle con lista de todos los botones y les pillamos las coordenadas el que coincida con las que tenemos lo hace invisible
        	
-    	for (Button boton : botones) {
+    	for (Button boton : botonesTorretas) {
 
 			// comprobar el redondeo
     		//System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX());
@@ -286,11 +324,14 @@ public class GameController extends AnimationTimer implements Initializable {
 		
 	//cambia el fondo del boton
 		botonCoordenadasMuro.setStyle("-fx-background-color: #00ff00");
+		botonCoordenadasMuro1.setStyle("-fx-background-color: #00ff00");
 		
 		//añadir botones a la lista
-		botones.add(botonLugarTorreta1);
-		botones.add(botonLugarTorreta2);
-		botones.add(botonCoordenadasMuro);
+		botonesTorretas.add(botonLugarTorreta1);
+		botonesTorretas.add(botonLugarTorreta2);
+		
+		botonesMuros.add(botonCoordenadasMuro);
+		botonesMuros.add(botonCoordenadasMuro1);
 		
 		start(); // inicia el animationtimer
 		
@@ -371,6 +412,7 @@ public class GameController extends AnimationTimer implements Initializable {
 					expltion.setPositionX(virus.getPositionX());
 					expltion.setPositionY(virus.getPositionY());
 					expltion.setGame(this);
+				
 				}
 				
 			}
@@ -465,11 +507,18 @@ public class GameController extends AnimationTimer implements Initializable {
 	
 	//hacer visible el placement de nuevo
 	
-	for (Button boton : botones) {
+	for (Button boton : botonesMuros) {
 		if(boton.isVisible()==false ) {
-			visiblePlacement(boton);
+			visiblePlacementMuro(boton);
 		}
 	}
+	
+	for (Button boton : botonesTorretas) {
+		if(boton.isVisible()==false ) {
+			visiblePlacementTorreta(boton);
+		}
+	}
+	 
 	
 
 		lastNanoTime = now;
@@ -478,7 +527,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	
 	
 	//metodo visible el placement
-public void  visiblePlacement(Button boton) {
+public void  visiblePlacementTorreta(Button boton) {
 	
 	Bounds coordenadas = boton.localToScene(boton.getBoundsInLocal());
 	
@@ -492,6 +541,30 @@ int posY=(int) coordenadas.getMinY()-1;
 	for (Turret turret : safeTorretas) {
 
 	if(turret.getPositionX()==posX & turret.getPositionY()== posY  ) {
+		colocar=false;
+		
+	}
+	}
+	if (colocar==true) {
+		
+		boton.setVisible(true);
+	}
+
+}
+public void  visiblePlacementMuro(Button boton) {
+	
+	Bounds coordenadas = boton.localToScene(boton.getBoundsInLocal());
+	
+	//pongo esto por que me rondeo el hijo de la gran puta
+int posX=(int) coordenadas.getMinX()-1;
+int posY=(int) coordenadas.getMinY()-1;
+	boolean colocar=true;
+
+	List<Muro> safeMuros = new ArrayList<>(getSprites(Muro.class));
+	
+	for (Muro muro : safeMuros) {
+
+	if(muro.getPositionX()==posX & muro.getPositionY()== posY  ) {
 		colocar=false;
 		
 	}
