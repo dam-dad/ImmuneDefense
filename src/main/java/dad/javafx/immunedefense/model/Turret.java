@@ -18,10 +18,18 @@ import javafx.collections.ObservableList;
  */
 public class Turret extends Sprite {
 	
-	private double timeShoot = 0;
+private double timeShoot = 0;
 	
 	private double lifeTime = 0;
+	
+	
+	private int numberDirections;
+	 
+	private IntegerProperty cost = new SimpleIntegerProperty();
 
+	private IntegerProperty numberShots = new SimpleIntegerProperty();
+
+	private IntegerProperty maxNumberShots = new SimpleIntegerProperty();
 	private IntegerProperty damage = new SimpleIntegerProperty();
 	private DoubleProperty fireRate = new SimpleDoubleProperty();
 	private ListProperty<Bullet> firedBullets = new SimpleListProperty<>(FXCollections.observableArrayList());
@@ -36,10 +44,11 @@ public class Turret extends Sprite {
 	 *                 puede disparar una torreta por segundo, en caso de las
 	 *                 torretas tipo daño constante, la misma será -1.
 	 */
-	public Turret(int damage, double fireRate) {
+	public Turret(int damage, double fireRate,  int numberDirections ) {
 		super("/mapImages/Turret1.png");
 		this.damage.set(damage);
 		this.fireRate.set(fireRate);
+		this.numberDirections=numberDirections;
 	}
 
 	public final IntegerProperty damageProperty() {
@@ -83,6 +92,7 @@ public class Turret extends Sprite {
 		lifeTime += timeDiff;
 		timeShoot += timeDiff;
 		if (timeShoot > 2) {
+			if(numberDirections>1) {
 			Bullet bullet = new Bullet();
 			bullet.setTurret(this);
 			bullet.setPositionX(this.getPositionX() + (this.getWidth() / 2));
@@ -96,8 +106,8 @@ public class Turret extends Sprite {
 			bulletIZQUIERDA.setPositionY(this.getPositionY() + (this.getHeight() / 2));
 			bulletIZQUIERDA.setVelocityX(-80);
 			bulletIZQUIERDA.setGame(getGame());
-			
-			
+			}
+			if(numberDirections>3) {
 			Bullet bulletARRIBA = new Bullet();
 			bulletARRIBA.setTurret(this);
 			bulletARRIBA.setPositionX(this.getPositionX() + (this.getWidth() / 2));
@@ -111,7 +121,7 @@ public class Turret extends Sprite {
 			bulletABAJO.setPositionY(this.getPositionY() + (this.getHeight() / 2));
 			bulletABAJO.setVelocityY(80);
 			bulletABAJO.setGame(getGame());
-			
+			}
 			
 			timeShoot = 0.0;
 		

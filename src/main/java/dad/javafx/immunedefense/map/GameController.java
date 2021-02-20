@@ -15,6 +15,7 @@ import dad.javafx.immunedefense.model.Explotion;
 import dad.javafx.immunedefense.model.Muro;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
+
 import dad.javafx.immunedefense.model.Virus;
 import javafx.animation.AnimationTimer;
 
@@ -121,13 +122,42 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     void Colocar(ActionEvent event) {
-/*
-    	Turret torreta = new Turret(1, 0.25);
-    	torreta.setPositionX(x);
-    	torreta.setPositionY(y);
-       	torreta.setGame(this);
-*/
     	
+    	if(x!=0 & y!=0 ) {	
+        	Turret torreta = new Turret(1, 0.25,2);
+        	torreta.setPositionX(x);
+        	torreta.setPositionY(y);
+        		
+        	
+    		List<Turret> PLacementTorretas = new ArrayList<>(getSprites(Turret.class));
+    		boolean colocar=true;
+    		//comprobar si ya hay una torreta
+    		for (Turret turret : PLacementTorretas) {
+        	if(torreta.intersects(turret)) {
+        		colocar=false;
+            	
+        	}
+    		}
+    		if (colocar==true) {
+           	torreta.setGame(this);
+           	
+           	//bucle con lista de todos los botones y les pillamos las coordenadas el que coincida con las que tenemos lo hace invisible
+           	
+        	for (Button boton : botones) {
+
+    			// comprobar el redondeo
+        		//System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX());
+         		//System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinY());
+    			if (x==(int)boton.localToScene(boton.getBoundsInLocal()).getMinX()-1& y==(int)boton.localToScene(boton.getBoundsInLocal()).getMinY()-1) {
+    				boton.setVisible(false);
+    			}
+        	}
+           	
+    		}
+    		x=0;
+        	y=0;
+            }
+    		
     	
     }
     
@@ -192,7 +222,7 @@ public class GameController extends AnimationTimer implements Initializable {
     void onColocarTorreta(ActionEvent event) {
 
         if(x!=0 & y!=0 ) {	
-    	Turret torreta = new Turret(1, 0.25);
+    	Turret torreta = new Turret(1, 0.25,4);
     	torreta.setPositionX(x);
     	torreta.setPositionY(y);
     		
