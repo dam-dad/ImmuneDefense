@@ -47,15 +47,7 @@ public class Virus extends Sprite {
 
 		// comprueba si el virus está muerto
 		if (getHealth() <= 0) {
-			try {
-				virusDie=AudioSystem.getClip();
-				virusDie.open(AudioSystem.getAudioInputStream(ruta));
-				virusDie.start();
-			} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			SoundEffects.VirusDie();
 			kill();
 		}		
 		
