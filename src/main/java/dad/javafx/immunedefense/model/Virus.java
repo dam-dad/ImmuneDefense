@@ -1,8 +1,18 @@
 package dad.javafx.immunedefense.model;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 public class Virus extends Sprite {
 
 	private boolean chocado;
+	private Clip virusDie;
+	private InputStream ruta=getClass().getResourceAsStream("/SoundEffects/VirusDie.wav");
 	
 	
 	public Virus() {
@@ -37,6 +47,15 @@ public class Virus extends Sprite {
 
 		// comprueba si el virus está muerto
 		if (getHealth() <= 0) {
+			try {
+				virusDie=AudioSystem.getClip();
+				virusDie.open(AudioSystem.getAudioInputStream(ruta));
+				virusDie.start();
+			} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			kill();
 		}		
 		

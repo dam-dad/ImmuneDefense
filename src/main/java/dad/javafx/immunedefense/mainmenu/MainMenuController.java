@@ -100,16 +100,6 @@ public class MainMenuController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		/*
-		MediaPlayer mediaPlayer;
-		
-		final String s = "D:\\2_DAM_Alternativa\\DAD\\ImmuneDefense\\src\\main\\resources\\SoundTrack\\MainMenu.mp3";
-		File archivo = new File(s);
-		
-		Media h = new Media(Paths.get(s).toUri().toString());
-		mediaPlayer = new MediaPlayer(h);
-		mediaPlayer.play();
-		*/
 		sonidoB.setOnAction(event -> {
 			if (sonidoB.isSelected()) {
 				if (audio.isOpen()) {
