@@ -91,7 +91,7 @@ private double timeShoot = 0;
 	public void update(double timeDiff) {
 		lifeTime += timeDiff;
 		timeShoot += timeDiff;
-		if (timeShoot > 2) {
+		if (timeShoot > 1.7) {
 			if(numberDirections>1) {
 			Bullet bullet = new Bullet();
 			bullet.setTurret(this);
@@ -128,7 +128,7 @@ private double timeShoot = 0;
 			
 		}
 		
-		if(lifeTime>7) {
+		if(lifeTime>10) {
 			
 			this.kill();
 			

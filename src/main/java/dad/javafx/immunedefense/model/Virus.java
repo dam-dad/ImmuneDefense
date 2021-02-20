@@ -57,9 +57,9 @@ public class Virus extends Sprite {
 		System.out.println("Choque!");
 		
 	chocado=true;
-		setVelocityY(70);
-		setVelocityX(0);
-		
+		setVelocityY(0);
+		setVelocityX(-70);
+		muro.setHealth(muro.getHealth()-1);
 		
 	}
 	

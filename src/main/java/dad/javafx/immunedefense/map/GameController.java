@@ -12,13 +12,16 @@ import dad.javafx.immunedefense.model.Background;
 import dad.javafx.immunedefense.model.Base;
 import dad.javafx.immunedefense.model.Bullet;
 import dad.javafx.immunedefense.model.Explotion;
+import dad.javafx.immunedefense.model.Moneda;
 import dad.javafx.immunedefense.model.Muro;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
 
 import dad.javafx.immunedefense.model.Virus;
 import javafx.animation.AnimationTimer;
-
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,6 +50,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double time = 0.0; 
 	private double lastNanoTime;
 	
+	private double timeCoins = 0.0;
 		
 	private List<Sprite> sprites = new ArrayList<>();
 	private Background background; 
@@ -73,6 +77,11 @@ public class GameController extends AnimationTimer implements Initializable {
 
     @FXML
     private ImageView vida;
+    
+    @FXML
+    private Label etiquetaDinero;
+
+    private Moneda moneda= new Moneda();
     
 
    
@@ -136,7 +145,7 @@ public class GameController extends AnimationTimer implements Initializable {
     @FXML
     void ColocarTorretaDoble(ActionEvent event) {
     	
-    	if(x!=0 & y!=0 & esMuro==false) {	
+    	if(x!=0 & y!=0 & esMuro==false & moneda.getmoneda()>7) {	
         	Turret torreta = new Turret(1, 0.25,2);
         	torreta.setPositionX(x);
         	torreta.setPositionY(y);
@@ -153,7 +162,7 @@ public class GameController extends AnimationTimer implements Initializable {
     		}
     		if (colocar==true) {
            	torreta.setGame(this);
-           	
+           	moneda.setMoneda(moneda.getmoneda()-7);
            	//hacer invisible el placement
            	//bucle con lista de todos los botones y les pillamos las coordenadas el que coincida con las que tenemos lo hace invisible
            	
@@ -178,7 +187,7 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     void OnMuroAction(ActionEvent event) {
-    	if(x!=0 & y!=0 & esMuro==true ) {	
+    	if(x!=0 & y!=0 & esMuro==true & moneda.getmoneda()>35) {	
     	Muro muro = new Muro();
     	muro.setPositionX(x);
     	muro.setPositionY(y);
@@ -199,8 +208,7 @@ public class GameController extends AnimationTimer implements Initializable {
 			//botonCoordenadasMuro.setVisible(false);
 			//botonCoordenadasMuro.setDisable(true);
 
-			System.out.println(x+"coordenadas");
-     		System.out.println(y+"coordenadas");
+			moneda.setMoneda(moneda.getmoneda()-35);
            	//hacer invisible el placement
 			for (Button boton : botonesMuros) {
 
@@ -259,7 +267,7 @@ public class GameController extends AnimationTimer implements Initializable {
     @FXML
     void onColocarTorretaCuadruple(ActionEvent event) {
 
-        if(x!=0 & y!=0 & esMuro==false ) {	
+        if(x!=0 & y!=0 & esMuro==false & moneda.getmoneda()>15 ) {	
     	Turret torreta = new Turret(1, 0.25,4);
     	torreta.setPositionX(x);
     	torreta.setPositionY(y);
@@ -276,7 +284,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		}
 		if (colocar==true) {
        	torreta.setGame(this);
-       	
+    	moneda.setMoneda(moneda.getmoneda()-15);
        	//bucle con lista de todos los botones y les pillamos las coordenadas el que coincida con las que tenemos lo hace invisible
        	
     	for (Button boton : botonesTorretas) {
@@ -296,6 +304,16 @@ public class GameController extends AnimationTimer implements Initializable {
 		
     }
     
+    @FXML
+    void onMasUnaVida(ActionEvent event) {
+    	if(moneda.getmoneda()>50) {
+base.setHealth(base.getHealth()+1);
+moneda.setMoneda(moneda.getmoneda()-50);
+//añadir el cambio de foto si esto se queda finalmente
+    	}
+    }
+    
+    
 	public GameController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
@@ -313,7 +331,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		//intento de poner el tiempo pero no recuerdo como bindearlo
 		etiquetaTiempo.setText(lastNanoTime+"");
 		//textProperty().bindBidirectional(tiempoMenu+"");
-		
+		//etiquetaDinero.textProperty().bind(new SimpleStringProperty("") .concat(moneda.getmoneda()));
 		
 		vida.setImage(new Image("/mapImages/vida.png"));
 		
@@ -412,7 +430,7 @@ public class GameController extends AnimationTimer implements Initializable {
 					expltion.setPositionX(virus.getPositionX());
 					expltion.setPositionY(virus.getPositionY());
 					expltion.setGame(this);
-				
+				moneda.setMoneda(moneda.getmoneda()+5);
 				}
 				
 			}
@@ -518,9 +536,14 @@ public class GameController extends AnimationTimer implements Initializable {
 			visiblePlacementTorreta(boton);
 		}
 	}
-	 
-	
+	timeCoins+= timeDiff;
+	if(timeCoins>1) {
 
+		moneda.setMoneda(moneda.getmoneda()+1);
+		timeCoins=0;
+		etiquetaDinero.setText("Moneda: "+moneda.getmoneda());
+		
+	}
 		lastNanoTime = now;
 
 	}

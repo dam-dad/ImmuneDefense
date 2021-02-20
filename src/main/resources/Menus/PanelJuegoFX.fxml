@@ -19,19 +19,19 @@
          <children>
             <HBox fx:id="menuPane" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#ColocarTorretaDoble" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 2">
+                  <Button mnemonicParsing="false" onAction="#ColocarTorretaDoble" onDragDropped="#tienequeDRAgDrop" onMouseDragged="#MOUSEdragg" text="torreta 2 (7)">
                      <tooltip>
                         <Tooltip text="Poner torreta doble " />
                      </tooltip></Button>
-                  <Button mnemonicParsing="false" onAction="#OnMuroAction" text="Muro">
+                  <Button mnemonicParsing="false" onAction="#OnMuroAction" text=" Muro (35)">
                      <tooltip>
                         <Tooltip text="Poner muro" />
                      </tooltip></Button>
-                  <Button mnemonicParsing="false" onAction="#onColocarTorretaCuadruple" text="Torreta 4">
+                  <Button mnemonicParsing="false" onAction="#onColocarTorretaCuadruple" text="Torreta 4 (15)">
                      <tooltip>
                         <Tooltip text="Poner torreta cuadruple" />
                      </tooltip></Button>
-                  <Button mnemonicParsing="false" text="Button">
+                  <Button mnemonicParsing="false" onAction="#onMasUnaVida" text="Vida +1 (50)">
                      <tooltip>
                         <Tooltip text="Empty Tooltip" />
                      </tooltip></Button>
@@ -43,7 +43,7 @@
             <Label layoutX="530.0" layoutY="15.0" text="Vida" />
             <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" />
             <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="186.0" layoutY="7.0" text="Monedas:" />
+            <Label fx:id="etiquetaDinero" layoutX="186.0" layoutY="7.0" text="Monedas:" />
             <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
