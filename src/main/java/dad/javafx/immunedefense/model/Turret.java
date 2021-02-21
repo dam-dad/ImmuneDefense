@@ -98,6 +98,7 @@ private double timeShoot = 0;
 			bullet.setPositionX(this.getPositionX() + (this.getWidth() / 2));
 			bullet.setPositionY(this.getPositionY() + (this.getHeight() / 2));
 			bullet.setVelocityX(120);
+			SoundEffects.Shoot();
 			bullet.setGame(getGame());
 			
 			Bullet bulletIZQUIERDA = new Bullet();

@@ -14,6 +14,7 @@ import dad.javafx.immunedefense.model.Bullet;
 import dad.javafx.immunedefense.model.Explotion;
 import dad.javafx.immunedefense.model.Moneda;
 import dad.javafx.immunedefense.model.Muro;
+import dad.javafx.immunedefense.model.SoundEffects;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
 
@@ -464,7 +465,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 				}
 				if(base.getHealth()<1) {
 			
-					
+					SoundEffects.GameOver();
 				    botonReiniciar.setVisible(true);
 				    botonReiniciar.setDisable(false);
 				    gameOver.setVisible(true);
@@ -480,7 +481,6 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		for (Bullet bullet : safeBullets) {
 			
 			if (!bullet.intersects(background)) {
-				System.out.println("bala perdida");
 				bullet.kill(); // bala perdida
 			}
 			
@@ -489,7 +489,6 @@ moneda.setMoneda(moneda.getmoneda()-50);
 	for (Virus virus : safeViruses) {
 			
 			if (!virus.intersects(background)) {
-				System.out.println("virus perdido");
 				virus.kill(); 
 			}
 			
@@ -516,8 +515,6 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		corona.setPositionY(r.nextInt(100-1) + 1);
 		corona.setVelocityX(r.nextInt(80-20) + 20);
 		corona.setVelocityY(r.nextInt(80-20) + 20);
-		//rhinitis.setWidth(200);
-		//rhinitis.setHeight(200);
 		corona.setGame(this);
 		time = 0.0;
 		
@@ -554,9 +551,8 @@ public void  visiblePlacementTorreta(Button boton) {
 	
 	Bounds coordenadas = boton.localToScene(boton.getBoundsInLocal());
 	
-	//pongo esto por que me rondeo el hijo de la gran puta
-int posX=(int) coordenadas.getMinX()-1;
-int posY=(int) coordenadas.getMinY()-1;
+	int posX=(int) coordenadas.getMinX()-1;
+	int posY=(int) coordenadas.getMinY()-1;
 	boolean colocar=true;
 
 	List<Turret> safeTorretas = new ArrayList<>(getSprites(Turret.class));

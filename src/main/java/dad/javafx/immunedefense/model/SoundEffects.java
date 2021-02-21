@@ -10,14 +10,48 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class SoundEffects {
 	private static InputStream ruta;
-	private static Clip virusDie;
+	private static Clip effect;
 	
 	public static void VirusDie(){
 		try {
 			ruta=SoundEffects.class.getResourceAsStream("/SoundEffects/VirusDie.wav");
-			virusDie=AudioSystem.getClip();
-			virusDie.open(AudioSystem.getAudioInputStream(ruta));
-			virusDie.start();
+			effect=AudioSystem.getClip();
+			effect.open(AudioSystem.getAudioInputStream(ruta));
+			effect.start();
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void Shoot() {
+		try {
+			ruta=SoundEffects.class.getResourceAsStream("/SoundEffects/Shoot.wav");
+			effect=AudioSystem.getClip();
+			effect.open(AudioSystem.getAudioInputStream(ruta));
+			effect.start();
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void Win() {
+		try {
+			ruta=SoundEffects.class.getResourceAsStream("/SoundEffects/Win.wav");
+			effect=AudioSystem.getClip();
+			effect.open(AudioSystem.getAudioInputStream(ruta));
+			effect.start();
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void GameOver() {
+		try {
+			ruta=SoundEffects.class.getResourceAsStream("/SoundEffects/GameOver.wav");
+			effect=AudioSystem.getClip();
+			effect.open(AudioSystem.getAudioInputStream(ruta));
+			effect.start();
 		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
