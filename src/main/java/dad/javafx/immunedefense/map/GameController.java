@@ -54,7 +54,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 	
 	private Timeline timeline;
-	private int startTime = 40;
+	private int startTime = 4;
 	private IntegerProperty timeSeconds;
 	
 	private double timeCoins = 0.0;
@@ -112,9 +112,12 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     private AnchorPane youWinPane;
+    
+    @FXML
+    private Pane backgroundYouWinPane;
 
     @FXML
-    private Button ContinuarButton;
+    private Button continuarButton;
 
     @FXML
     private Button volverMenuButton;
@@ -338,6 +341,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 	public void initialize(URL location, ResourceBundle resources) {
 
 		backgroundGameOverPane.setStyle("-fx-background-color: #000000");
+		backgroundYouWinPane.setStyle("-fx-background-color: #000000");
 		
 		timeSeconds = new SimpleIntegerProperty(startTime);
 		
@@ -352,7 +356,9 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		
 		timeline.setCycleCount(1);
 		timeline.setOnFinished(e -> {
+			youWinPane.setVisible(true);
 			System.out.println("La animación terminó");
+			stop();
 		});
 		timeline.play();
 		
