@@ -47,8 +47,9 @@ import javafx.scene.layout.StackPane;
 public class GameController extends AnimationTimer implements Initializable {
 
 	// model
-	
+	private double timeBack = 180.0; 
 	private double time = 0.0; 
+	private double timeVirus = 0.0; 
 	private double lastNanoTime;
 	
 	private double timeCoins = 0.0;
@@ -330,7 +331,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		lastNanoTime = System.nanoTime();
 		
 		//intento de poner el tiempo pero no recuerdo como bindearlo
-		etiquetaTiempo.setText(lastNanoTime+"");
+		//etiquetaTiempo.setText(lastNanoTime+"");
 		//textProperty().bindBidirectional(tiempoMenu+"");
 		//etiquetaDinero.textProperty().bind(new SimpleStringProperty("") .concat(moneda.getmoneda()));
 		
@@ -501,8 +502,8 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		safeSprites.stream().forEach(s -> s.render(gc));
 		
 		//virus saliendo todo el rato
-		time += timeDiff;
-	if(time>5) {
+		timeVirus += timeDiff;
+	if(timeVirus>5) {
 		
 		Random r = new Random();
 	
@@ -516,7 +517,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		corona.setVelocityX(r.nextInt(80-20) + 20);
 		corona.setVelocityY(r.nextInt(80-20) + 20);
 		corona.setGame(this);
-		time = 0.0;
+		timeVirus = 0.0;
 		
 	}
 	
@@ -533,6 +534,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 			visiblePlacementTorreta(boton);
 		}
 	}
+	//el lory money
 	timeCoins+= timeDiff;
 	if(timeCoins>1) {
 
@@ -541,6 +543,23 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		etiquetaDinero.setText("Moneda: "+moneda.getmoneda());
 		
 	}
+	//tiempo real cuenta atras
+	time= time +timeDiff;
+	if(time>1) {
+
+		timeBack=timeBack-1;
+		time=0;
+		etiquetaTiempo.setText(timeBack+"");
+		
+	}
+	//condicion de victoria
+	if(timeBack<=0) {
+		//pantalla nueva
+		
+	}
+	
+	
+	
 		lastNanoTime = now;
 
 	}

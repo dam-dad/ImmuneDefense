@@ -41,9 +41,23 @@
                </padding>
             </HBox>
             <Label layoutX="530.0" layoutY="15.0" text="Vida" />
-            <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" />
+            <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/clockIcon.gif" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="etiquetaDinero" layoutX="186.0" layoutY="7.0" text="Monedas:" />
+            <Label fx:id="etiquetaDinero" layoutX="186.0" layoutY="7.0" text="Monedas:">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/CoinIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
