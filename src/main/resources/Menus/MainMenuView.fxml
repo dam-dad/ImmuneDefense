@@ -49,7 +49,6 @@
                </viewport>
             </ImageView>
             <Button id="botonesPrincipales" fx:id="nuevaPartidaB" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css" text="Nuevo Juego" />
-            <Button id="botonesPrincipales" fx:id="cargarB" mnemonicParsing="false" onAction="#onLoadGame" stylesheets="@../Estilos/MainMenu.css" text="Cargar Partida" />
             <Button id="botonesPrincipales" fx:id="masB" mnemonicParsing="false" onAction="#onMoreB" stylesheets="@../Estilos/MainMenu.css" text="Más..." />
          </children>
       </VBox>

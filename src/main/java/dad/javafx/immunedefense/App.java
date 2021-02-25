@@ -8,6 +8,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import dad.javafx.immunedefense.mainmenu.OptionController;
 import dad.javafx.immunedefense.map.GameController;
+
 import dad.javafx.immunedefense.transitions.MenuTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
@@ -49,12 +50,14 @@ public class App extends Application {
 		menuTransition = new MenuTransition();
 		
 		fadeOut = new FadeTransition();
-		
+		//nueva partida
 		controller.getNuevaPartidaB().setOnAction(e -> {
 			try {
-				gameController = new GameController();
+				gameController = new GameController(0);
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
+				
+				//volver al menu despues de game over
 				gameController.getBotonReiniciar().setOnAction((Event) -> {
 					try {
 						primaryStage.setScene(scene);
@@ -70,6 +73,31 @@ public class App extends Application {
 				e1.printStackTrace();
 			}
 		});
+		/*
+		controller.getCargarB().setOnAction(e -> {
+			try {
+				GameControllerSupervivencia gameSuper = new GameControllerSupervivencia();
+				mapScene = new Scene(gameSuper.getView());
+				primaryStage.setScene(mapScene);
+				gameSuper.getBotonReiniciar().setOnAction((Event) -> {
+					try {
+						gameController = new GameController();
+						primaryStage.setScene(new Scene (gameController.getView()));
+						controller.changeFromLevelToMenuMusic();
+					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});			
+				
+				
+				controller.changeFromMenuToLevelMusic();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		*/
 		
 		/**
 		 * Creando iteracciones entre opciones y menú

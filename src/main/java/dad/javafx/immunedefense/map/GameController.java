@@ -47,14 +47,38 @@ import javafx.util.Duration;
 
 public class GameController extends AnimationTimer implements Initializable {
 
+	//que nivel
+	
+	private int nivel;
+	
+	
+	//botones nivel facil
+	
+	
+    @FXML
+    private Button botonLugarTorreta3;
+
+    @FXML
+    private Button botonLugarTorreta4;
+
+    @FXML
+    private Button botonLugarTorreta5;
+
+    @FXML
+    private Button botonLugarTorreta6;
+
+    @FXML
+    private Button botonLugarTorreta7;
+    
+	
+
 	// model
-	private double timeBack = 180.0; 
-	private double time = 0.0; 
+	
 	private double timeVirus = 0.0; 
 	private double lastNanoTime;
 	
 	private Timeline timeline;
-	private int startTime = 40;
+	private int startTime = 180;
 	private IntegerProperty timeSeconds;
 	
 	private double timeCoins = 0.0;
@@ -135,26 +159,7 @@ public class GameController extends AnimationTimer implements Initializable {
         
     List<Button> botonesMuros = new ArrayList<>();
      
-    //prueba fallida pero pienso que tiene que ser esta , lo dejo por si acaso, si no se borra
-    @FXML
-    void tienequeDRAgDrop(DragEvent event) {
-    	System.out.print("SOLTADO");
-    }
-//intento inicial, lo dejo por si acaso, si no se borra
-    @FXML
-    void MOUSEdragg(MouseEvent event) {
-    		
-   /*
-    	
-    	x=event.getSceneX();
-    	
-    	y=event.getSceneY();
-    */	
-    
-    }
-    
 
- 
     
     
     @FXML
@@ -329,10 +334,47 @@ moneda.setMoneda(moneda.getmoneda()-50);
     }
     
     
-	public GameController() throws IOException {
+	public GameController(int level) throws IOException {
+		this.nivel=level;
+		//nivel que ya tenemos hecho el chungo
+		if(nivel==0) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 		loader.setController(this);
 		loader.load();
+		
+		botonLugarTorreta3.setVisible(false);
+		botonLugarTorreta3.setDisable(true);
+		
+		botonLugarTorreta4.setVisible(false);
+		botonLugarTorreta4.setDisable(true);
+		
+		botonLugarTorreta5.setVisible(false);
+		botonLugarTorreta5.setDisable(true);
+		botonLugarTorreta6.setVisible(false);
+		botonLugarTorreta6.setDisable(true);
+		botonLugarTorreta7.setVisible(false);
+		botonLugarTorreta7.setDisable(true);
+		}
+		//nivel facil
+		if(nivel==1) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFacil.fxml"));
+				loader.setController(this);
+				loader.load();
+				}
+		
+		//nivel normal
+		if(nivel==2) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXNormal.fxml"));
+				loader.setController(this);
+				loader.load();
+				botonLugarTorreta5.setVisible(false);
+				botonLugarTorreta5.setDisable(true);
+				botonLugarTorreta6.setVisible(false);
+				botonLugarTorreta6.setDisable(true);
+				botonLugarTorreta7.setVisible(false);
+				botonLugarTorreta7.setDisable(true);
+				}
+		
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
@@ -376,10 +418,25 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		
 		vida.setImage(new Image("/mapImages/vida.png"));
 		
-		
+		//MIRAR SEGUN NIVEL
 		//quitar los bordes del boton
 		botonLugarTorreta1.setPadding(new Insets(-1,-1,-1,-1));
 		botonLugarTorreta2.setPadding(new Insets(-1,-1,-1,-1));
+		
+		if(nivel==1) {
+		botonLugarTorreta3.setPadding(new Insets(-1,-1,-1,-1));
+		botonLugarTorreta4.setPadding(new Insets(-1,-1,-1,-1));
+		botonLugarTorreta5.setPadding(new Insets(-1,-1,-1,-1));
+		botonLugarTorreta6.setPadding(new Insets(-1,-1,-1,-1));
+		botonLugarTorreta7.setPadding(new Insets(-1,-1,-1,-1));
+	
+		}
+		
+		if(nivel==2) {
+			botonLugarTorreta3.setPadding(new Insets(-1,-1,-1,-1));
+			botonLugarTorreta4.setPadding(new Insets(-1,-1,-1,-1));
+			
+			}
 		
 	//cambia el fondo del boton
 		botonCoordenadasMuro.setStyle("-fx-background-color: #00ff00");
@@ -389,6 +446,23 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
 		
+		if(nivel==1) {
+		botonesTorretas.add(botonLugarTorreta3);
+		botonesTorretas.add(botonLugarTorreta4);
+		botonesTorretas.add(botonLugarTorreta5);
+		botonesTorretas.add(botonLugarTorreta6);
+		botonesTorretas.add(botonLugarTorreta7);
+		}
+		
+		
+
+		if(nivel==2) {
+		botonesTorretas.add(botonLugarTorreta3);
+		botonesTorretas.add(botonLugarTorreta4);
+	
+		}
+		
+		
 		botonesMuros.add(botonCoordenadasMuro);
 		botonesMuros.add(botonCoordenadasMuro1);
 		
@@ -397,14 +471,21 @@ moneda.setMoneda(moneda.getmoneda()-50);
 	}
 
 	private void spritesPrincipales() {
-		
+		//segun nivel
 		background = new Background();
+		if (nivel ==1) {
+		background.setImage(new Image("/mapImages/pruebafondo.gif"));
+		}
+		if (nivel ==2) {
+			background.setImage(new Image("/mapImages/pruebafondo.gif"));
+			}
+		
 		background.setPositionX(0);
 		background.setPositionY(0);
 		background.setWidth(canvas.getWidth());
 		background.setHeight(canvas.getHeight());
 		background.setGame(this);
-
+/*
 		Virus rhinitis = new Virus();
 		rhinitis.setPositionX(0);
 		rhinitis.setPositionY(0);
@@ -413,7 +494,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		//rhinitis.setWidth(200);
 		//rhinitis.setHeight(200);
 		rhinitis.setGame(this);
-		
+	*/	
 		
 		 base = new Base();
 			base.setGame(this);
@@ -540,6 +621,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		safeSprites.stream().forEach(s -> s.update(timeDiff));
 		safeSprites.stream().forEach(s -> s.render(gc));
 		
+		//cambiar segun nivel
 		//virus saliendo todo el rato
 		timeVirus += timeDiff;
 	if(timeVirus>5) {
@@ -555,8 +637,17 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		corona.setPositionY(r.nextInt(100-1) + 1);
 		corona.setVelocityX(r.nextInt(80-20) + 20);
 		corona.setVelocityY(r.nextInt(80-20) + 20);
+		
+		if(nivel==1) {
+		corona.setPositionX(0);
+		corona.setPositionY(r.nextInt(100-1) + 1);
+		}
+		
 		corona.setGame(this);
 		timeVirus = 0.0;
+		
+		
+		
 		
 	}
 	
@@ -583,19 +674,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 		
 	}
 	//tiempo real cuenta atras
-	time= time +timeDiff;
-	if(time>1) {
 
-		timeBack=timeBack-1;
-		time=0;
-		etiquetaTiempo.setText(timeBack+"");
-		
-	}
-	//condicion de victoria
-	if(timeBack<=0) {
-		//pantalla nueva
-		
-	}
 	
 	
 	

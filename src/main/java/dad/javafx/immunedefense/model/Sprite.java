@@ -13,8 +13,11 @@ import javafx.scene.shape.StrokeLineCap;
 
 public class Sprite {
 
+
 	private GameController game;
 
+	
+	
 	private ObjectProperty<Image> image = new SimpleObjectProperty<>();
 	private DoubleProperty positionX = new SimpleDoubleProperty();
 	private DoubleProperty positionY = new SimpleDoubleProperty();
@@ -156,8 +159,16 @@ public class Sprite {
 		this.getGame().getSprites().add(this);
 	}
 	
+	
 	public void kill() {
+	
 		getGame().getSprites().remove(this);
+		
+		/*
+		if (elegir==1) {
+			getGameSupervivencia().getSprites().remove(this);
+			}
+			*/
 	}
 
 }
