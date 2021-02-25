@@ -17,12 +17,13 @@ import dad.javafx.immunedefense.model.Muro;
 import dad.javafx.immunedefense.model.SoundEffects;
 import dad.javafx.immunedefense.model.Sprite;
 import dad.javafx.immunedefense.model.Turret;
-
 import dad.javafx.immunedefense.model.Virus;
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,11 +38,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 
 public class GameController extends AnimationTimer implements Initializable {
@@ -50,6 +51,10 @@ public class GameController extends AnimationTimer implements Initializable {
 	
 	private double time = 0.0; 
 	private double lastNanoTime;
+	
+	private Timeline timeline;
+	private int startTime = 40;
+	private IntegerProperty timeSeconds;
 	
 	private double timeCoins = 0.0;
 		
@@ -81,11 +86,9 @@ public class GameController extends AnimationTimer implements Initializable {
     
     @FXML
     private Label etiquetaDinero;
-
+    
     private Moneda moneda= new Moneda();
     
-
-   
     //boton reiniciar
     @FXML
     private Button botonReiniciar;
@@ -104,6 +107,16 @@ public class GameController extends AnimationTimer implements Initializable {
     @FXML
     private Button botonCoordenadasMuro1;
     
+    //YouWinPane
+    
+    @FXML
+    private AnchorPane youWinPane;
+
+    @FXML
+    private Button ContinuarButton;
+
+    @FXML
+    private Button volverMenuButton;
     
     //selector torreta-muro
     boolean esMuro;
@@ -325,12 +338,38 @@ moneda.setMoneda(moneda.getmoneda()-50);
 
 		backgroundGameOverPane.setStyle("-fx-background-color: #000000");
 		
+		timeSeconds = new SimpleIntegerProperty(startTime);
+		
+		timeline = new Timeline(
+				new KeyFrame(
+					Duration.seconds(startTime+1),
+					new KeyValue(timeSeconds,0)		
+				)
+		);
+		
+		System.out.println(timeSeconds.get());
+		
+		timeline.setCycleCount(1);
+		timeline.setOnFinished(e -> {
+			System.out.println("La animación terminó");
+		});
+		timeline.play();
+		
+		System.out.println(timeSeconds.get());
+		
+		timeSeconds.addListener((obv,ov,nv) -> {
+			if (ov!=nv) {
+				etiquetaTiempo.setText("Tiempo -> "+nv);
+				System.out.println(nv);
+			}
+		});
+		
 		spritesPrincipales();
 		
 		lastNanoTime = System.nanoTime();
 		
 		//intento de poner el tiempo pero no recuerdo como bindearlo
-		etiquetaTiempo.setText(lastNanoTime+"");
+		//etiquetaTiempo.setText(lastNanoTime+"");
 		//textProperty().bindBidirectional(tiempoMenu+"");
 		//etiquetaDinero.textProperty().bind(new SimpleStringProperty("") .concat(moneda.getmoneda()));
 		
@@ -464,7 +503,7 @@ moneda.setMoneda(moneda.getmoneda()-50);
 				
 				}
 				if(base.getHealth()<1) {
-			
+					timeline.stop();
 					SoundEffects.GameOver();
 				    botonReiniciar.setVisible(true);
 				    botonReiniciar.setDisable(false);
