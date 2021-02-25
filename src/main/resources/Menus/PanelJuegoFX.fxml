@@ -41,9 +41,23 @@
                </padding>
             </HBox>
             <Label layoutX="530.0" layoutY="15.0" text="Vida" />
-            <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0" text="Tiempo -&gt; " />
+            <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/clockIcon.gif" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <ImageView fx:id="vida" fitHeight="25.0" fitWidth="200.0" layoutX="567.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="etiquetaDinero" layoutX="186.0" layoutY="7.0" text="Monedas:" />
+            <Label fx:id="etiquetaDinero" layoutX="186.0" layoutY="7.0" text="Monedas:">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/CoinIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
@@ -86,18 +100,6 @@
             <ImageView fitHeight="116.0" fitWidth="290.0" layoutX="254.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="300.0">
                <image>
                   <Image url="@../mapImages/gameover.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="youWinPane" prefHeight="200.0" prefWidth="200.0" visible="false">
-         <children>
-            <Pane opacity="0.67" prefHeight="600.0" prefWidth="800.0" />
-            <Button fx:id="ContinuarButton" layoutX="360.0" layoutY="310.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" text="Continuar" />
-            <Button fx:id="volverMenuButton" layoutX="350.0" layoutY="351.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="102.0" text="Volver a Menú" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="316.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="296.0" AnchorPane.leftAnchor="316.0">
-               <image>
-                  <Image url="@../mapImages/you_win.png" />
                </image>
             </ImageView>
          </children>
