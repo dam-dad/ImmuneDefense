@@ -40,7 +40,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <Label layoutX="530.0" layoutY="15.0" text="Vida" />
+            <Label layoutX="521.0" layoutY="9.0" text="Vida" />
             <Label fx:id="etiquetaTiempo" layoutX="25.0" layoutY="6.0">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -58,7 +58,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="117.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta1" layoutX="79.0" layoutY="32.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta2" layoutX="544.0" layoutY="421.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="55.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta2" layoutX="97.0" layoutY="491.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="55.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,16 +82,16 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
+            <Button fx:id="botonCoordenadasMuro" layoutX="355.0" layoutY="348.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip></Button>
-            <Button fx:id="botonCoordenadasMuro1" layoutX="246.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
+            <Button fx:id="botonCoordenadasMuro1" layoutX="356.0" layoutY="93.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta3" layoutX="96.0" layoutY="431.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta3" layoutX="577.0" layoutY="38.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,7 +103,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta4" layoutX="106.0" layoutY="441.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta4" layoutX="577.0" layoutY="491.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -115,7 +115,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta5" layoutX="116.0" layoutY="451.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta5" layoutX="90.0" layoutY="266.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -127,7 +127,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta6" layoutX="126.0" layoutY="461.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta6" layoutX="330.0" layoutY="266.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -139,7 +139,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta7" layoutX="136.0" layoutY="471.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta7" layoutX="567.0" layoutY="266.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -162,18 +162,6 @@
                   <Image url="@../mapImages/gameover.png" />
                </image>
             </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="youWinPane" prefHeight="200.0" prefWidth="200.0" visible="false">
-         <children>
-            <Pane fx:id="backgroundYouWinPane" opacity="0.67" prefHeight="600.0" prefWidth="800.0" />
-            <ImageView fitHeight="97.0" fitWidth="141.0" layoutX="360.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../mapImages/you_win.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="continuarButton" layoutX="374.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="Continuar" />
-            <Button fx:id="volverMenuButton" layoutX="361.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="104.0" text="Volver al Menú" />
          </children>
       </AnchorPane>
    </children>

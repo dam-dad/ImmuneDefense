@@ -48,8 +48,6 @@ public class MainMenuController implements Initializable {
 	@FXML
 	private Button nuevaPartidaB;
 
-	@FXML
-	private Button cargarB;
 
 	@FXML
 	private Button masB;
@@ -124,10 +122,7 @@ public class MainMenuController implements Initializable {
 
 	}
 
-	@FXML
-	void onLoadGame(ActionEvent event) {
 
-	}
 
 	@FXML
 	void onMoreB(ActionEvent event) {
@@ -175,13 +170,8 @@ public class MainMenuController implements Initializable {
 		return nuevaPartidaB;
 	}
 
-	public Button getCargarB() {
-		return cargarB;
-	}
 
-	public Button getMasB() {
-		return masB;
-	}
+
 	
 	public void changeFromMenuToLevelMusic() {
 		audio.stop();
