@@ -53,42 +53,33 @@ public class App extends Application {
 		//nueva partida
 		controller.getNuevaPartidaB().setOnAction(e -> {
 			try {
-				gameController = new GameController(0);
+				gameController = new GameController(1);
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
 				
 				//volver al menu despues de game over
 				gameController.getBotonReiniciar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+				//avanzar de nivel
+				gameController.getBotonContinuar().setOnAction((Event) -> {
 					try {
-						primaryStage.setScene(scene);
+						gameController = new GameController(2);
+						primaryStage.setScene(new Scene(gameController.getView()));
 						controller.changeFromLevelToMenuMusic();
 					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				});
-				controller.changeFromMenuToLevelMusic();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		/*
-		controller.getCargarB().setOnAction(e -> {
-			try {
-				GameControllerSupervivencia gameSuper = new GameControllerSupervivencia();
-				mapScene = new Scene(gameSuper.getView());
-				primaryStage.setScene(mapScene);
-				gameSuper.getBotonReiniciar().setOnAction((Event) -> {
-					try {
-						gameController = new GameController();
-						primaryStage.setScene(new Scene (gameController.getView()));
-						controller.changeFromLevelToMenuMusic();
-					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				});			
+				//MIRAR PROBLEMA PARA AVANZAR NIVEL (CREAR OTRO BOTON INVISIBLE QUE SE ACTIVE SOLO EN EL NIVEL 1)
+				
+				
+				//volver al menu pantalla de ganar
+				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
 				
 				
 				controller.changeFromMenuToLevelMusic();
@@ -97,7 +88,7 @@ public class App extends Application {
 				e1.printStackTrace();
 			}
 		});
-		*/
+	
 		
 		/**
 		 * Creando iteracciones entre opciones y menú
@@ -176,6 +167,18 @@ public class App extends Application {
 			
 		});
 	}
+	
+	private void volverMenuDesdeJuego(Stage primaryStage) {
+		try {
+			primaryStage.setScene(scene);
+			controller.changeFromLevelToMenuMusic();
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
+	}
+	
 	
 	
 	public static void main(String[] args) {

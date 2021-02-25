@@ -130,7 +130,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private AnchorPane youWinPane;
 
 	@FXML
-	private Button ContinuarButton;
+	private Button continuarButton;
 
 	@FXML
 	private Pane backgroundYouWinPane;
@@ -261,10 +261,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		// x=event.getSceneX();
 
 		// y=event.getSceneY();
-
-		// coordenadas buenas
-		// x=551.0;
-		// y=127.0;
+	
 	}
 
 	@FXML
@@ -319,7 +316,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	public GameController(int level) throws IOException {
 		this.nivel = level;
-		this.nivel = 0;
+		//this.nivel = 0;
 		// nivel que ya tenemos hecho el chungo
 		if (nivel == 0) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
@@ -348,7 +345,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		// nivel normal
 		if (nivel == 2) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXNormal.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFNormal.fxml"));
 			loader.setController(this);
 			loader.load();
 			botonLugarTorreta5.setVisible(false);
@@ -399,7 +396,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		vida.setImage(new Image("/mapImages/vida.png"));
 
-		// MIRAR SEGUN NIVEL
+	
 		// quitar los bordes del boton
 		botonLugarTorreta1.setPadding(new Insets(-1, -1, -1, -1));
 		botonLugarTorreta2.setPadding(new Insets(-1, -1, -1, -1));
@@ -496,6 +493,13 @@ public class GameController extends AnimationTimer implements Initializable {
 	public Button getBotonReiniciar() {
 		return botonReiniciar;
 	}
+	public Button getBotonContinuar() {
+		return continuarButton;
+	}
+	public Button getBotonReiniciarGanar() {
+		return volverMenuButton;
+	}
+	
 
 	@Override
 	public void handle(long now) {
