@@ -431,10 +431,6 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		}
 
-		// cambia el fondo del boton
-		botonCoordenadasMuro.setStyle("-fx-background-color: #00ff00");
-		botonCoordenadasMuro1.setStyle("-fx-background-color: #00ff00");
-
 		// añadir botones a la lista
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
