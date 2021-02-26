@@ -74,18 +74,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="botonLugarTorreta2" layoutX="543.0" layoutY="425.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="55.0" prefWidth="62.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="64.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../mapImages/turret%20placement.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
-               </tooltip>
-            </Button>
             <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0" style="-fx-background-color: transparent;">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
@@ -168,6 +156,21 @@
                <tooltip>
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
+            </Button>
+            <Button fx:id="botonLugarTorreta2" layoutX="543.0" layoutY="393.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;">
+               <tooltip>
+                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="64.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/turret%20placement.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </AnchorPane>

@@ -471,21 +471,12 @@ public class GameController extends AnimationTimer implements Initializable {
 		background.setWidth(canvas.getWidth());
 		background.setHeight(canvas.getHeight());
 		background.setGame(this);
-		/*
-		 * Virus rhinitis = new Virus(); rhinitis.setPositionX(0);
-		 * rhinitis.setPositionY(0); rhinitis.setVelocityX(50);
-		 * rhinitis.setVelocityY(25); //rhinitis.setWidth(200);
-		 * //rhinitis.setHeight(200); rhinitis.setGame(this);
-		 */
+	
 
 		base = new Base();
 		base.setGame(this);
 
-		/*
-		 * Turret turret = new Turret(1, 0.5); turret.setPositionX(50);
-		 * turret.setPositionY(200); turret.setHeight(200); turret.setWidth(200);
-		 * turret.setGame(this);
-		 */
+	
 	}
 
 	public <T extends Sprite> List<T> getSprites(Class<T> type) {
@@ -595,8 +586,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		}
 
-		// metodo para que dejen de renderizar las balas cuando salgan (no funciona por
-		// todos los lados creo)
+		// metodo para que dejen de renderizar las balas cuando salgan 
 		for (Bullet bullet : safeBullets) {
 
 			if (!bullet.intersects(background)) {
@@ -617,10 +607,10 @@ public class GameController extends AnimationTimer implements Initializable {
 		safeSprites.stream().forEach(s -> s.update(timeDiff));
 		safeSprites.stream().forEach(s -> s.render(gc));
 
-		// cambiar segun nivel
+		
 		// virus saliendo todo el rato
 		timeVirus += timeDiff;
-		if (timeVirus > 5) {
+		if (timeVirus > 6) {
 
 			Random r = new Random();
 
@@ -644,7 +634,7 @@ public class GameController extends AnimationTimer implements Initializable {
 			if (nivel == 1) {
 				int caminoRamdom =(int) (Math.random() * 3) + 1;
 				corona.setSalido(true);
-				System.out.println(caminoRamdom+"numero");
+				
 				if(caminoRamdom==1) {
 				
 				corona.setPositionX(0);
@@ -654,21 +644,36 @@ public class GameController extends AnimationTimer implements Initializable {
 				}
 				if(caminoRamdom==3) {
 					
-					corona.setPositionX(390);
+					corona.setPositionX(370);
 					corona.setPositionY(0);
 					corona.setVelocityY(r.nextInt(60 - 20) + 20);
 					corona.setVelocityX(0);
 					}
 	               if(caminoRamdom==2) {
 					
-					corona.setPositionX(390);
+					corona.setPositionX(370);
 					corona.setPositionY(510);
 					corona.setVelocityY((r.nextInt(60 - 20) + 20)*-1);
 					corona.setVelocityX(0);
 					}
 			}
 			
-		
+			if (nivel == 0) {
+				int caminoRamdom =(int) (Math.random() * 2) + 1;
+				if(caminoRamdom==1) {
+				corona.setPositionX(0);
+				corona.setPositionY(150);
+				corona.setVelocityY(0);
+				corona.setVelocityX(r.nextInt(80 - 20) + 20);
+				}
+				if(caminoRamdom==2) {
+					corona.setPositionX(0);
+					corona.setPositionY(450);
+					corona.setVelocityY(0);
+					corona.setVelocityX(r.nextInt(80 - 20) + 20);
+					}
+				
+				}
 			
 
 			corona.setGame(this);
