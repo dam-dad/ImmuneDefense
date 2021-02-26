@@ -123,6 +123,12 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private Button botonCoordenadasMuro1;
+	
+	//Boton mas vida
+	
+	@FXML
+	private Button botonVida;
+	
 
 	// YouWinPane
 
@@ -137,7 +143,8 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private Button volverMenuButton;
-
+	
+		
 	// selector torreta-muro
 	boolean esMuro;
 
@@ -307,10 +314,18 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	void onMasUnaVida(ActionEvent event) {
-		if (moneda.getmoneda() > 50) {
+		if (moneda.getmoneda() > 50 & base.getHealth() <4) {
+			
 			base.setHealth(base.getHealth() + 1);
 			moneda.setMoneda(moneda.getmoneda() - 50);
-//añadir el cambio de foto si esto se queda finalmente
+			ponerImagenVida();
+			
+			if(base.getHealth()==4) {
+								
+				botonVida.setDisable(true);
+			}
+			
+			
 		}
 	}
 
@@ -557,12 +572,15 @@ public class GameController extends AnimationTimer implements Initializable {
 			}
 			// base
 			if (base.intersects(virus)) {
-				if (base.getHealth() > 0) {
-					base.setHealth(base.getHealth() - 1);
-					virus.kill();
-					vida.setImage(new Image("/mapImages/vida2.png"));
-
+				
+				base.setHealth(base.getHealth() - 1);
+				virus.kill();
+				ponerImagenVida();
+				
+				if(base.getHealth()==3) {
+				botonVida.setDisable(false);
 				}
+				
 				if (base.getHealth() < 1) {
 					timeline.stop();
 					SoundEffects.GameOver();
@@ -619,6 +637,12 @@ public class GameController extends AnimationTimer implements Initializable {
 				corona.setPositionX(0);
 				corona.setPositionY(r.nextInt(100 - 1) + 1);
 			}
+			
+			if (nivel == 2) {
+				corona.setPositionX(0);
+				corona.setPositionY(r.nextInt(100 - 1) + 1);
+			}
+			
 
 			corona.setGame(this);
 			timeVirus = 0.0;
@@ -703,4 +727,36 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	}
 
+
+//cambiar la imagen de la vida
+public void ponerImagenVida() {
+	if (base.getHealth() == 4) {
+		
+		vida.setImage(new Image("/mapImages/vida2.png"));
+		
+	}
+	
+	if (base.getHealth() == 3) {
+		
+		vida.setImage(new Image("/mapImages/vida2.png"));
+		
+	}
+	
+	if (base.getHealth() == 2) {
+		vida.setImage(new Image("/mapImages/vida2.png"));
+	}
+	
+	if (base.getHealth() == 1) {
+		
+		vida.setImage(new Image("/mapImages/vida2.png"));
+	}
+if (base.getHealth() == 0) {
+		
+		vida.setImage(new Image("/mapImages/vida2.png"));
+	}
+
 }
+
+}
+
+

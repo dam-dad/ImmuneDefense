@@ -31,7 +31,7 @@
                      <tooltip>
                         <Tooltip text="Poner torreta cuadruple" />
                      </tooltip></Button>
-                  <Button mnemonicParsing="false" onAction="#onMasUnaVida" text="Vida +1 (50)">
+                  <Button fx:id="botonVida" mnemonicParsing="false" onAction="#onMasUnaVida" text="Vida +1 (50)">
                      <tooltip>
                         <Tooltip text="Empty Tooltip" />
                      </tooltip></Button>
@@ -54,7 +54,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../mapImages/CoinIcon.png" />
+                        <Image url="@../mapImages/CoinIcon.gif" />
                      </image>
                   </ImageView>
                </graphic></Label>
@@ -172,7 +172,7 @@
                   <Image url="@../mapImages/you_win.png" />
                </image>
             </ImageView>
-            <Button fx:id="continuarButton" layoutX="374.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="Continuar" />
+            <Button fx:id="continuarButton" layoutX="374.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="Continuar" visible="false" />
             <Button fx:id="volverMenuButton" layoutX="361.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="104.0" text="Volver al Menú" />
          </children>
       </AnchorPane>
