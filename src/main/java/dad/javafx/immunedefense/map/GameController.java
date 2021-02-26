@@ -409,7 +409,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		// etiquetaDinero.textProperty().bind(new SimpleStringProperty("")
 		// .concat(moneda.getmoneda()));
 
-		vida.setImage(new Image("/mapImages/vida.png"));
+		vida.setImage(new Image("/mapImages/3vidas.png"));
 
 	
 		// quitar los bordes del boton
@@ -770,17 +770,17 @@ public void ponerImagenVida() {
 	
 	if (base.getHealth() == 3) {
 		
-		vida.setImage(new Image("/mapImages/vida2.png"));
+		vida.setImage(new Image("/mapImages/3vidas.png"));
 		
 	}
 	
 	if (base.getHealth() == 2) {
-		vida.setImage(new Image("/mapImages/vida2.png"));
+		vida.setImage(new Image("/mapImages/2vidas.png"));
 	}
 	
 	if (base.getHealth() == 1) {
 		
-		vida.setImage(new Image("/mapImages/vida2.png"));
+		vida.setImage(new Image("/mapImages/1vida.png"));
 	}
 if (base.getHealth() == 0) {
 		

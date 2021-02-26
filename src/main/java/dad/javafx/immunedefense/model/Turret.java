@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 
 /**
  * Esta es la clase de la cual heredan las demás torretas, las cuales van a
@@ -49,6 +50,9 @@ private double timeShoot = 0;
 		this.damage.set(damage);
 		this.fireRate.set(fireRate);
 		this.numberDirections=numberDirections;
+		if (numberDirections==2) {
+			setImage(new Image("/mapImages/Turret2.png"));
+		}
 	}
 
 	public final IntegerProperty damageProperty() {
