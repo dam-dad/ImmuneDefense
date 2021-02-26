@@ -337,12 +337,7 @@ public class GameController extends AnimationTimer implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 			loader.setController(this);
 			loader.load();
-
-			botonLugarTorreta3.setVisible(false);
-			botonLugarTorreta3.setDisable(true);
-
-			botonLugarTorreta4.setVisible(false);
-			botonLugarTorreta4.setDisable(true);
+		
 
 			botonLugarTorreta5.setVisible(false);
 			botonLugarTorreta5.setDisable(true);
@@ -415,6 +410,9 @@ public class GameController extends AnimationTimer implements Initializable {
 		// quitar los bordes del boton
 		botonLugarTorreta1.setPadding(new Insets(-1, -1, -1, -1));
 		botonLugarTorreta2.setPadding(new Insets(-1, -1, -1, -1));
+		botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
+		botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
+
 
 		if (nivel == 0) {
 			botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
@@ -425,29 +423,28 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		}
 
-		if (nivel == 1) {
-			botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
-			botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
-
-		}
+		
+			
+		
 
 		// añadir botones a la lista
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
+		botonesTorretas.add(botonLugarTorreta3);
+		botonesTorretas.add(botonLugarTorreta4);
 
 		if (nivel == 0) {
-			botonesTorretas.add(botonLugarTorreta3);
-			botonesTorretas.add(botonLugarTorreta4);
+		
 			botonesTorretas.add(botonLugarTorreta5);
 			botonesTorretas.add(botonLugarTorreta6);
 			botonesTorretas.add(botonLugarTorreta7);
 		}
 
-		if (nivel == 1) {
+		
 			botonesTorretas.add(botonLugarTorreta3);
 			botonesTorretas.add(botonLugarTorreta4);
 
-		}
+		
 
 		botonesMuros.add(botonCoordenadasMuro);
 		botonesMuros.add(botonCoordenadasMuro1);

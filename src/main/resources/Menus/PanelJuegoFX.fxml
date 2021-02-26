@@ -59,7 +59,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Button fx:id="botonLugarTorreta1" layoutX="555.0" layoutY="125.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="415.0" AnchorPane.leftAnchor="543.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="117.0">
+            <Button fx:id="botonLugarTorreta1" layoutX="543.0" layoutY="80.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="452.0" AnchorPane.leftAnchor="543.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="80.0">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
@@ -74,7 +74,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="botonCoordenadasMuro" layoutX="437.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0" style="-fx-background-color: transparent;">
+            <Button fx:id="botonCoordenadasMuro" layoutX="396.0" layoutY="117.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0" style="-fx-background-color: transparent;">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip>
@@ -85,7 +85,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="botonCoordenadasMuro1" layoutX="246.0" layoutY="196.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0" style="-fx-background-color: transparent;">
+            <Button fx:id="botonCoordenadasMuro1" layoutX="396.0" layoutY="304.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0" style="-fx-background-color: transparent;">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip>
@@ -96,30 +96,6 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="botonLugarTorreta3" layoutX="96.0" layoutY="431.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../mapImages/turret%20placement.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
-               </tooltip>
-            </Button>
-            <Button fx:id="botonLugarTorreta4" layoutX="106.0" layoutY="441.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../mapImages/turret%20placement.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
-               </tooltip>
             </Button>
             <Button fx:id="botonLugarTorreta5" layoutX="116.0" layoutY="451.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;">
                <graphic>
@@ -157,7 +133,37 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta2" layoutX="543.0" layoutY="393.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;">
+            <Button fx:id="botonLugarTorreta2" layoutX="543.0" layoutY="413.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;">
+               <tooltip>
+                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="64.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/turret%20placement.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="botonLugarTorreta3" layoutX="166.0" layoutY="375.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;">
+               <tooltip>
+                  <Tooltip text="Pulsa para ubicar una torreta aquí" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="64.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../mapImages/turret%20placement.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="botonLugarTorreta4" layoutX="166.0" layoutY="147.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="76.0" prefWidth="88.0" style="-fx-background-color: transparent;">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
