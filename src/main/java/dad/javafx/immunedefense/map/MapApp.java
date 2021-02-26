@@ -12,7 +12,7 @@ public class MapApp extends Application {
 
 	public void start(Stage theStage) throws IOException {
 
-		controller = new GameController(1);
+		controller = new GameController(2);
 
 		Scene theScene = new Scene(controller.getView());
 
