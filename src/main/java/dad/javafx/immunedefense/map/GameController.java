@@ -784,7 +784,7 @@ public void ponerImagenVida() {
 	}
 if (base.getHealth() == 0) {
 		
-		vida.setImage(new Image("/mapImages/vida2.png"));
+		vida.setImage(new Image("/mapImages/0vidas.png"));
 	}
 
 }
