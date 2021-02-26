@@ -71,7 +71,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 4;
+	private int startTime = 40;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -430,11 +430,7 @@ public class GameController extends AnimationTimer implements Initializable {
 			botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
 
 		}
-
-		// cambia el fondo del boton
-		botonCoordenadasMuro.setStyle("-fx-background-color: #00ff00");
-		botonCoordenadasMuro1.setStyle("-fx-background-color: #00ff00");
-
+		
 		// añadir botones a la lista
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
