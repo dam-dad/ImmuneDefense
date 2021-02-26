@@ -42,6 +42,11 @@ public class App extends Application {
 	
 	private GameController gameController;
 	
+	//private GameController gameController1;
+	
+	//private GameController gameController2;
+	
+	//private int nivel=0;
 
 	
 	public void start(Stage primaryStage) throws Exception {
@@ -53,7 +58,7 @@ public class App extends Application {
 		//nueva partida
 		controller.getNuevaPartidaB().setOnAction(e -> {
 			try {
-				gameController = new GameController(1);
+				gameController = new GameController(0);
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
 				
@@ -65,7 +70,10 @@ public class App extends Application {
 				//avanzar de nivel
 				gameController.getBotonContinuar().setOnAction((Event) -> {
 					try {
-						gameController = new GameController(2);
+						int nivel= gameController.getNivel();
+						System.out.println(nivel+"NIVELLLLL");
+						gameController = new GameController(nivel+1);
+						//nivel++;
 						primaryStage.setScene(new Scene(gameController.getView()));
 						controller.changeFromLevelToMenuMusic();
 					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
@@ -73,13 +81,49 @@ public class App extends Application {
 						e1.printStackTrace();
 					}
 				});
-				//MIRAR PROBLEMA PARA AVANZAR NIVEL (CREAR OTRO BOTON INVISIBLE QUE SE ACTIVE SOLO EN EL NIVEL 1)
-				
-				
-				//volver al menu pantalla de ganar
+								
 				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
 					volverMenuDesdeJuego(primaryStage);
 				});
+				
+				
+				/*
+				//nivel 1		
+				if(nivel==1) {
+				
+				//volver al menu pantalla de ganar
+			
+				
+				
+				//volver al menu despues de game over
+				gameController1.getBotonReiniciar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+				//avanzar de nivel
+				gameController1.getBotonContinuar().setOnAction((Event) -> {
+					try {
+						//int nivel= gameController.getNivel();
+						//System.out.println(nivel+"NIVELLLLL");
+						gameController2 = new GameController(2);
+						primaryStage.setScene(new Scene(gameController2.getView()));
+						controller.changeFromLevelToMenuMusic();
+					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
+							
+				//volver al menu pantalla de ganar
+				gameController1.getBotonReiniciarGanar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+				}
+				
+				*/
+				
+				
 				
 				
 				controller.changeFromMenuToLevelMusic();

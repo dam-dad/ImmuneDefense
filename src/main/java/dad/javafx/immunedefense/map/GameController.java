@@ -318,7 +318,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		this.nivel = level;
 		//this.nivel = 0;
 		// nivel que ya tenemos hecho el chungo
-		if (nivel == 0) {
+		if (nivel == 2) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 			loader.setController(this);
 			loader.load();
@@ -337,14 +337,14 @@ public class GameController extends AnimationTimer implements Initializable {
 			botonLugarTorreta7.setDisable(true);
 		}
 		// nivel facil
-		if (nivel == 1) {
+		if (nivel == 0) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFacil.fxml"));
 			loader.setController(this);
 			loader.load();
 		}
 
 		// nivel normal
-		if (nivel == 2) {
+		if (nivel == 1) {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFNormal.fxml"));
 			loader.setController(this);
 			loader.load();
@@ -401,7 +401,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		botonLugarTorreta1.setPadding(new Insets(-1, -1, -1, -1));
 		botonLugarTorreta2.setPadding(new Insets(-1, -1, -1, -1));
 
-		if (nivel == 1) {
+		if (nivel == 0) {
 			botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
 			botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
 			botonLugarTorreta5.setPadding(new Insets(-1, -1, -1, -1));
@@ -410,7 +410,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		}
 
-		if (nivel == 2) {
+		if (nivel == 1) {
 			botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
 			botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
 
@@ -424,7 +424,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
 
-		if (nivel == 1) {
+		if (nivel == 0) {
 			botonesTorretas.add(botonLugarTorreta3);
 			botonesTorretas.add(botonLugarTorreta4);
 			botonesTorretas.add(botonLugarTorreta5);
@@ -432,7 +432,7 @@ public class GameController extends AnimationTimer implements Initializable {
 			botonesTorretas.add(botonLugarTorreta7);
 		}
 
-		if (nivel == 2) {
+		if (nivel == 1) {
 			botonesTorretas.add(botonLugarTorreta3);
 			botonesTorretas.add(botonLugarTorreta4);
 
@@ -451,7 +451,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		if (nivel == 1) {
 			background.setImage(new Image("/mapImages/pruebafondo.gif"));
 		}
-		if (nivel == 2) {
+		if (nivel == 0) {
 			background.setImage(new Image("/mapImages/pruebafondo.gif"));
 		}
 
@@ -498,6 +498,10 @@ public class GameController extends AnimationTimer implements Initializable {
 	}
 	public Button getBotonReiniciarGanar() {
 		return volverMenuButton;
+	}
+	
+	public int getNivel() {
+		return nivel;
 	}
 	
 
