@@ -47,6 +47,12 @@ public class MainMenuController implements Initializable {
 
 	@FXML
 	private Button nuevaPartidaB;
+	
+    @FXML
+    private Button segundoNIvelBoton;
+
+    @FXML
+    private Button tercerNivelBoton;
 
 
 	@FXML
@@ -170,6 +176,13 @@ public class MainMenuController implements Initializable {
 		return nuevaPartidaB;
 	}
 
+	public Button getNivelMedioBoton() {
+		return segundoNIvelBoton;
+	}
+	
+	public Button getNivelDificilBoton() {
+		return tercerNivelBoton;
+	}
 
 
 	
