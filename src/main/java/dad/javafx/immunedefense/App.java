@@ -12,6 +12,7 @@ import dad.javafx.immunedefense.map.GameController;
 import dad.javafx.immunedefense.transitions.MenuTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,7 +35,6 @@ public class App extends Application {
 	private Scene menuScene;
 	
 	private Scene transitionScene;
-	
 	//mapa
 	private Scene mapScene;
 	
@@ -61,7 +61,12 @@ public class App extends Application {
 				gameController = new GameController(0);
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
-				
+				if (controller.getSonidoB().isSelected()) {
+					controller.changeFromMenuToLevelMusic();
+					controller.getAudioLevels().stop();
+				}else {
+					controller.changeFromMenuToLevelMusic();
+				}	
 				//volver al menu despues de game over
 				gameController.getBotonReiniciar().setOnAction((Event) -> {
 					volverMenuDesdeJuego(primaryStage);
@@ -75,7 +80,7 @@ public class App extends Application {
 						gameController = new GameController(nivel+1);
 						//nivel++;
 						primaryStage.setScene(new Scene(gameController.getView()));
-						controller.changeFromLevelToMenuMusic();
+						controller.changeFromLevelToMenuMusic();	
 					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -84,49 +89,8 @@ public class App extends Application {
 								
 				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
 					volverMenuDesdeJuego(primaryStage);
-				});
+				});	
 				
-				
-				/*
-				//nivel 1		
-				if(nivel==1) {
-				
-				//volver al menu pantalla de ganar
-			
-				
-				
-				//volver al menu despues de game over
-				gameController1.getBotonReiniciar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-				//avanzar de nivel
-				gameController1.getBotonContinuar().setOnAction((Event) -> {
-					try {
-						//int nivel= gameController.getNivel();
-						//System.out.println(nivel+"NIVELLLLL");
-						gameController2 = new GameController(2);
-						primaryStage.setScene(new Scene(gameController2.getView()));
-						controller.changeFromLevelToMenuMusic();
-					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				});
-							
-				//volver al menu pantalla de ganar
-				gameController1.getBotonReiniciarGanar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-				}
-				
-				*/
-				
-				
-				
-				
-				controller.changeFromMenuToLevelMusic();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -139,10 +103,12 @@ public class App extends Application {
 				gameController = new GameController(1);
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
-				controller.changeFromMenuToLevelMusic();
-				
-				
-				
+				if (controller.getSonidoB().isSelected()) {
+					controller.changeFromMenuToLevelMusic();
+					controller.getAudioLevels().stop();
+				}else {
+					controller.changeFromMenuToLevelMusic();
+				}
 				//volver al menu despues de game over
 				gameController.getBotonReiniciar().setOnAction((Event) -> {
 					volverMenuDesdeJuego(primaryStage);
@@ -183,9 +149,12 @@ public class App extends Application {
 				gameController = new GameController(2);
 				mapScene = new Scene(gameController.getView());
 				primaryStage.setScene(mapScene);
-				controller.changeFromMenuToLevelMusic();
-								
-				
+				if (controller.getSonidoB().isSelected()) {
+					controller.changeFromMenuToLevelMusic();
+					controller.getAudioLevels().stop();
+				}else {
+					controller.changeFromMenuToLevelMusic();
+				}				
 				//volver al menu despues de game over
 				gameController.getBotonReiniciar().setOnAction((Event) -> {
 					volverMenuDesdeJuego(primaryStage);
@@ -292,7 +261,13 @@ public class App extends Application {
 	private void volverMenuDesdeJuego(Stage primaryStage) {
 		try {
 			primaryStage.setScene(scene);
-			controller.changeFromLevelToMenuMusic();
+			if (controller.getSonidoB().isSelected()) {
+				controller.changeFromLevelToMenuMusic();
+				controller.getAudio().stop();
+			}else {
+				controller.changeFromLevelToMenuMusic();
+			}
+			
 		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

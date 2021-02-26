@@ -11,7 +11,6 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -56,7 +55,7 @@ public class MainMenuController implements Initializable {
 
 
 	@FXML
-	private Button masB;
+	private Button howPlayB;
 
 	public MainMenuController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/MainMenuView.fxml"));
@@ -106,13 +105,8 @@ public class MainMenuController implements Initializable {
 		
 		sonidoB.setOnAction(event -> {
 			if (sonidoB.isSelected()) {
-				if (audio.isOpen()) {
 					audio.stop();
-				}
-				else {
 					audioLevels.stop();
-				}
-				
 				imagenSonido.setImage(offMusic);
 			} else {
 				if (audio.isOpen()) {
@@ -127,25 +121,17 @@ public class MainMenuController implements Initializable {
 		});
 
 	}
-
-
-
-	@FXML
-	void onMoreB(ActionEvent event) {
-		
-	}
-
-	@FXML
-	void onOptions(ActionEvent event) {
-
-	}
-
 	public OptionController getOptions() {
 		return options;
 	}
 
 	public Clip getAudio() {
 		return audio;
+	}
+	
+
+	public Clip getAudioLevels() {
+		return audioLevels;
 	}
 
 	public InputStream getRuta() {
@@ -183,8 +169,7 @@ public class MainMenuController implements Initializable {
 	public Button getNivelDificilBoton() {
 		return tercerNivelBoton;
 	}
-
-
+	
 	
 	public void changeFromMenuToLevelMusic() {
 		audio.stop();

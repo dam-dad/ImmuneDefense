@@ -14,7 +14,7 @@
    <top>
       <HBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="opciones" fx:id="ajustesB" mnemonicParsing="false" onAction="#onOptions" stylesheets="@../Estilos/MainMenu.css">
+            <Button id="opciones" fx:id="ajustesB" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0">
                      <image>
@@ -49,9 +49,9 @@
                </viewport>
             </ImageView>
             <Button id="botonesPrincipales" fx:id="nuevaPartidaB" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css" text="Nuevo Juego" />
-            <Button fx:id="segundoNIvelBoton" mnemonicParsing="false" text="Nivel medio" />
-            <Button fx:id="tercerNivelBoton" mnemonicParsing="false" text="Nivel difícil" />
-            <Button id="botonesPrincipales" fx:id="masB" mnemonicParsing="false" onAction="#onMoreB" stylesheets="@../Estilos/MainMenu.css" text="Más..." />
+            <Button id="botonesPrincipales" fx:id="segundoNIvelBoton" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css" text="Nivel medio" />
+            <Button id="botonesPrincipales" fx:id="tercerNivelBoton" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css" text="Nivel difícil" />
+            <Button id="botonesPrincipales" fx:id="howPlayB" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css" text="Como Jugar" />
          </children>
       </VBox>
    </center>
