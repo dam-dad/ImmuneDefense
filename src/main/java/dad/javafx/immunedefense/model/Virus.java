@@ -13,28 +13,39 @@ public class Virus extends Sprite {
 	private boolean chocado;
 	private Clip virusDie;
 	private InputStream ruta=getClass().getResourceAsStream("/SoundEffects/VirusDie.wav");
-	
+	private boolean salido;
 	
 	public Virus() {
 		super("/mapImages/Virus Guille1.png");
 		setHealth(3);
 		
 		chocado=false;
+		salido=false;
 	}
 	
 	@Override
 	public void update(double time) {
 		
-		if (getPositionX() > 300 & chocado==false) {
+		if (getPositionX() > 300 & chocado==false & salido==false) {
 			setVelocityY(0);
-			setVelocityX(this.getVelocityX()*1.0005);
+			setVelocityX(this.getVelocityX()*1.001);
+
 		}
-/*
-		if (getPositionY() >= 200) {
-			setVelocityY(0);
-			setVelocityX(10);
+		
+		
+  		if (getPositionY() <= 5) {
+			setVelocityY(this.getVelocityY()*-1);
+		salido=true;
+		
 		}
-		*/
+  		
+  		if (getPositionY() >= 505) {
+			setVelocityY(this.getVelocityY()*-1);
+		salido=true;
+		
+		}
+  		
+		
 		super.update(time);
 	}
 	
@@ -66,15 +77,16 @@ public class Virus extends Sprite {
 	public void choqueTorreta (Turret turret) {
 		
 		
-		setHealth(getHealth() - 1);
-		
+		//setHealth(getHealth() - 1);
+		kill();
 		turret.kill();
 
 		// comprueba si el virus está muerto
+		/*
 		if (getHealth() <= 0) {
 			kill();
 		}		
-		
+		*/
 	}
 	
 	

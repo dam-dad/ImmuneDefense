@@ -71,7 +71,7 @@ public class App extends Application {
 				gameController.getBotonContinuar().setOnAction((Event) -> {
 					try {
 						int nivel= gameController.getNivel();
-						System.out.println(nivel+"NIVELLLLL");
+						
 						gameController = new GameController(nivel+1);
 						//nivel++;
 						primaryStage.setScene(new Scene(gameController.getView()));
@@ -133,6 +133,83 @@ public class App extends Application {
 			}
 		});
 	
+		//nivel dos
+		controller.getNivelMedioBoton().setOnAction(e -> {
+			try {
+				gameController = new GameController(1);
+				mapScene = new Scene(gameController.getView());
+				primaryStage.setScene(mapScene);
+				controller.changeFromMenuToLevelMusic();
+				
+				
+				
+				//volver al menu despues de game over
+				gameController.getBotonReiniciar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+				//avanzar de nivel
+				gameController.getBotonContinuar().setOnAction((Event) -> {
+					try {
+						int nivel= gameController.getNivel();
+						
+						gameController = new GameController(nivel+1);
+						//nivel++;
+						primaryStage.setScene(new Scene(gameController.getView()));
+						controller.changeFromLevelToMenuMusic();
+					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
+								
+				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+				
+			}
+					
+			 catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		
+		
+		//nivel tres
+		controller.getNivelDificilBoton().setOnAction(e -> {
+			try {
+				gameController = new GameController(2);
+				mapScene = new Scene(gameController.getView());
+				primaryStage.setScene(mapScene);
+				controller.changeFromMenuToLevelMusic();
+								
+				
+				//volver al menu despues de game over
+				gameController.getBotonReiniciar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+							
+				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
+					volverMenuDesdeJuego(primaryStage);
+				});
+				
+				
+			}
+					
+			 catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		
+		
+		
+		
+		
+		
 		
 		/**
 		 * Creando iteracciones entre opciones y menú

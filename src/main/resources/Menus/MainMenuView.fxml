@@ -49,6 +49,8 @@
                </viewport>
             </ImageView>
             <Button id="botonesPrincipales" fx:id="nuevaPartidaB" mnemonicParsing="false" stylesheets="@../Estilos/MainMenu.css" text="Nuevo Juego" />
+            <Button fx:id="segundoNIvelBoton" mnemonicParsing="false" text="Nivel medio" />
+            <Button fx:id="tercerNivelBoton" mnemonicParsing="false" text="Nivel difícil" />
             <Button id="botonesPrincipales" fx:id="masB" mnemonicParsing="false" onAction="#onMoreB" stylesheets="@../Estilos/MainMenu.css" text="Más..." />
          </children>
       </VBox>

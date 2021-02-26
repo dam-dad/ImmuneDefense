@@ -71,7 +71,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 40;
+	private int startTime = 120;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -390,12 +390,12 @@ public class GameController extends AnimationTimer implements Initializable {
 		});
 		timeline.play();
 
-		System.out.println(timeSeconds.get());
+		//System.out.println(timeSeconds.get());
 
 		timeSeconds.addListener((obv, ov, nv) -> {
 			if (ov != nv) {
 				etiquetaTiempo.setText("Tiempo -> " + nv);
-				System.out.println(nv);
+				//System.out.println(nv);
 			}
 		});
 
@@ -430,7 +430,11 @@ public class GameController extends AnimationTimer implements Initializable {
 			botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
 
 		}
-		
+
+		// cambia el fondo del boton
+		botonCoordenadasMuro.setStyle("-fx-background-color: #00ff00");
+		botonCoordenadasMuro1.setStyle("-fx-background-color: #00ff00");
+
 		// añadir botones a la lista
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
@@ -513,6 +517,10 @@ public class GameController extends AnimationTimer implements Initializable {
 	
 	public int getNivel() {
 		return nivel;
+	}
+	
+	public Canvas getCanvas() {
+		return canvas;
 	}
 	
 
@@ -620,24 +628,27 @@ public class GameController extends AnimationTimer implements Initializable {
 
 			Random r = new Random();
 
-			int posicionRamdon = r.nextInt(400 - 1) + 1;
+			int posicionRamdon = r.nextInt(350 - 50) + 50;
 			int velocidadRamdon = r.nextInt(80 - 20) + 20;
 
 			Virus corona = new Virus();
 			corona.setPositionX(0);
-			corona.setPositionY(r.nextInt(100 - 1) + 1);
+			corona.setPositionY(posicionRamdon);
+			if(posicionRamdon>175) {
+				corona.setVelocityY(-(r.nextInt(70 - 30) + 30));
+			}
+			else {
+				corona.setVelocityY((r.nextInt(70 - 30) + 30));
+			}
 			corona.setVelocityX(r.nextInt(80 - 20) + 20);
-			corona.setVelocityY(r.nextInt(80 - 20) + 20);
+			
 
 			if (nivel == 1) {
 				corona.setPositionX(0);
 				corona.setPositionY(r.nextInt(100 - 1) + 1);
 			}
 			
-			if (nivel == 2) {
-				corona.setPositionX(0);
-				corona.setPositionY(r.nextInt(100 - 1) + 1);
-			}
+		
 			
 
 			corona.setGame(this);
