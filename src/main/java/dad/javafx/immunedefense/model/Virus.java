@@ -14,6 +14,7 @@ public class Virus extends Sprite {
 	private Clip virusDie;
 	private InputStream ruta=getClass().getResourceAsStream("/SoundEffects/VirusDie.wav");
 	private boolean salido;
+	private int nivel;
 	
 	public Virus() {
 		super("/mapImages/Virus Guille1.png");
@@ -31,21 +32,31 @@ public class Virus extends Sprite {
 			setVelocityX(this.getVelocityX()*1.001);
 
 		}
+		//nivel 2
+		if(getGame().getNivel()==2) {
 		
-		
-  		if (getPositionY() <= 5) {
+  		if (getPositionY() <= 1) {
 			setVelocityY(this.getVelocityY()*-1);
 		salido=true;
 		
 		}
   		
-  		if (getPositionY() >= 505) {
+  		if (getPositionY() >= 515) {
 			setVelocityY(this.getVelocityY()*-1);
 		salido=true;
 		
 		}
-  		
+		}
+		//nivel 1
+			if(getGame().getNivel()==1) {
+			if (getPositionY() >= 301 & getPositionY() <= 304 & chocado==false ) {
+				setVelocityY(0);
+				setVelocityX(30);
+
+			}
+		}
 		
+	
 		super.update(time);
 	}
 	
@@ -87,6 +98,10 @@ public class Virus extends Sprite {
 			kill();
 		}		
 		*/
+	}
+	
+	public void setSalido(boolean b) {
+		salido=b;
 	}
 	
 	

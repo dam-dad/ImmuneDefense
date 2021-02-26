@@ -233,7 +233,7 @@ public class GameController extends AnimationTimer implements Initializable {
 					if (x == (int) boton.localToScene(boton.getBoundsInLocal()).getMinX() - 1
 							& y == (int) boton.localToScene(boton.getBoundsInLocal()).getMinY() - 1) {
 						boton.setVisible(false);
-						System.out.println("HOLAAA");
+						
 					}
 				}
 
@@ -464,10 +464,10 @@ public class GameController extends AnimationTimer implements Initializable {
 		// segun nivel
 		background = new Background();
 		if (nivel == 1) {
-			background.setImage(new Image("/mapImages/pruebafondo.gif"));
+			background.setImage(new Image("/mapImages/mapa1.png"));
 		}
 		if (nivel == 0) {
-			background.setImage(new Image("/mapImages/pruebafondo.gif"));
+			background.setImage(new Image("/mapImages/mapa2.png"));
 		}
 
 		background.setPositionX(0);
@@ -632,6 +632,8 @@ public class GameController extends AnimationTimer implements Initializable {
 			int velocidadRamdon = r.nextInt(80 - 20) + 20;
 
 			Virus corona = new Virus();
+			
+			if (nivel == 2) {
 			corona.setPositionX(0);
 			corona.setPositionY(posicionRamdon);
 			if(posicionRamdon>175) {
@@ -641,11 +643,33 @@ public class GameController extends AnimationTimer implements Initializable {
 				corona.setVelocityY((r.nextInt(70 - 30) + 30));
 			}
 			corona.setVelocityX(r.nextInt(80 - 20) + 20);
-			
+			}
 
 			if (nivel == 1) {
+				int caminoRamdom =(int) (Math.random() * 3) + 1;
+				corona.setSalido(true);
+				System.out.println(caminoRamdom+"numero");
+				if(caminoRamdom==1) {
+				
 				corona.setPositionX(0);
-				corona.setPositionY(r.nextInt(100 - 1) + 1);
+				corona.setPositionY(300);
+				corona.setVelocityY(0);
+				corona.setVelocityX(r.nextInt(80 - 20) + 20);
+				}
+				if(caminoRamdom==3) {
+					
+					corona.setPositionX(390);
+					corona.setPositionY(0);
+					corona.setVelocityY(r.nextInt(60 - 20) + 20);
+					corona.setVelocityX(0);
+					}
+	               if(caminoRamdom==2) {
+					
+					corona.setPositionX(390);
+					corona.setPositionY(510);
+					corona.setVelocityY((r.nextInt(60 - 20) + 20)*-1);
+					corona.setVelocityX(0);
+					}
 			}
 			
 		

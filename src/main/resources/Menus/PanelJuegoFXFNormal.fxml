@@ -58,7 +58,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Button fx:id="botonLugarTorreta1" layoutX="79.0" layoutY="32.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta1" layoutX="81.0" layoutY="83.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta2" layoutX="97.0" layoutY="491.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="55.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta2" layoutX="75.0" layoutY="477.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="55.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,16 +82,16 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonCoordenadasMuro" layoutX="366.0" layoutY="401.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
+            <Button fx:id="botonCoordenadasMuro" layoutX="202.0" layoutY="251.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip></Button>
-            <Button fx:id="botonCoordenadasMuro1" layoutX="366.0" layoutY="27.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
+            <Button fx:id="botonCoordenadasMuro1" layoutX="533.0" layoutY="251.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="158.0" prefWidth="45.0">
                <tooltip>
                   <Tooltip text="Pulsa para ubicar un muro aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta3" layoutX="577.0" layoutY="38.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta3" layoutX="587.0" layoutY="83.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,7 +103,7 @@
                   <Tooltip text="Pulsa para ubicar una torreta aquí" />
                </tooltip>
             </Button>
-            <Button fx:id="botonLugarTorreta4" layoutX="577.0" layoutY="491.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
+            <Button fx:id="botonLugarTorreta4" layoutX="578.0" layoutY="477.0" mnemonicParsing="false" onAction="#obtenerCoordenadas" prefHeight="49.0" prefWidth="62.0">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                      <image>
