@@ -672,13 +672,13 @@ public class GameController extends AnimationTimer implements Initializable {
 					corona.setPositionX(0);
 					corona.setPositionY(150);
 					corona.setVelocityY(0);
-					corona.setVelocityX(r.nextInt(70 - 20) + 20);
+					corona.setVelocityX(r.nextInt(100 - 70) + 70);
 				}
 				if (caminoRamdom == 2) {
 					corona.setPositionX(0);
-					corona.setPositionY(450);
+					corona.setPositionY(445);
 					corona.setVelocityY(0);
-					corona.setVelocityX(r.nextInt(80 - 20) + 20);
+					corona.setVelocityX(r.nextInt(100 - 70) + 70);
 				}
 
 			}
