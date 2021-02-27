@@ -133,7 +133,7 @@ public class App extends Application {
 		});
 
 		// avanzar de nivel
-		gameControllerEasy.getBotonContinuar().setOnAction((Event) -> {
+		gameControllerEasy.getContinuarButton().setOnAction((Event) -> {
 			gameControllerMedium = new GameController(1);
 			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
@@ -152,7 +152,7 @@ public class App extends Application {
 		});
 
 		// avanzar de nivel
-		gameControllerMedium.getBotonContinuar().setOnAction((Event) -> {
+		gameControllerMedium.getContinuarButton().setOnAction((Event) -> {
 			gameControllerHard = new GameController(2);
 			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerHard.getView()));
