@@ -221,7 +221,8 @@
       <AnchorPane fx:id="gameOver" prefHeight="600.0" prefWidth="800.0" visible="false">
          <children>
             <Pane fx:id="backgroundGameOverPane" opacity="0.67" prefHeight="600.0" prefWidth="800.0" />
-            <Button fx:id="botonReiniciar" disable="true" layoutX="336.0" layoutY="250.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="122.0" text="Volver al menu" textAlignment="CENTER" AnchorPane.bottomAnchor="304.0" AnchorPane.leftAnchor="336.0" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="250.0" />
+            <Button fx:id="botonReintentar" disable="true" layoutX="335.0" layoutY="252.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="122.0" text="Reintentar" textAlignment="CENTER" />
+            <Button fx:id="botonReiniciar" disable="true" layoutX="335.0" layoutY="309.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="122.0" text="Volver al menu" textAlignment="CENTER" AnchorPane.bottomAnchor="245.0" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="343.0" AnchorPane.topAnchor="309.0" />
             <ImageView fitHeight="116.0" fitWidth="290.0" layoutX="254.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="300.0">
                <image>
                   <Image url="@../mapImages/gameover.png" />
