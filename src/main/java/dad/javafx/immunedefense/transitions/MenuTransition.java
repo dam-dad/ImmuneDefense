@@ -17,6 +17,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
+/**
+ * 
+ * @author Jose_Juan
+ *	
+ *Esta clase está dirigida a la transición la cual aparece al principio del programa,
+ *la cual está formada por dos transiciones una de FadeIn y otra de FadeOut, para así
+ *conseguir la transición final.
+ */
 public class MenuTransition implements Initializable{
 	
 	@FXML
@@ -29,6 +37,11 @@ public class MenuTransition implements Initializable{
     
     private FadeTransition transitionFadeOut;
     
+    /**
+     * Este es el constructor el cual inicializa el FXML el cual contiene la imagen y 
+     * el pane donde la misma está, además de que es donde se va a realizar la transición.
+     * @throws IOException Lanza esta Exception debido al FXMLLoader.
+     */
 	public MenuTransition() throws IOException {
 		transitionFadeIn = new FadeTransition();
 		transitionFadeOut = new FadeTransition();
@@ -38,9 +51,17 @@ public class MenuTransition implements Initializable{
 		loader.load();
 	}
 	
+	/**
+	 * Este es el método a utilizar en el caso de que se esté utilizando un FXML, el cual se utiliza
+	 * como constructor del FXML, no de la clase, del FXML. Funciona primero configurando las dos transiciones,
+	 * con sus valores pertinentes, le cambiamos el fondo a negro, y se inicializaran las transiciones en otro
+	 * sitio, mediante el método playTransitions().
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//Transición FadeIn Logo
+		/**
+		 */
 		transitionFadeIn.setAutoReverse(true);
 		transitionFadeIn.setCycleCount(1);
 		transitionFadeIn.setDelay(Duration.ZERO);
@@ -65,19 +86,31 @@ public class MenuTransition implements Initializable{
 		root.setStyle("-fx-background-color: #000000;");
 	}
 	
+	/**
+	 * Método para iniciar las transiciones
+	 */
 	public void playTransitions() {
 		transitionFadeIn.play();
 		transitionFadeOut.play();
 	}
 	
+	/**
+	 * @return el Pane el cual actúa como ráiz del FXML, llamado root.
+	 */
 	public BorderPane getRoot() {
 		return root;
 	}
-
+	
+	/**
+	 * @return el ImageView, el cual muestra la imágen que se usa en la transición.
+	 */
 	public ImageView getImage() {
 		return image;
 	}
-
+	
+	/**
+	 * @return la transición de FadeOut, la cual hace desaparecer la imagen
+	 */
 	public FadeTransition getTransitionFadeOut() {
 		return transitionFadeOut;
 	}

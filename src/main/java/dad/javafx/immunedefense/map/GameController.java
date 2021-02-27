@@ -92,6 +92,9 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private AnchorPane gameOver;
+	
+	@FXML
+    private Button botonReintentar;
 
 	@FXML
 	private Pane backgroundGameOverPane;
@@ -477,17 +480,37 @@ public class GameController extends AnimationTimer implements Initializable {
 	public Parent getView() {
 		return view;
 	}
-
+	
+	public Button getBotonReintentar() {
+		return botonReintentar;
+	}
+	
 	public Button getBotonReiniciar() {
 		return botonReiniciar;
 	}
-
-	public Button getBotonContinuar() {
+	
+	public Button getContinuarButton() {
 		return continuarButton;
 	}
 
 	public Button getBotonReiniciarGanar() {
 		return volverMenuButton;
+	}
+	
+	public void setBotonReintentar(Button botonReintentar) {
+		this.botonReintentar = botonReintentar;
+	}
+
+	public void setBotonReiniciar(Button botonReiniciar) {
+		this.botonReiniciar = botonReiniciar;
+	}
+
+	public void setContinuarButton(Button continuarButton) {
+		this.continuarButton = continuarButton;
+	}
+
+	public void setVolverMenuButton(Button volverMenuButton) {
+		this.volverMenuButton = volverMenuButton;
 	}
 
 	public int getNivel() {
@@ -562,10 +585,10 @@ public class GameController extends AnimationTimer implements Initializable {
 				if (base.getHealth() < 1) {
 					timeline.stop();
 					SoundEffects.GameOver();
+					botonReintentar.setDisable(false);
 					botonReiniciar.setVisible(true);
 					botonReiniciar.setDisable(false);
 					gameOver.setVisible(true);
-
 					stop();
 				}
 
