@@ -9,14 +9,14 @@ public class Muro extends Sprite {
 		super("/mapImages/muro.png");
 		setVelocityX(0);
 		setVelocityY(0);
-		setHealth(2);
+		setHealth(3);
 	}
 
 	@Override
 	public void update(double timeDiff) {
 		time += timeDiff;
 		
-	if(time>15 | this.getHealth()<1 ) {
+	if(time>20 | this.getHealth()<1 ) {
 		
 		this.kill();
 		

@@ -51,12 +51,7 @@ public class App extends Application {
 	
 	private GameController gameControllerHard;
 
-	// private GameController gameController1;
-
-	// private GameController gameController2;
-
-	// private int nivel=0;
-
+	
 	public void start(Stage primaryStage) throws Exception {
 		controller = new MainMenuController();
 

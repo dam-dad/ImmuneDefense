@@ -72,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 180;
+	private int startTime = 120;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -601,7 +601,7 @@ public class GameController extends AnimationTimer implements Initializable {
 			Random r = new Random();
 
 			int posicionRamdon = r.nextInt(350 - 50) + 50;
-			int velocidadRamdon = r.nextInt(80 - 20) + 20;
+			//int velocidadRamdon = r.nextInt(80 - 20) + 20;
 
 			Virus corona = new Virus();
 
@@ -625,20 +625,20 @@ public class GameController extends AnimationTimer implements Initializable {
 					corona.setPositionX(0);
 					corona.setPositionY(300);
 					corona.setVelocityY(0);
-					corona.setVelocityX(r.nextInt(80 - 20) + 20);
+					corona.setVelocityX(r.nextInt(70 - 20) + 20);
 				}
 				if (caminoRamdom == 3) {
 
 					corona.setPositionX(370);
 					corona.setPositionY(0);
-					corona.setVelocityY(r.nextInt(60 - 20) + 20);
+					corona.setVelocityY(r.nextInt(50 - 20) + 20);
 					corona.setVelocityX(0);
 				}
 				if (caminoRamdom == 2) {
 
 					corona.setPositionX(370);
 					corona.setPositionY(510);
-					corona.setVelocityY((r.nextInt(60 - 20) + 20) * -1);
+					corona.setVelocityY((r.nextInt(50 - 20) + 20) * -1);
 					corona.setVelocityX(0);
 				}
 			}
@@ -649,7 +649,7 @@ public class GameController extends AnimationTimer implements Initializable {
 					corona.setPositionX(0);
 					corona.setPositionY(150);
 					corona.setVelocityY(0);
-					corona.setVelocityX(r.nextInt(80 - 20) + 20);
+					corona.setVelocityX(r.nextInt(70 - 20) + 20);
 				}
 				if (caminoRamdom == 2) {
 					corona.setPositionX(0);
@@ -722,7 +722,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		Bounds coordenadas = boton.localToScene(boton.getBoundsInLocal());
 
-		// pongo esto por que me rondeo el hijo de la gran puta
+		// pongo esto por que me rondea
 		int posX = (int) coordenadas.getMinX() - 1;
 		int posY = (int) coordenadas.getMinY() - 1;
 		boolean colocar = true;

@@ -29,7 +29,7 @@ public class Virus extends Sprite {
 		
 		if (getPositionX() > 300 & chocado==false & salido==false) {
 			setVelocityY(0);
-			setVelocityX(this.getVelocityX()*1.001);
+			setVelocityX(this.getVelocityX()*1.0001);
 
 		}
 		//nivel 2
@@ -51,7 +51,7 @@ public class Virus extends Sprite {
 			if(getGame().getNivel()==1) {
 			if (getPositionY() >= 301 & getPositionY() <= 304 & chocado==false ) {
 				setVelocityY(0);
-				setVelocityX(30);
+				setVelocityX(25);
 
 			}
 		}
