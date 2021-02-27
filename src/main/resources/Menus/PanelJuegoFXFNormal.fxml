@@ -23,19 +23,47 @@
                   <Button mnemonicParsing="false" onAction="#ColocarTorretaDoble" text="torreta 2 (7)">
                      <tooltip>
                         <Tooltip text="Poner torreta doble " />
-                     </tooltip></Button>
-                  <Button mnemonicParsing="false" onAction="#OnMuroAction" text=" Muro (35)">
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mapImages/Turret2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" onAction="#OnMuroAction" prefHeight="32.0" text=" Muro (35)">
                      <tooltip>
                         <Tooltip text="Poner muro" />
-                     </tooltip></Button>
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mapImages/MuroButton.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button mnemonicParsing="false" onAction="#onColocarTorretaCuadruple" text="Torreta 4 (15)">
                      <tooltip>
                         <Tooltip text="Poner torreta cuadruple" />
-                     </tooltip></Button>
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mapImages/Turret1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button fx:id="botonVida" mnemonicParsing="false" onAction="#onMasUnaVida" text="Vida +1 (50)">
                      <tooltip>
                         <Tooltip text="Empty Tooltip" />
-                     </tooltip></Button>
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mapImages/VidaButton.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
