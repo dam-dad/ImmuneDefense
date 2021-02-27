@@ -95,7 +95,7 @@ private double timeShoot = 0;
 	public void update(double timeDiff) {
 		lifeTime += timeDiff;
 		timeShoot += timeDiff;
-		if (timeShoot > 1.6) {
+		if (timeShoot > 1.4) {
 			if(numberDirections>1) {
 			Bullet bullet = new Bullet();
 			bullet.setTurret(this);
@@ -109,7 +109,7 @@ private double timeShoot = 0;
 			bulletIZQUIERDA.setTurret(this);
 			bulletIZQUIERDA.setPositionX(this.getPositionX() + (this.getWidth() / 2));
 			bulletIZQUIERDA.setPositionY(this.getPositionY() + (this.getHeight() / 2));
-			bulletIZQUIERDA.setVelocityX(-80);
+			bulletIZQUIERDA.setVelocityX(-120);
 			bulletIZQUIERDA.setGame(getGame());
 			}
 			if(numberDirections>3) {
@@ -117,14 +117,14 @@ private double timeShoot = 0;
 			bulletARRIBA.setTurret(this);
 			bulletARRIBA.setPositionX(this.getPositionX() + (this.getWidth() / 2));
 			bulletARRIBA.setPositionY(this.getPositionY() + (this.getHeight() / 2));
-			bulletARRIBA.setVelocityY(-80);
+			bulletARRIBA.setVelocityY(-120);
 			bulletARRIBA.setGame(getGame());
 			
 			Bullet bulletABAJO = new Bullet();
 			bulletABAJO.setTurret(this);
 			bulletABAJO.setPositionX(this.getPositionX() + (this.getWidth() / 2));
 			bulletABAJO.setPositionY(this.getPositionY() + (this.getHeight() / 2));
-			bulletABAJO.setVelocityY(80);
+			bulletABAJO.setVelocityY(120);
 			bulletABAJO.setGame(getGame());
 			}
 			
@@ -133,7 +133,7 @@ private double timeShoot = 0;
 			
 		}
 		
-		if(lifeTime>13) {
+		if(lifeTime>15) {
 			
 			this.kill();
 			

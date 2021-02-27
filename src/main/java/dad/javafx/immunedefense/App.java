@@ -2,31 +2,26 @@ package dad.javafx.immunedefense;
 
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import dad.javafx.immunedefense.mainmenu.HowToPlayMenu;
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import dad.javafx.immunedefense.mainmenu.OptionController;
 import dad.javafx.immunedefense.map.GameController;
+
 import dad.javafx.immunedefense.transitions.MenuTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-/**
- * 
- * @author Christian, Adrian, Guillermo y Jose Juan
- * Esta es la clase controladora principal del juego en general, en donde se realizan distintas tareas como:
- * -Declarar el setOnFinished de la transición del principio, para así transicionar a la escena del menú principal.
- * -Sincronizar todos los controladores desde las transiciones, hasta las del juego en sí.
- * -Declarar setOnAction de botones los cuales quieran cambiar a la escena principal.
- * Entre otras tareas necesarias.
- */
 public class App extends Application {
 	private MainMenuController controller;
 
@@ -55,28 +50,23 @@ public class App extends Application {
 	private GameController gameControllerMedium;
 	
 	private GameController gameControllerHard;
+
 	
-	/**
-	 * @param primaryStage Ventana principal del juego, en donde se producen todos los eventos visuales y no visuales.
-	 */
 	public void start(Stage primaryStage) throws Exception {
 		controller = new MainMenuController();
-		
-		//Controlador de las transiciones del principio
+
 		menuTransition = new MenuTransition();
-		
-		//Transición de aparición del menú de Opciones
+
 		fadeOut = new FadeTransition();
-		
-		//setOnAction del botón de nueva partida, el cual aparece al principio
+		// nueva partida
 		controller.getNuevaPartidaB().setOnAction(e -> {
 
 			gameControllerEasy = new GameController(0);
 			primaryStage.setScene(new Scene(gameControllerEasy.getView()));
 			
+			// volver al menu despues de game over
 			setOnActionEasyLevel(primaryStage);
 			
-			//Comprobación de la elección respecto al audio del usuario y apagando o encendiendo la música dependiendo de su elección.
 			if (controller.getSonidoB().isSelected()) {
 				controller.changeFromMenuToLevelMusic();
 				controller.getAudioLevels().stop();
@@ -85,7 +75,9 @@ public class App extends Application {
 			}
 		});
 
-		//setOnAction dedicado al cambio de escena a las opciones
+		/**
+		 * Creando iteracciones entre opciones y menú
+		 */
 		controller.getAjustesB().setOnAction(e -> {
 			try {
 				optionController = new OptionController();
@@ -95,11 +87,11 @@ public class App extends Application {
 				volverMenuDesdeOpciones(primaryStage);
 
 			} catch (IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
 		
-		//setonAction dedicado al cambio de escena a la pantalla de como jugar
 		controller.getHowPlayB().setOnAction(e ->{
 			try {
 				howToController= new HowToPlayMenu();
@@ -110,13 +102,12 @@ public class App extends Application {
 			}
 		});
 
-		// Scene principal, o menú principal el cuál aparecerá después de la transición de FadeOut
+		// Scene después de FadeOut
 		scene = new Scene(controller.getView(), 800, 600);
 		scene.getRoot().setStyle("-fx-background-color: #000000;");
-		//Añadiendo Estilos a la escena principal
 		scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
-		
-		//scene dedicado a la transición del principio
+		// scene.getRoot().setId("view_transition");
+
 		transitionScene = new Scene(menuTransition.getRoot(), 800, 600);
 
 		primaryStage.setScene(transitionScene);
@@ -124,10 +115,7 @@ public class App extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image("/Images/Logo.png"));
 		primaryStage.show();
-		
 		menuTransition.playTransitions();
-		
-		//setOnFinished() para así cambiar de escena, y realizar la transición al menú principal
 		menuTransition.getTransitionFadeOut().setOnFinished(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -139,140 +127,58 @@ public class App extends Application {
 
 	}
 	
-	/**
-	 * En este método se declaran los setOnAction de los botones los cuales no son placements de torretas o muros, 
-	 * sino que van más con los botones los cuales aparecen al final del juego, en los casos de que hayas perdido o ganado,
-	 * eso sí diferenciando entre botones de un caso u otro.
-	 * @param primaryStage Ventana principal y única del juego
-	 */
 	private void setOnActionEasyLevel(Stage primaryStage) {
-		
-		//setOnAction dedicado a el botón de reintentar el nivel cuando hayas perdido
-		gameControllerEasy.getBotonReintentar().setOnAction((Event) -> {
-			Button[] buttons = cloneButtonsGameController(gameControllerEasy.getNivel());
-			gameControllerEasy = new GameController(0);
-			gameControllerEasy.setBotonReintentar(buttons[0]);
-			gameControllerEasy.setBotonReintentar(buttons[1]);
-			gameControllerEasy.setBotonReintentar(buttons[2]);
-			gameControllerEasy.setBotonReintentar(buttons[3]);
-			primaryStage.getScene().setRoot(gameControllerEasy.getView());
-		});
-		
-		//setOnAction dedicado a el botón de volverAlMenú que aparece cuando has perdido
 		gameControllerEasy.getBotonReiniciar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
 
-		//setOnAction dedicado a el botón Continuar el cual aparece si ganas el juego.
-		gameControllerEasy.getContinuarButton().setOnAction((Event) -> {
+		// avanzar de nivel
+		gameControllerEasy.getBotonContinuar().setOnAction((Event) -> {
 			gameControllerMedium = new GameController(1);
+			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
 			setOnActionMediumLevel(primaryStage);
 			controller.changeFromLevelToMenuMusic();
 		});
-		
-		//setOnActiopn dedicado a el botón volverAlMenú que aparece cuando has ganado
+
 		gameControllerEasy.getBotonReiniciarGanar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
 	}
-
-	/**
-	 * En este caso hace el mismo trabajo que el método setOnActionEasyLevel, pero ahora trabajando con el nivel de dificultad Intermedia.
-	 * @param primaryStage Ventana Principal y única del juego
-	 */
+	
 	private void setOnActionMediumLevel(Stage primaryStage) {
-		//setOnAction dedicado a el botón de reintentar el nivel cuando hayas perdido
-		gameControllerMedium.getBotonReintentar().setOnAction((Event) -> {
-			Button[] buttons = cloneButtonsGameController(gameControllerMedium.getNivel());
-			gameControllerMedium = new GameController(1);
-			gameControllerMedium.setBotonReintentar(buttons[0]);
-			gameControllerMedium.setBotonReintentar(buttons[1]);
-			gameControllerMedium.setBotonReintentar(buttons[2]);
-			gameControllerMedium.setBotonReintentar(buttons[3]);
-			primaryStage.getScene().setRoot(gameControllerMedium.getView());
-		});
-		
-		//setOnAction dedicado a el botón de volverAlMenú que aparece cuando has perdido
 		gameControllerMedium.getBotonReiniciar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
-		
-		//setOnAction dedicado a el botón Continuar el cual aparece si ganas el juego.
-		gameControllerMedium.getContinuarButton().setOnAction((Event) -> {
+
+		// avanzar de nivel
+		gameControllerMedium.getBotonContinuar().setOnAction((Event) -> {
 			gameControllerHard = new GameController(2);
+			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerHard.getView()));
 			
 			setOnActionHardLevel(primaryStage);
 			
 			controller.changeFromLevelToMenuMusic();
 		});
-		
-		//setOnActiopn dedicado a el botón volverAlMenú que aparece cuando has ganado
+
 		gameControllerMedium.getBotonReiniciarGanar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
 	}
 	
-	/**
-	 * En este caso hace el mismo trabajo que los 2 anteriores métodos (seOnActionMediumLevel y setOnActionEasyLevel), pero trabajando con el nivel más difícil.
-	 * @param primaryStage Ventana Principal y única del juego
-	 */
-	public void setOnActionHardLevel(Stage primaryStage) {
-		//setOnAction dedicado a el botón de reintentar el nivel cuando hayas perdido
-		gameControllerHard.getBotonReintentar().setOnAction((Event) -> {
-			Button[] buttons = cloneButtonsGameController(gameControllerHard.getNivel());
-			gameControllerHard = new GameController(2);
-			gameControllerHard.setBotonReintentar(buttons[0]);
-			gameControllerHard.setBotonReintentar(buttons[1]);
-			gameControllerHard.setBotonReintentar(buttons[3]);
-			primaryStage.getScene().setRoot(gameControllerHard.getView());
-		});
-		
-		//setOnAction dedicado a el botón de volverAlMenú que aparece cuando has perdido
+	private void setOnActionHardLevel(Stage primaryStage) {
 		gameControllerHard.getBotonReiniciar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
-		
-		//setOnActiopn dedicado a el botón volverAlMenú que aparece cuando has ganado
+					
 		gameControllerHard.getBotonReiniciarGanar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
 	}
-	
-	private Button[] cloneButtonsGameController(int nivel) {
-		Button[] buttons = new Button[4];
-		switch (nivel) {
-		
-		case 0:
-			buttons[0] = gameControllerEasy.getBotonReintentar();
-			buttons[1] = gameControllerEasy.getBotonReiniciar();
-			buttons[2] = gameControllerEasy.getContinuarButton();
-			buttons[3] = gameControllerEasy.getBotonReiniciarGanar();
-		break;
-		
-		case 1:
-			buttons[0] = gameControllerMedium.getBotonReintentar();
-			buttons[1] = gameControllerMedium.getBotonReiniciar();
-			buttons[2] = gameControllerMedium.getContinuarButton();
-			buttons[3] = gameControllerMedium.getBotonReiniciarGanar();
-		break;
-		
-		case 2:
-			buttons[0] = gameControllerHard.getBotonReintentar();
-			buttons[1] = gameControllerHard.getBotonReiniciar();
-			buttons[2] = null;
-			buttons[3] = gameControllerHard.getBotonReiniciarGanar();
-		break;
-		}
-		return buttons;
-	}
-	
-	/**
-	 * Este método es el usado para configurar la transición la cual ocurre después del cambio de Scene, entre la transición del principio y el menú, respectivamente.
-	 * Además se le añaden los estilos finales a la Scene del menú.
-	 */
-	private void transition() {	
+
+	private void transition() {
+
 		fadeOut.setAutoReverse(true);
 		fadeOut.setCycleCount(1);
 		fadeOut.setDelay(Duration.seconds(1));
@@ -285,11 +191,7 @@ public class App extends Application {
 		fadeOut.play();
 		scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
 	}
-	
-	/**
-	 * Método para volver al menú principal desde el menú de opciones.
-	 * @param primaryStage Ventana principal y única de este juego.
-	 */
+
 	private void volverMenuDesdeOpciones(Stage primaryStage) {
 
 		optionController.getBackOption().setOnAction((Event) -> {
@@ -298,11 +200,7 @@ public class App extends Application {
 
 		});
 	}
-	
-	/**
-	 * Método para volver al menú principal desde el juego en sí.
-	 * @param primaryStage Ventana principal y única de este juego.
-	 */
+
 	private void volverMenuDesdeJuego(Stage primaryStage) {
 		primaryStage.setScene(scene);
 		if (controller.getSonidoB().isSelected()) {
@@ -312,11 +210,7 @@ public class App extends Application {
 			controller.changeFromLevelToMenuMusic();
 		}
 	}
-	
-	/**
-	 * Método principal para el lanzamiento del juego en sí.
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		launch(args);
 	}
