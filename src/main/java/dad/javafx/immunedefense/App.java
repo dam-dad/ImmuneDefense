@@ -75,38 +75,6 @@ public class App extends Application {
 			}
 		});
 
-		// nivel dos
-		controller.getNivelMedioBoton().setOnAction(e -> {
-			gameControllerMedium = new GameController(1);
-			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
-			// volver al menu despues de game over
-			
-			setOnActionMediumLevel(primaryStage);
-			
-			if (controller.getSonidoB().isSelected()) {
-				controller.changeFromMenuToLevelMusic();
-				controller.getAudioLevels().stop();
-			} else {
-				controller.changeFromMenuToLevelMusic();
-			}
-
-		});
-
-		// nivel tres
-		controller.getNivelDificilBoton().setOnAction(e -> {
-			gameControllerHard = new GameController(2);
-			primaryStage.setScene(new Scene(gameControllerHard.getView()));
-			
-			//volver al menu despues de game over
-			
-			if (controller.getSonidoB().isSelected()) {
-				controller.changeFromMenuToLevelMusic();
-				controller.getAudioLevels().stop();
-			} else {
-				controller.changeFromMenuToLevelMusic();
-			}
-		});
-
 		/**
 		 * Creando iteracciones entre opciones y menú
 		 */
@@ -123,12 +91,6 @@ public class App extends Application {
 				e1.printStackTrace();
 			}
 		});
-		/*
-		 * optionController.getBackOption().setOnAction(e -> { try { controller = new
-		 * MainMenuController(); scene = new Scene(controller.getView());
-		 * primaryStage.setScene(scene); } catch (IOException e1) { // TODO
-		 * Auto-generated catch block e1.printStackTrace(); } });
-		 */
 
 		// Scene después de FadeOut
 		scene = new Scene(controller.getView(), 800, 600);

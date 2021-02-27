@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="tituloL" alignment="CENTER" text="Como Jugar" textAlignment="CENTER">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="howB" mnemonicParsing="false" onAction="#onHow" prefWidth="139.0" text="Como se Juega" />
+            <Button fx:id="baseB" mnemonicParsing="false" onAction="#onBase" prefWidth="139.0" text="Base" />
+            <Button fx:id="turretB" mnemonicParsing="false" onAction="#onTurret" prefWidth="139.0" text="Torretas" />
+            <Button fx:id="wallB" mnemonicParsing="false" onAction="#onWall" prefWidth="139.0" text="Muros" />
+            <Button fx:id="virusB" mnemonicParsing="false" onAction="#onVirusB" prefWidth="139.0" text="Virus" />
+            <Button fx:id="positionB" mnemonicParsing="false" onAction="#onPosition" prefWidth="139.0" text="Posición de las torretas" />
+            <Button fx:id="winB" mnemonicParsing="false" onAction="#onWin" prefWidth="139.0" text="Como ganar" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="imgIcon" />
+            <TextArea fx:id="desText" editable="false" />
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox prefHeight="60.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

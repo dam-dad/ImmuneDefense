@@ -72,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 4;
+	private int startTime = 180;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -184,8 +184,6 @@ public class GameController extends AnimationTimer implements Initializable {
 				for (Button boton : botonesTorretas) {
 
 					// comprobar el redondeo
-					// System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX());
-					// System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinY());
 					if (x == (int) boton.localToScene(boton.getBoundsInLocal()).getMinX() - 1
 							& y == (int) boton.localToScene(boton.getBoundsInLocal()).getMinY() - 1) {
 						boton.setVisible(false);
@@ -218,9 +216,6 @@ public class GameController extends AnimationTimer implements Initializable {
 			}
 			if (colocar == true) {
 				muro.setGame(this);
-				// botonCoordenadasMuro.setVisible(false);
-				// botonCoordenadasMuro.setDisable(true);
-
 				moneda.setMoneda(moneda.getmoneda() - 35);
 				// hacer invisible el placement
 				for (Button boton : botonesMuros) {
@@ -296,8 +291,6 @@ public class GameController extends AnimationTimer implements Initializable {
 				for (Button boton : botonesTorretas) {
 
 					// comprobar el redondeo
-					// System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinX());
-					// System.out.println((int)boton.localToScene(boton.getBoundsInLocal()).getMinY());
 					if (x == (int) boton.localToScene(boton.getBoundsInLocal()).getMinX() - 1
 							& y == (int) boton.localToScene(boton.getBoundsInLocal()).getMinY() - 1) {
 						boton.setVisible(false);
@@ -385,6 +378,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		timeline.setCycleCount(1);
 		timeline.setOnFinished(e -> {
+			SoundEffects.Win();
 			youWinPane.setVisible(true);
 			System.out.println("La animación terminó");
 			stop();
