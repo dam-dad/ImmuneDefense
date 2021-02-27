@@ -47,13 +47,6 @@ public class MainMenuController implements Initializable {
 	@FXML
 	private Button nuevaPartidaB;
 	
-    @FXML
-    private Button segundoNIvelBoton;
-
-    @FXML
-    private Button tercerNivelBoton;
-
-
 	@FXML
 	private Button howPlayB;
 
@@ -149,6 +142,11 @@ public class MainMenuController implements Initializable {
 	public Button getAjustesB() {
 		return ajustesB;
 	}
+	
+
+	public Button getHowPlayB() {
+		return howPlayB;
+	}
 
 	public ToggleButton getSonidoB() {
 		return sonidoB;
@@ -161,15 +159,6 @@ public class MainMenuController implements Initializable {
 	public Button getNuevaPartidaB() {
 		return nuevaPartidaB;
 	}
-
-	public Button getNivelMedioBoton() {
-		return segundoNIvelBoton;
-	}
-	
-	public Button getNivelDificilBoton() {
-		return tercerNivelBoton;
-	}
-	
 	
 	public void changeFromMenuToLevelMusic() {
 		audio.stop();

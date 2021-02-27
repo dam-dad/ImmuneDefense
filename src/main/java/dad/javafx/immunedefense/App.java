@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import dad.javafx.immunedefense.mainmenu.HowToPlayMenu;
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import dad.javafx.immunedefense.mainmenu.OptionController;
 import dad.javafx.immunedefense.map.GameController;
@@ -25,6 +26,8 @@ public class App extends Application {
 	private MainMenuController controller;
 
 	private OptionController optionController;
+	
+	private HowToPlayMenu howToController;
 
 	private MenuTransition menuTransition;
 
@@ -39,6 +42,8 @@ public class App extends Application {
 	private Scene mapScene;
 
 	private Scene optionScene;
+	
+	private Scene howToScene;
 	
 	private GameController gameControllerEasy;
 	
@@ -89,6 +94,16 @@ public class App extends Application {
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			}
+		});
+		
+		controller.getHowPlayB().setOnAction(e ->{
+			try {
+				howToController= new HowToPlayMenu();
+				howToScene= new Scene(howToController.getView());
+				primaryStage.setScene(howToScene);
+			}catch(IOException er) {
+				er.printStackTrace();
 			}
 		});
 
