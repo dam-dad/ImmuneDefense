@@ -46,6 +46,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	// que nivel
 
+	FXMLLoader loader;
 	private int nivel;
 
 	// botones nivel facil
@@ -71,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 120;
+	private int startTime = 4;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -123,12 +124,11 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private Button botonCoordenadasMuro1;
-	
-	//Boton mas vida
-	
+
+	// Boton mas vida
+
 	@FXML
 	private Button botonVida;
-	
 
 	// YouWinPane
 
@@ -143,8 +143,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private Button volverMenuButton;
-	
-		
+
 	// selector torreta-muro
 	boolean esMuro;
 
@@ -233,7 +232,7 @@ public class GameController extends AnimationTimer implements Initializable {
 					if (x == (int) boton.localToScene(boton.getBoundsInLocal()).getMinX() - 1
 							& y == (int) boton.localToScene(boton.getBoundsInLocal()).getMinY() - 1) {
 						boton.setVisible(false);
-						
+
 					}
 				}
 
@@ -268,7 +267,7 @@ public class GameController extends AnimationTimer implements Initializable {
 		// x=event.getSceneX();
 
 		// y=event.getSceneY();
-	
+
 	}
 
 	@FXML
@@ -314,56 +313,63 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	void onMasUnaVida(ActionEvent event) {
-		if (moneda.getmoneda() > 50 & base.getHealth() <4) {
-			
+		if (moneda.getmoneda() > 50 & base.getHealth() < 4) {
+
 			base.setHealth(base.getHealth() + 1);
 			moneda.setMoneda(moneda.getmoneda() - 50);
 			ponerImagenVida();
-			
-			if(base.getHealth()==4) {
-								
+
+			if (base.getHealth() == 4) {
+
 				botonVida.setDisable(true);
 			}
-			
-			
+
 		}
 	}
 
-	public GameController(int level) throws IOException {
+	public GameController(int level) {
 		this.nivel = level;
-		//this.nivel = 0;
-		// nivel que ya tenemos hecho el chungo
-		if (nivel == 2) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
-			loader.setController(this);
-			loader.load();
-		
+		// this.nivel = 0;
+		try {
+			switch (nivel) {
+			// nivel facil
+			case 0:
+				loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFacil.fxml"));
+				loader.setController(this);
+				loader.load();
+				break;
 
-			botonLugarTorreta5.setVisible(false);
-			botonLugarTorreta5.setDisable(true);
-			botonLugarTorreta6.setVisible(false);
-			botonLugarTorreta6.setDisable(true);
-			botonLugarTorreta7.setVisible(false);
-			botonLugarTorreta7.setDisable(true);
-		}
-		// nivel facil
-		if (nivel == 0) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFacil.fxml"));
-			loader.setController(this);
-			loader.load();
-		}
+			// nivel normal
+			case 1:
+				loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFNormal.fxml"));
+				loader.setController(this);
+				loader.load();
 
-		// nivel normal
-		if (nivel == 1) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFXFNormal.fxml"));
-			loader.setController(this);
-			loader.load();
-			botonLugarTorreta5.setVisible(false);
-			botonLugarTorreta5.setDisable(true);
-			botonLugarTorreta6.setVisible(false);
-			botonLugarTorreta6.setDisable(true);
-			botonLugarTorreta7.setVisible(false);
-			botonLugarTorreta7.setDisable(true);
+				botonLugarTorreta5.setVisible(false);
+				botonLugarTorreta5.setDisable(true);
+				botonLugarTorreta6.setVisible(false);
+				botonLugarTorreta6.setDisable(true);
+				botonLugarTorreta7.setVisible(false);
+				botonLugarTorreta7.setDisable(true);
+				break;
+
+			// nivel que ya tenemos hecho el chungo
+			case 2:
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
+				loader.setController(this);
+				loader.load();
+
+				botonLugarTorreta5.setVisible(false);
+				botonLugarTorreta5.setDisable(true);
+				botonLugarTorreta6.setVisible(false);
+				botonLugarTorreta6.setDisable(true);
+				botonLugarTorreta7.setVisible(false);
+				botonLugarTorreta7.setDisable(true);
+				break;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
@@ -385,12 +391,12 @@ public class GameController extends AnimationTimer implements Initializable {
 		});
 		timeline.play();
 
-		//System.out.println(timeSeconds.get());
+		// System.out.println(timeSeconds.get());
 
 		timeSeconds.addListener((obv, ov, nv) -> {
 			if (ov != nv) {
 				etiquetaTiempo.setText("Tiempo -> " + nv);
-				//System.out.println(nv);
+				// System.out.println(nv);
 			}
 		});
 
@@ -406,13 +412,11 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		vida.setImage(new Image("/mapImages/3vidas.png"));
 
-	
 		// quitar los bordes del boton
 		botonLugarTorreta1.setPadding(new Insets(-1, -1, -1, -1));
 		botonLugarTorreta2.setPadding(new Insets(-1, -1, -1, -1));
 		botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
 		botonLugarTorreta4.setPadding(new Insets(-1, -1, -1, -1));
-
 
 		if (nivel == 0) {
 			botonLugarTorreta3.setPadding(new Insets(-1, -1, -1, -1));
@@ -423,10 +427,6 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		}
 
-		
-			
-		
-
 		// añadir botones a la lista
 		botonesTorretas.add(botonLugarTorreta1);
 		botonesTorretas.add(botonLugarTorreta2);
@@ -434,17 +434,14 @@ public class GameController extends AnimationTimer implements Initializable {
 		botonesTorretas.add(botonLugarTorreta4);
 
 		if (nivel == 0) {
-		
+
 			botonesTorretas.add(botonLugarTorreta5);
 			botonesTorretas.add(botonLugarTorreta6);
 			botonesTorretas.add(botonLugarTorreta7);
 		}
 
-		
-			botonesTorretas.add(botonLugarTorreta3);
-			botonesTorretas.add(botonLugarTorreta4);
-
-		
+		botonesTorretas.add(botonLugarTorreta3);
+		botonesTorretas.add(botonLugarTorreta4);
 
 		botonesMuros.add(botonCoordenadasMuro);
 		botonesMuros.add(botonCoordenadasMuro1);
@@ -468,12 +465,10 @@ public class GameController extends AnimationTimer implements Initializable {
 		background.setWidth(canvas.getWidth());
 		background.setHeight(canvas.getHeight());
 		background.setGame(this);
-	
 
 		base = new Base();
 		base.setGame(this);
 
-	
 	}
 
 	public <T extends Sprite> List<T> getSprites(Class<T> type) {
@@ -492,21 +487,22 @@ public class GameController extends AnimationTimer implements Initializable {
 	public Button getBotonReiniciar() {
 		return botonReiniciar;
 	}
+
 	public Button getBotonContinuar() {
 		return continuarButton;
 	}
+
 	public Button getBotonReiniciarGanar() {
 		return volverMenuButton;
 	}
-	
+
 	public int getNivel() {
 		return nivel;
 	}
-	
+
 	public Canvas getCanvas() {
 		return canvas;
 	}
-	
 
 	@Override
 	public void handle(long now) {
@@ -560,15 +556,15 @@ public class GameController extends AnimationTimer implements Initializable {
 			}
 			// base
 			if (base.intersects(virus)) {
-				
+
 				base.setHealth(base.getHealth() - 1);
 				virus.kill();
 				ponerImagenVida();
-				
-				if(base.getHealth()==3) {
-				botonVida.setDisable(false);
+
+				if (base.getHealth() == 3) {
+					botonVida.setDisable(false);
 				}
-				
+
 				if (base.getHealth() < 1) {
 					timeline.stop();
 					SoundEffects.GameOver();
@@ -583,7 +579,7 @@ public class GameController extends AnimationTimer implements Initializable {
 
 		}
 
-		// metodo para que dejen de renderizar las balas cuando salgan 
+		// metodo para que dejen de renderizar las balas cuando salgan
 		for (Bullet bullet : safeBullets) {
 
 			if (!bullet.intersects(background)) {
@@ -604,7 +600,6 @@ public class GameController extends AnimationTimer implements Initializable {
 		safeSprites.stream().forEach(s -> s.update(timeDiff));
 		safeSprites.stream().forEach(s -> s.render(gc));
 
-		
 		// virus saliendo todo el rato
 		timeVirus += timeDiff;
 		if (timeVirus > 6) {
@@ -615,63 +610,61 @@ public class GameController extends AnimationTimer implements Initializable {
 			int velocidadRamdon = r.nextInt(80 - 20) + 20;
 
 			Virus corona = new Virus();
-			
+
 			if (nivel == 2) {
-			corona.setPositionX(0);
-			corona.setPositionY(posicionRamdon);
-			if(posicionRamdon>175) {
-				corona.setVelocityY(-(r.nextInt(70 - 30) + 30));
-			}
-			else {
-				corona.setVelocityY((r.nextInt(70 - 30) + 30));
-			}
-			corona.setVelocityX(r.nextInt(80 - 20) + 20);
+				corona.setPositionX(0);
+				corona.setPositionY(posicionRamdon);
+				if (posicionRamdon > 175) {
+					corona.setVelocityY(-(r.nextInt(70 - 30) + 30));
+				} else {
+					corona.setVelocityY((r.nextInt(70 - 30) + 30));
+				}
+				corona.setVelocityX(r.nextInt(80 - 20) + 20);
 			}
 
 			if (nivel == 1) {
-				int caminoRamdom =(int) (Math.random() * 3) + 1;
+				int caminoRamdom = (int) (Math.random() * 3) + 1;
 				corona.setSalido(true);
-				
-				if(caminoRamdom==1) {
-				
-				corona.setPositionX(0);
-				corona.setPositionY(300);
-				corona.setVelocityY(0);
-				corona.setVelocityX(r.nextInt(80 - 20) + 20);
+
+				if (caminoRamdom == 1) {
+
+					corona.setPositionX(0);
+					corona.setPositionY(300);
+					corona.setVelocityY(0);
+					corona.setVelocityX(r.nextInt(80 - 20) + 20);
 				}
-				if(caminoRamdom==3) {
-					
+				if (caminoRamdom == 3) {
+
 					corona.setPositionX(370);
 					corona.setPositionY(0);
 					corona.setVelocityY(r.nextInt(60 - 20) + 20);
 					corona.setVelocityX(0);
-					}
-	               if(caminoRamdom==2) {
-					
+				}
+				if (caminoRamdom == 2) {
+
 					corona.setPositionX(370);
 					corona.setPositionY(510);
-					corona.setVelocityY((r.nextInt(60 - 20) + 20)*-1);
+					corona.setVelocityY((r.nextInt(60 - 20) + 20) * -1);
 					corona.setVelocityX(0);
-					}
-			}
-			
-			if (nivel == 0) {
-				int caminoRamdom =(int) (Math.random() * 2) + 1;
-				if(caminoRamdom==1) {
-				corona.setPositionX(0);
-				corona.setPositionY(150);
-				corona.setVelocityY(0);
-				corona.setVelocityX(r.nextInt(80 - 20) + 20);
 				}
-				if(caminoRamdom==2) {
+			}
+
+			if (nivel == 0) {
+				int caminoRamdom = (int) (Math.random() * 2) + 1;
+				if (caminoRamdom == 1) {
+					corona.setPositionX(0);
+					corona.setPositionY(150);
+					corona.setVelocityY(0);
+					corona.setVelocityX(r.nextInt(80 - 20) + 20);
+				}
+				if (caminoRamdom == 2) {
 					corona.setPositionX(0);
 					corona.setPositionY(450);
 					corona.setVelocityY(0);
 					corona.setVelocityX(r.nextInt(80 - 20) + 20);
-					}
-				
 				}
-			
+
+			}
 
 			corona.setGame(this);
 			timeVirus = 0.0;
@@ -756,36 +749,33 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	}
 
-
 //cambiar la imagen de la vida
-public void ponerImagenVida() {
-	if (base.getHealth() == 4) {
-		
-		vida.setImage(new Image("/mapImages/vida2.png"));
-		
-	}
-	
-	if (base.getHealth() == 3) {
-		
-		vida.setImage(new Image("/mapImages/3vidas.png"));
-		
-	}
-	
-	if (base.getHealth() == 2) {
-		vida.setImage(new Image("/mapImages/2vidas.png"));
-	}
-	
-	if (base.getHealth() == 1) {
-		
-		vida.setImage(new Image("/mapImages/1vida.png"));
-	}
-if (base.getHealth() == 0) {
-		
-		vida.setImage(new Image("/mapImages/0vidas.png"));
+	public void ponerImagenVida() {
+		if (base.getHealth() == 4) {
+
+			vida.setImage(new Image("/mapImages/vida2.png"));
+
+		}
+
+		if (base.getHealth() == 3) {
+
+			vida.setImage(new Image("/mapImages/3vidas.png"));
+
+		}
+
+		if (base.getHealth() == 2) {
+			vida.setImage(new Image("/mapImages/2vidas.png"));
+		}
+
+		if (base.getHealth() == 1) {
+
+			vida.setImage(new Image("/mapImages/1vida.png"));
+		}
+		if (base.getHealth() == 0) {
+
+			vida.setImage(new Image("/mapImages/0vidas.png"));
+		}
+
 	}
 
 }
-
-}
-
-

@@ -23,163 +23,90 @@ import javafx.util.Duration;
 
 public class App extends Application {
 	private MainMenuController controller;
-	
+
 	private OptionController optionController;
-	
+
 	private MenuTransition menuTransition;
-	
+
 	private FadeTransition fadeOut;
-	
+
 	private Scene scene;
-	
+
 	private Scene menuScene;
-	
+
 	private Scene transitionScene;
-	//mapa
+	// mapa
 	private Scene mapScene;
-	
+
 	private Scene optionScene;
 	
-	private GameController gameController;
+	private GameController gameControllerEasy;
 	
-	//private GameController gameController1;
+	private GameController gameControllerMedium;
 	
-	//private GameController gameController2;
-	
-	//private int nivel=0;
+	private GameController gameControllerHard;
 
-	
+	// private GameController gameController1;
+
+	// private GameController gameController2;
+
+	// private int nivel=0;
+
 	public void start(Stage primaryStage) throws Exception {
-		controller=new MainMenuController();
-		
+		controller = new MainMenuController();
+
 		menuTransition = new MenuTransition();
-		
+
 		fadeOut = new FadeTransition();
-		//nueva partida
+		// nueva partida
 		controller.getNuevaPartidaB().setOnAction(e -> {
-			try {
-				gameController = new GameController(0);
-				mapScene = new Scene(gameController.getView());
-				primaryStage.setScene(mapScene);
-				if (controller.getSonidoB().isSelected()) {
-					controller.changeFromMenuToLevelMusic();
-					controller.getAudioLevels().stop();
-				}else {
-					controller.changeFromMenuToLevelMusic();
-				}	
-				//volver al menu despues de game over
-				gameController.getBotonReiniciar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-				//avanzar de nivel
-				gameController.getBotonContinuar().setOnAction((Event) -> {
-					try {
-						int nivel= gameController.getNivel();
-						
-						gameController = new GameController(nivel+1);
-						//nivel++;
-						primaryStage.setScene(new Scene(gameController.getView()));
-						controller.changeFromLevelToMenuMusic();	
-					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				});
-								
-				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});	
-				
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+
+			gameControllerEasy = new GameController(0);
+			primaryStage.setScene(new Scene(gameControllerEasy.getView()));
+			
+			// volver al menu despues de game over
+			setOnActionEasyLevel(primaryStage);
+			
+			if (controller.getSonidoB().isSelected()) {
+				controller.changeFromMenuToLevelMusic();
+				controller.getAudioLevels().stop();
+			} else {
+				controller.changeFromMenuToLevelMusic();
 			}
 		});
-	
-		//nivel dos
+
+		// nivel dos
 		controller.getNivelMedioBoton().setOnAction(e -> {
-			try {
-				gameController = new GameController(1);
-				mapScene = new Scene(gameController.getView());
-				primaryStage.setScene(mapScene);
-				if (controller.getSonidoB().isSelected()) {
-					controller.changeFromMenuToLevelMusic();
-					controller.getAudioLevels().stop();
-				}else {
-					controller.changeFromMenuToLevelMusic();
-				}
-				//volver al menu despues de game over
-				gameController.getBotonReiniciar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-				//avanzar de nivel
-				gameController.getBotonContinuar().setOnAction((Event) -> {
-					try {
-						int nivel= gameController.getNivel();
-						
-						gameController = new GameController(nivel+1);
-						//nivel++;
-						primaryStage.setScene(new Scene(gameController.getView()));
-						controller.changeFromLevelToMenuMusic();
-					} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				});
-								
-				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-				
+			gameControllerMedium = new GameController(1);
+			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
+			// volver al menu despues de game over
+			
+			setOnActionMediumLevel(primaryStage);
+			
+			if (controller.getSonidoB().isSelected()) {
+				controller.changeFromMenuToLevelMusic();
+				controller.getAudioLevels().stop();
+			} else {
+				controller.changeFromMenuToLevelMusic();
 			}
-					
-			 catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+
 		});
-		
-		
-		//nivel tres
+
+		// nivel tres
 		controller.getNivelDificilBoton().setOnAction(e -> {
-			try {
-				gameController = new GameController(2);
-				mapScene = new Scene(gameController.getView());
-				primaryStage.setScene(mapScene);
-				if (controller.getSonidoB().isSelected()) {
-					controller.changeFromMenuToLevelMusic();
-					controller.getAudioLevels().stop();
-				}else {
-					controller.changeFromMenuToLevelMusic();
-				}				
-				//volver al menu despues de game over
-				gameController.getBotonReiniciar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-							
-				gameController.getBotonReiniciarGanar().setOnAction((Event) -> {
-					volverMenuDesdeJuego(primaryStage);
-				});
-				
-				
-			}
-					
-			 catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			gameControllerHard = new GameController(2);
+			primaryStage.setScene(new Scene(gameControllerHard.getView()));
+			
+			//volver al menu despues de game over
+			
+			if (controller.getSonidoB().isSelected()) {
+				controller.changeFromMenuToLevelMusic();
+				controller.getAudioLevels().stop();
+			} else {
+				controller.changeFromMenuToLevelMusic();
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
+
 		/**
 		 * Creando iteracciones entre opciones y menú
 		 */
@@ -188,38 +115,33 @@ public class App extends Application {
 				optionController = new OptionController();
 				optionScene = new Scene(optionController.getView());
 				primaryStage.setScene(optionScene);
-				
+
 				volverMenuDesdeOpciones(primaryStage);
-				
+
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
 		/*
-		optionController.getBackOption().setOnAction(e -> {
-			try {
-				controller = new MainMenuController();
-				scene = new Scene(controller.getView());
-				primaryStage.setScene(scene);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});*/
-		
-		//Scene después de FadeOut
-		scene=new Scene(controller.getView(),800,600);
+		 * optionController.getBackOption().setOnAction(e -> { try { controller = new
+		 * MainMenuController(); scene = new Scene(controller.getView());
+		 * primaryStage.setScene(scene); } catch (IOException e1) { // TODO
+		 * Auto-generated catch block e1.printStackTrace(); } });
+		 */
+
+		// Scene después de FadeOut
+		scene = new Scene(controller.getView(), 800, 600);
 		scene.getRoot().setStyle("-fx-background-color: #000000;");
 		scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
-		//scene.getRoot().setId("view_transition");
-		
-		transitionScene = new Scene(menuTransition.getRoot(),800,600);
-		
+		// scene.getRoot().setId("view_transition");
+
+		transitionScene = new Scene(menuTransition.getRoot(), 800, 600);
+
 		primaryStage.setScene(transitionScene);
 		primaryStage.setTitle("Immune Defense");
 		primaryStage.setResizable(false);
-		primaryStage.getIcons().add(new Image ("/Images/Logo.png"));
+		primaryStage.getIcons().add(new Image("/Images/Logo.png"));
 		primaryStage.show();
 		menuTransition.playTransitions();
 		menuTransition.getTransitionFadeOut().setOnFinished(new EventHandler<ActionEvent>() {
@@ -230,11 +152,61 @@ public class App extends Application {
 				transition();
 			}
 		});
-		
+
+	}
+	
+	private void setOnActionEasyLevel(Stage primaryStage) {
+		gameControllerEasy.getBotonReiniciar().setOnAction((Event) -> {
+			volverMenuDesdeJuego(primaryStage);
+		});
+
+		// avanzar de nivel
+		gameControllerEasy.getBotonContinuar().setOnAction((Event) -> {
+			gameControllerMedium = new GameController(1);
+			// nivel++;
+			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
+			setOnActionMediumLevel(primaryStage);
+			controller.changeFromLevelToMenuMusic();
+		});
+
+		gameControllerEasy.getBotonReiniciarGanar().setOnAction((Event) -> {
+			volverMenuDesdeJuego(primaryStage);
+		});
+	}
+	
+	private void setOnActionMediumLevel(Stage primaryStage) {
+		gameControllerMedium.getBotonReiniciar().setOnAction((Event) -> {
+			volverMenuDesdeJuego(primaryStage);
+		});
+
+		// avanzar de nivel
+		gameControllerMedium.getBotonContinuar().setOnAction((Event) -> {
+			gameControllerHard = new GameController(2);
+			// nivel++;
+			primaryStage.setScene(new Scene(gameControllerHard.getView()));
+			
+			setOnActionHardLevel(primaryStage);
+			
+			controller.changeFromLevelToMenuMusic();
+		});
+
+		gameControllerMedium.getBotonReiniciarGanar().setOnAction((Event) -> {
+			volverMenuDesdeJuego(primaryStage);
+		});
+	}
+	
+	private void setOnActionHardLevel(Stage primaryStage) {
+		gameControllerHard.getBotonReiniciar().setOnAction((Event) -> {
+			volverMenuDesdeJuego(primaryStage);
+		});
+					
+		gameControllerHard.getBotonReiniciarGanar().setOnAction((Event) -> {
+			volverMenuDesdeJuego(primaryStage);
+		});
 	}
 
 	private void transition() {
-		
+
 		fadeOut.setAutoReverse(true);
 		fadeOut.setCycleCount(1);
 		fadeOut.setDelay(Duration.seconds(1));
@@ -248,37 +220,27 @@ public class App extends Application {
 		scene.getStylesheets().addAll(this.getClass().getResource("/Estilos/MainMenu.css").toExternalForm());
 	}
 
-	
 	private void volverMenuDesdeOpciones(Stage primaryStage) {
-		
+
 		optionController.getBackOption().setOnAction((Event) -> {
-			
-				primaryStage.setScene(scene);
-			
+
+			primaryStage.setScene(scene);
+
 		});
 	}
-	
+
 	private void volverMenuDesdeJuego(Stage primaryStage) {
-		try {
-			primaryStage.setScene(scene);
-			if (controller.getSonidoB().isSelected()) {
-				controller.changeFromLevelToMenuMusic();
-				controller.getAudio().stop();
-			}else {
-				controller.changeFromLevelToMenuMusic();
-			}
-			
-		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		primaryStage.setScene(scene);
+		if (controller.getSonidoB().isSelected()) {
+			controller.changeFromLevelToMenuMusic();
+			controller.getAudio().stop();
+		} else {
+			controller.changeFromLevelToMenuMusic();
 		}
-	
 	}
-	
-	
-	
+
 	public static void main(String[] args) {
-			launch(args);
+		launch(args);
 	}
 
 }

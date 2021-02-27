@@ -177,7 +177,7 @@ public class MainMenuController implements Initializable {
 		audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	
-	public void changeFromLevelToMenuMusic() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+	public void changeFromLevelToMenuMusic() {
 		audioLevels.stop();
 		audio.setFramePosition(0);
 		audio.loop(Clip.LOOP_CONTINUOUSLY);
