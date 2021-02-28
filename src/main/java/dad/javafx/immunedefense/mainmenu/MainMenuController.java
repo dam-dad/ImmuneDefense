@@ -74,21 +74,18 @@ public class MainMenuController implements Initializable {
 			
 			FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(-30.0f);
+			options.getVolumenText().textProperty().set(String.valueOf(100+gainControl.getValue()));
+			options.getVolumenSlider().setValue(100+gainControl.getValue());
 			
 			audio.loop(Clip.LOOP_CONTINUOUSLY);
-			
-			options.getVolumenSlider().setValue(audio.getLevel()*100);
-			/**
-			 * APLICANDO SLIDER PARA CONTROLAR EL VOLUMEN DE LA MÚSICA
-			 */
-			
+				
 			audioLevels = AudioSystem.getClip();
 			audioLevels.open(AudioSystem.getAudioInputStream(rutaLevels));
-			options.getVolumenSlider().setValue(audioLevels.getLevel()*100);
+			
 			
 			audioCredits = AudioSystem.getClip();
 			audioCredits.open(AudioSystem.getAudioInputStream(rutaCredits));
-			options.getVolumenSlider().setValue(audioCredits.getLevel()*100);
+			
 			
 		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 			e.printStackTrace();
@@ -100,16 +97,7 @@ public class MainMenuController implements Initializable {
 					audioLevels.stop();
 				imagenSonido.setImage(offMusic);
 			} else {
-				if (audio.isActive()) {
-					audio.loop(Clip.LOOP_CONTINUOUSLY);
-				}
-				else if (audioLevels.isActive()) {
-					audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
-				}
-				else {
-					audioCredits.loop(Clip.LOOP_CONTINUOUSLY);
-				}
-				
+				audio.loop(Clip.LOOP_CONTINUOUSLY);				
 				imagenSonido.setImage(onMusic);
 			}
 		});

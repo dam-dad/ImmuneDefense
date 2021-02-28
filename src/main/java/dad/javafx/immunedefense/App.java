@@ -93,16 +93,11 @@ public class App extends Application {
 
 		//setOnAction dedicado al cambio de escena a las opciones
 		controller.getAjustesB().setOnAction(e -> {
-			try {
-				optionController = new OptionController();
-				optionScene = new Scene(optionController.getView());
-				primaryStage.setScene(optionScene);
+			optionController = controller.getOptions();
+			optionScene = new Scene(optionController.getView());
+			primaryStage.setScene(optionScene);
 
-				volverMenuDesdeOpciones(primaryStage);
-
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			volverMenuDesdeOpciones(primaryStage);
 		});
 		
 		//setonAction dedicado al cambio de escena a la pantalla de como jugar
