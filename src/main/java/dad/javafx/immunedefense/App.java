@@ -2,18 +2,13 @@ package dad.javafx.immunedefense;
 
 import java.io.IOException;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 import dad.javafx.immunedefense.mainmenu.HowToPlayMenu;
 import dad.javafx.immunedefense.mainmenu.MainMenuController;
 import dad.javafx.immunedefense.mainmenu.OptionController;
 import dad.javafx.immunedefense.map.GameController;
-
 import dad.javafx.immunedefense.transitions.MenuTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
