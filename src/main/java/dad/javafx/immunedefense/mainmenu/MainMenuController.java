@@ -70,8 +70,6 @@ public class MainMenuController implements Initializable {
 		ruta = getClass().getResourceAsStream("/SoundTrack/MainMenu.wav");
 		rutaLevels = getClass().getResourceAsStream("/SoundTrack/NormalLevel.wav");
 		rutaCredits = getClass().getResourceAsStream("/SoundTrack/Credits.wav");
-		NumberFormat nf = NumberFormat.getNumberInstance();
-		nf.setMaximumFractionDigits(0);
 		try {
 			audio = AudioSystem.getClip();
 			audio.open(AudioSystem.getAudioInputStream(ruta));

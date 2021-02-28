@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +31,7 @@ public class OptionController implements Initializable {
 	private Slider volumenSlider;
 
 	@FXML
-	private TextField volumenText;
+	private Label volumenText;
 
 	@FXML
 	private Button backOption;
@@ -54,7 +55,7 @@ public class OptionController implements Initializable {
 		return volumenSlider;
 	}
 
-	public TextField getVolumenText() {
+	public Label getVolumenText() {
 		return volumenText;
 	}
 
