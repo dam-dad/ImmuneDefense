@@ -11,13 +11,26 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
 
+/**
+ * 		Clase que ordena los sprite, posicionandolos a lo largo del canvas del juego. También 
+ * 		controla las estadisticas como la vida, la velocidad a la que se mueven los virus.
+ * 
+ * 		Esta clase es de la cual heredarán la clase Bullet, Explotion, Muro, Turret y Virus.
+ * @author adrian
+ *
+ */
 public class Sprite {
 
-
+	/**
+	 * Crea un objeto de la clase game
+	 */
 	private GameController game;
 
 	
-	
+	/**
+	 * Inicializa la imagen con la que va a inicializar, así como la posición, la velocidad
+	 * a la que se mueven, etc.
+	 */
 	private ObjectProperty<Image> image = new SimpleObjectProperty<>();
 	private DoubleProperty positionX = new SimpleDoubleProperty();
 	private DoubleProperty positionY = new SimpleDoubleProperty();
@@ -27,17 +40,27 @@ public class Sprite {
 	private DoubleProperty height = new SimpleDoubleProperty();
 	private DoubleProperty health = new SimpleDoubleProperty();
 
+	/**
+	 * 
+	 * @param urlImage Parametro que contiene la ruta de la imagen que va a usar y la ajusta en tamaño
+	 */
 	public Sprite(String urlImage) {
 		setImage(new Image(urlImage));
 		setWidth(getImage().getWidth());
 		setHeight(getImage().getHeight());
 	}
-
+	/**
+	 * 
+	 * @param time Parametro time con respecto al canvas, permitiendo el movimiento si lo tiene
+	 */
 	public void update(double time) {
 		setPositionX(getPositionX() + getVelocityX() * time);
 		setPositionY(getPositionY() + getVelocityY() * time);
 	}
-
+	/**
+	 * 
+	 * @param gc Parametro para generar el sprite
+	 */
 	public void render(GraphicsContext gc) {
 		gc.drawImage(getImage(), getPositionX(), getPositionY());
 		gc.setStroke(Color.YELLOW);
@@ -46,6 +69,11 @@ public class Sprite {
 		gc.rect(getPositionX(), getPositionY(), getWidth(), getHeight());
 	}
 
+	/**
+	 * 
+	 * @return Getters y Setters de la clase
+	 */
+	
 	public Rectangle2D getBoundary() {
 		return new Rectangle2D(getPositionX(), getPositionY(), getWidth(), getHeight());
 	}
