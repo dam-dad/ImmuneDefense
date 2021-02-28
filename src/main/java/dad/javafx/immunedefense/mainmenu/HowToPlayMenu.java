@@ -140,6 +140,9 @@ import javafx.scene.layout.BorderPane;
 			tituloL.setText("¿Qué es la base?");
 			changeImg=new Image(getClass().getResourceAsStream("/mapImages/Base.png"));
 			imgIcon.setImage(changeImg);
+			desText.textProperty().set("La base es lo que debes proteger si quieres sobrevivir a la oleada viral.\n"
+									  + "Esta, solo aguantará tres impactos asi que si te dejas dormir o no usas bien\n"
+									  + " tus recursos, no tendrás nada que hacer.");
 	    }
 
 
@@ -148,6 +151,14 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son los posicionamientos?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/wallPlacement.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Los posicionamientos son los lugares donde colocarás las torretas o los\n"
+	    			+ "muros. Para hacer uso de ellos y colocar tu sistema defensivo, primero\n"
+	    			+ "selecciona el posicionamiento y luego selecciona la estructura que quieres\n "
+	    			+ "colocar. Una vez se haya destruido la estructura que habías construido el\n"
+	    			+ "posicionamiento volverá a aparecer y podrás construir otra estructura.\n"
+	    			+ "RECUERDA: Las torretas y muros tienen un coste en sangre, no pensarias que\n"
+	    			+ "te las ibamos a regalar, si no tienes esto en consideración,\n"
+	    			+ " bueno... habrá sido un placer haberte tenido por aquí.");
 	    }
 
 	    @FXML
@@ -155,6 +166,11 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son las torretas?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Turret1.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Las torretas son las estructuras encargadas de la eliminación de los virus.\n"
+	    			+ "En estos momentos, tu organismo cuenta con dos tipos de torreta:\n"
+	    			+ "Las torretas simples y las torretas cruzadas.\n"
+	    			+ "Torreta Simple:\n"
+	    			+ "Coste:");
 	    }
 
 	    @FXML
@@ -162,6 +178,7 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son los virus?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Virus Guille1.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("");
 	    }
 
 	    @FXML
@@ -169,6 +186,7 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Que función tienen los muros?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/muro.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("");
 	    }
 
 	    @FXML
@@ -176,6 +194,7 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Cómo ganar?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/you_win.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("");
 	    }
 
 	}
