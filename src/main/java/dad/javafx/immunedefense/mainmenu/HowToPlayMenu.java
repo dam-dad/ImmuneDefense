@@ -170,7 +170,13 @@ import javafx.scene.layout.BorderPane;
 	    			+ "En estos momentos, tu organismo cuenta con dos tipos de torreta:\n"
 	    			+ "Las torretas simples y las torretas cruzadas.\n"
 	    			+ "Torreta Simple:\n"
-	    			+ "Coste:");
+	    			+ "Coste: 7 unidades de sangre\n"
+	    			+ "Tipo de disparo:Horizontal\n"
+	    			+ "\n"
+	    			+ "Torreta Cruzada:\n"
+	    			+ "Coste: 15 unidades de sangre\n"
+	    			+ "Tipo de disparo:Cruzado");
+	    	
 	    }
 
 	    @FXML
@@ -178,7 +184,10 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son los virus?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Virus Guille1.png"));
 	    	imgIcon.setImage(changeImg);
-	    	desText.textProperty().set("");
+	    	desText.textProperty().set("Los virus son el mayor enemigo de nuestro sistema inmunitario destruyen\n"
+	    			+ "todo lo que tocan, asi que ya sabes, cuidado con gastar tu sangre en\n"
+	    			+ "construir una defensa justo cuando pasa el virus.\n"
+	    			+ "Vida: 3");
 	    }
 
 	    @FXML
@@ -186,7 +195,11 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Que función tienen los muros?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/muro.png"));
 	    	imgIcon.setImage(changeImg);
-	    	desText.textProperty().set("");
+	    	desText.textProperty().set("Los muros de plaquetas se encargan de que los virus no puedan abrirse\n"
+	    			+ "camino hasta la base sino que reboten y vuelvan por donde mismo han venido.\n"
+	    			+ "Son la mejor de las defensas.\n"
+	    			+ "Coste: 35 unidades de sangre\n"
+	    			+ "Vida: 2");
 	    }
 
 	    @FXML
@@ -194,7 +207,8 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Cómo ganar?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/you_win.png"));
 	    	imgIcon.setImage(changeImg);
-	    	desText.textProperty().set("");
+	    	desText.textProperty().set("Para ganar deberás soportar el ataque de los virus de la forma que puedas.\n"
+	    			+ "Buena Suerte, la vas a necesitar.");
 	    }
 
 	}
