@@ -49,7 +49,7 @@ import javafx.scene.layout.BorderPane;
 	    private ImageView imgIcon;
 
 	    @FXML
-	    private TextArea desText;
+	    private Label desText;
 	    
 		public HowToPlayMenu() throws IOException {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/HowToPlayMenu.fxml"));
@@ -110,12 +110,12 @@ import javafx.scene.layout.BorderPane;
 		}
 
 
-		public TextArea getDesText() {
+		public Label getDesText() {
 			return desText;
 		}
 
 
-		public void setDesText(TextArea desText) {
+		public void setDesText(Label desText) {
 			this.desText = desText;
 		}
 		
@@ -140,6 +140,9 @@ import javafx.scene.layout.BorderPane;
 			tituloL.setText("¿Qué es la base?");
 			changeImg=new Image(getClass().getResourceAsStream("/mapImages/Base.png"));
 			imgIcon.setImage(changeImg);
+			desText.textProperty().set("La base es lo que debes proteger si quieres sobrevivir a la oleada viral.\n"
+									  + "Esta, solo aguantará tres impactos asi que si te dejas dormir o no usas bien\n"
+									  + " tus recursos, no tendrás nada que hacer.");
 	    }
 
 
@@ -148,6 +151,14 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son los posicionamientos?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/wallPlacement.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Los posicionamientos son los lugares donde colocarás las torretas o los\n"
+	    			+ "muros. Para hacer uso de ellos y colocar tu sistema defensivo, primero\n"
+	    			+ "selecciona el posicionamiento y luego selecciona la estructura que quieres\n "
+	    			+ "colocar. Una vez se haya destruido la estructura que habías construido el\n"
+	    			+ "posicionamiento volverá a aparecer y podrás construir otra estructura.\n"
+	    			+ "RECUERDA: Las torretas y muros tienen un coste en sangre, no pensarias que\n"
+	    			+ "te las ibamos a regalar, si no tienes esto en consideración,\n"
+	    			+ " bueno... habrá sido un placer haberte tenido por aquí.");
 	    }
 
 	    @FXML
@@ -155,6 +166,17 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son las torretas?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Turret1.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Las torretas son las estructuras encargadas de la eliminación de los virus.\n"
+	    			+ "En estos momentos, tu organismo cuenta con dos tipos de torreta:\n"
+	    			+ "Las torretas simples y las torretas cruzadas.\n"
+	    			+ "Torreta Simple:\n"
+	    			+ "Coste: 7 unidades de sangre\n"
+	    			+ "Tipo de disparo:Horizontal\n"
+	    			+ "\n"
+	    			+ "Torreta Cruzada:\n"
+	    			+ "Coste: 15 unidades de sangre\n"
+	    			+ "Tipo de disparo:Cruzado");
+	    	
 	    }
 
 	    @FXML
@@ -162,6 +184,10 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Qué son los virus?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Virus Guille1.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Los virus son el mayor enemigo de nuestro sistema inmunitario destruyen\n"
+	    			+ "todo lo que tocan, asi que ya sabes, cuidado con gastar tu sangre en\n"
+	    			+ "construir una defensa justo cuando pasa el virus.\n"
+	    			+ "Vida: 3");
 	    }
 
 	    @FXML
@@ -169,6 +195,11 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Que función tienen los muros?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/muro.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Los muros de plaquetas se encargan de que los virus no puedan abrirse\n"
+	    			+ "camino hasta la base sino que reboten y vuelvan por donde mismo han venido.\n"
+	    			+ "Son la mejor de las defensas.\n"
+	    			+ "Coste: 35 unidades de sangre\n"
+	    			+ "Vida: 2");
 	    }
 
 	    @FXML
@@ -176,6 +207,8 @@ import javafx.scene.layout.BorderPane;
 	    	tituloL.setText("¿Cómo ganar?");
 	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/you_win.png"));
 	    	imgIcon.setImage(changeImg);
+	    	desText.textProperty().set("Para ganar deberás soportar el ataque de los virus de la forma que puedas.\n"
+	    			+ "Buena Suerte, la vas a necesitar.");
 	    }
 
 	}

@@ -1,0 +1,33 @@
+#vistaMenu{
+	-fx-background-image:url("/Images/bgMenu.jpg");
+	-fx-background-size: 1920 1080;
+	-fx-background-position: center center;
+}
+#titulo{
+	-fx-text-fill:white;
+}
+#texto{
+	-fx-text-fill:white;
+}
+
+#botonesMenu{
+	-fx-background-color: white;
+	-fx-background-radius:0px 400px 400px 0px / 0px 300px 300px 0px;
+	-fx-text-fill:black;
+	-fx-border-style: solid solid solid none;
+	-fx-border-color: black;
+	-fx-border-width:0.5px;
+	-fx-border-radius:0px 400px 400px 0px / 0px 300px 300px 0px;
+}
+#botonesMenu:hover{
+	-fx-background-color:#CC0000;
+	-fx-text-fill:white;
+	-fx-border-style: solid;
+	-fx-background-radius:0px 400px 400px 0px / 0px 300px 300px 0px;
+}
+#botonesMenu:focused{
+		-fx-background-color:#CC0000;
+	-fx-text-fill:white;
+	-fx-border-style: solid;
+	-fx-background-radius:0px 400px 400px 0px / 0px 300px 300px 0px;
+}
