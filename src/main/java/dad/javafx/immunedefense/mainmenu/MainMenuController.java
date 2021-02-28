@@ -86,6 +86,9 @@ public class MainMenuController implements Initializable {
 				public void invalidated(Observable observable) {
 					gainControl.setValue((float)options.getVolumenSlider().getValue()-100);
 					options.getVolumenText().textProperty().set(String.valueOf(100+(int)gainControl.getValue()));
+					if (gainControl.getValue()==-80.0f) {
+						options.getVolumenText().textProperty().set(String.valueOf(80+(int)gainControl.getValue()));
+					}
 				}
 			});
 			

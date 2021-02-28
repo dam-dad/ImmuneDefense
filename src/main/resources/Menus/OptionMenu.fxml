@@ -24,7 +24,7 @@
             <HBox spacing="20.0">
                <children>
                   <Label text="Volumen de la música" />
-                  <Slider fx:id="volumenSlider" value="100.0" />
+                  <Slider fx:id="volumenSlider" min="20.0" value="100.0" />
                   <TextField fx:id="volumenText" editable="false" prefHeight="25.0" prefWidth="39.0" />
                </children>
             </HBox>
