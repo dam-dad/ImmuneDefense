@@ -129,10 +129,12 @@ import javafx.scene.layout.BorderPane;
 	    		changeImg=new Image(getClass().getResourceAsStream("/Images/Logo.png"));
 	    		imgIcon.setImage(changeImg);
 	    		desText.textProperty().set("Immune Defense es un juego tower defense, en el que tendrás"
-	    									+ " que resistir el \nataque de numerosos virus que quieren"
-	    									+ " acabar con tu sistema inmunitario. \nPara defenderte de los"
-	    									+ " numerosos ataques de estos pequeños, pero mortales \nseres, contarás con"
-	    									+ " la ayuda de muros de plaquetas y torretas de anticuerpos \nque te ayudarán a proteger tu base.");
+	    									+ " que resistir el\nataque de numerosos virus que quieren"
+	    									+ " acabar con tu sistema inmunitario.\nPara defenderte de los"
+	    									+ " numerosos ataques de estos pequeños, pero mortales\n"
+	    									+ "seres, contarás con"
+	    									+ " la ayuda de muros de plaquetas y torretas de anticuerpos\n"
+	    									+ "que te ayudarán a proteger tu base.");
 	    }
 
 		@FXML
@@ -142,7 +144,7 @@ import javafx.scene.layout.BorderPane;
 			imgIcon.setImage(changeImg);
 			desText.textProperty().set("La base es lo que debes proteger si quieres sobrevivir a la oleada viral.\n"
 									  + "Esta, solo aguantará tres impactos asi que si te dejas dormir o no usas bien\n"
-									  + " tus recursos, no tendrás nada que hacer.");
+									  + "tus recursos, no tendrás nada que hacer.");
 	    }
 
 
@@ -158,7 +160,7 @@ import javafx.scene.layout.BorderPane;
 	    			+ "posicionamiento volverá a aparecer y podrás construir otra estructura.\n"
 	    			+ "RECUERDA: Las torretas y muros tienen un coste en sangre, no pensarias que\n"
 	    			+ "te las ibamos a regalar, si no tienes esto en consideración,\n"
-	    			+ " bueno... habrá sido un placer haberte tenido por aquí.");
+	    			+ "bueno... habrá sido un placer haberte tenido por aquí.");
 	    }
 
 	    @FXML
@@ -169,6 +171,7 @@ import javafx.scene.layout.BorderPane;
 	    	desText.textProperty().set("Las torretas son las estructuras encargadas de la eliminación de los virus.\n"
 	    			+ "En estos momentos, tu organismo cuenta con dos tipos de torreta:\n"
 	    			+ "Las torretas simples y las torretas cruzadas.\n"
+	    			+ "\n"
 	    			+ "Torreta Simple:\n"
 	    			+ "Coste: 7 unidades de sangre\n"
 	    			+ "Tipo de disparo:Horizontal\n"
@@ -187,6 +190,7 @@ import javafx.scene.layout.BorderPane;
 	    	desText.textProperty().set("Los virus son el mayor enemigo de nuestro sistema inmunitario destruyen\n"
 	    			+ "todo lo que tocan, asi que ya sabes, cuidado con gastar tu sangre en\n"
 	    			+ "construir una defensa justo cuando pasa el virus.\n"
+	    			+ "\n"
 	    			+ "Vida: 3");
 	    }
 
@@ -199,6 +203,7 @@ import javafx.scene.layout.BorderPane;
 	    			+ "camino hasta la base sino que reboten y vuelvan por donde mismo han venido.\n"
 	    			+ "Son la mejor de las defensas.\n"
 	    			+ "Coste: 35 unidades de sangre\n"
+	    			+ "\n"
 	    			+ "Vida: 2");
 	    }
 
