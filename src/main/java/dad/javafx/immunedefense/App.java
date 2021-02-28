@@ -51,12 +51,7 @@ public class App extends Application {
 	
 	private GameController gameControllerHard;
 
-	// private GameController gameController1;
-
-	// private GameController gameController2;
-
-	// private int nivel=0;
-
+	
 	public void start(Stage primaryStage) throws Exception {
 		controller = new MainMenuController();
 
@@ -140,7 +135,7 @@ public class App extends Application {
 		});
 
 		// avanzar de nivel
-		gameControllerEasy.getBotonContinuar().setOnAction((Event) -> {
+		gameControllerEasy.getContinuarButton().setOnAction((Event) -> {
 			gameControllerMedium = new GameController(1);
 			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
@@ -159,7 +154,7 @@ public class App extends Application {
 		});
 
 		// avanzar de nivel
-		gameControllerMedium.getBotonContinuar().setOnAction((Event) -> {
+		gameControllerMedium.getContinuarButton().setOnAction((Event) -> {
 			gameControllerHard = new GameController(2);
 			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerHard.getView()));

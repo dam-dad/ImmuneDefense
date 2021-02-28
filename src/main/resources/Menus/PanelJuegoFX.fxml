@@ -210,9 +210,10 @@
       </AnchorPane>
       <AnchorPane fx:id="gameOver" prefHeight="600.0" prefWidth="800.0" visible="false">
          <children>
-            <Pane fx:id="backgroundGameOverPane" opacity="0.67" prefHeight="608.0" prefWidth="826.0" />
-            <Button fx:id="botonReiniciar" disable="true" layoutX="336.0" layoutY="250.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="122.0" text="Volver al menu" textAlignment="CENTER" AnchorPane.bottomAnchor="304.0" AnchorPane.leftAnchor="336.0" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="250.0" />
-            <ImageView fitHeight="116.0" fitWidth="290.0" layoutX="254.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="300.0">
+            <Pane fx:id="backgroundGameOverPane" opacity="0.67" prefHeight="608.0" prefWidth="826.0" visible="false" />
+            <Button fx:id="botonReiniciar1" disable="true" layoutX="339.0" layoutY="318.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="148.0" text="Volver al menu" textAlignment="CENTER" />
+            <Button fx:id="botonReintentar" disable="true" layoutX="339.0" layoutY="254.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="148.0" text="Reintentar" textAlignment="CENTER" />
+            <ImageView fitHeight="116.0" fitWidth="210.0" layoutX="310.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="338.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="309.77777099609375" AnchorPane.topAnchor="154.0">
                <image>
                   <Image url="@../mapImages/gameover.png" />
                </image>
@@ -227,7 +228,7 @@
                   <Image url="@../mapImages/you_win.png" />
                </image>
             </ImageView>
-            <Button fx:id="continuarButton" layoutX="374.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="Continuar" visible="false" />
+            <Button fx:id="continuarButton" layoutX="374.0" layoutY="297.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="Continuar" />
             <Button fx:id="volverMenuButton" layoutX="361.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="104.0" text="Volver al Menú" />
          </children>
       </AnchorPane>

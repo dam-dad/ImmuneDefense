@@ -51,7 +51,7 @@ public class Virus extends Sprite {
 			if(getGame().getNivel()==1) {
 			if (getPositionY() >= 301 & getPositionY() <= 304 & chocado==false ) {
 				setVelocityY(0);
-				setVelocityX(30);
+				setVelocityX(25);
 
 			}
 		}
