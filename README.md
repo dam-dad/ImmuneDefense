@@ -1,5 +1,5 @@
 # ImmuneDefense
-<img src="C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\Images\Logo.png" alt="Logo" style="zoom:25%;" />
+<p align="center"><img src="src/main/resources/Images/Logo.png" width=""/></p>
 
 ## ¿Qué es Immune Defense?
 
@@ -13,31 +13,31 @@ Tu corazón tiene un total de 3 vidas. Cada vez que un virus toque el corazón, 
 
 ##  Pantalla de juego
 
-![image-20210228215110417](C:\Users\adrian\AppData\Roaming\Typora\typora-user-images\image-20210228215110417.png)
+<img src="src/main/resources/mapImages/Pantalla.png" width=""/></p>
 
 ## Botones de acción
 
-Durante el juego, podrás realizar distintas acciones y todas ellas se pagan con sangre <img src="C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\mapImages\bloodCoin.png" alt="bloodCoin" style="zoom:80%;" />(no la tuya). Si no tienes suficiente sangre, no podrás realizar la acción. Cada acción viene con un icono, su nombre y la cantidad de sangre que requiere para invocarla en la parte inferior de la pantalla de juego.
+Durante el juego, podrás realizar distintas acciones y todas ellas se pagan con sangre <img src="src/main/resources/mapImages/bloodCoin.png" width=""/>(no la tuya). Si no tienes suficiente sangre, no podrás realizar la acción. Cada acción viene con un icono, su nombre y la cantidad de sangre que requiere para invocarla en la parte inferior de la pantalla de juego.
 
-### Torreta simple![Turret2](C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\mapImages\Turret2.png)
+### Torreta simple<img src="src/main/resources/mapImages/Turret2.png" width=""/>
 
 La torreta simple dispara 2 proyectiles horizontalmente por ambos lados.
 
 Esta torreta dura varios segundos o hasta que un virus la alcance. 
 
-### Torreta cruzada![Turret1](C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\mapImages\Turret1.png)
+### Torreta cruzada<img src="src/main/resources/mapImages/Turret1.png" width=""/>
 
 La torreta cruzada dispara hasta 4 proyectiles, formando una cruz.
 
 Al igual que la torreta simple, dura varios segundos o hasta que un virus la alcance. 
 
-### Muro ![MuroButton](C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\mapImages\MuroButton.png)
+### Muro <img src="src/main/resources/mapImages/MuroButton.png" width=""/>
 
 Coloca un muro de plaquetas delante de los indeseables virus para cortarles el paso y hacer que retocedan.
 
 Los muros duran hasta cierto tiempo o tras varios impactos.
 
-### Vidas![3vidas](C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\mapImages\3vidas.png)
+### Vidas<img src="src/main/resources/mapImages/3vidas.png" width=""/>
 
 Las vidas contabilizan el número de golpes que puede soportar tu (delicado) corazón. Puedes recuperar una vida pulsando el botón "Vida +1".
 
@@ -45,7 +45,7 @@ Las vidas contabilizan el número de golpes que puede soportar tu (delicado) cor
 
 
 
-## Virus<img src="C:\Users\adrian\Desktop\CURSOS_DAM\Curso_DAM_2\DAD\ProgramacionJava\ImmuneDefense\src\main\resources\mapImages\Virus Guille1.png" alt="Virus Guille1" style="zoom:150%;" />
+## Virus<img src="src/main/resources/mapImages/Virus Guille1.png" width=""/>
 
 Los virus son los principales antagonistas de este juego y debes acabar con ellos antes de que ellos acaben contigo. Resiste las distintas oleadas manejando inteligentemente tus recursos y tu formación para así sobrevivir los 3 minutos.
 
@@ -54,4 +54,11 @@ Estos virus pueden aguantar hasta 3 golpes de las torretas.
 
 
 
+
+## Este proyecto ha sido realizado por: 
+
+- Jose Juan Suarez
+- Adrián Jiménez
+- Guillermo Maceiras
+- Christian Izquierdo
 
