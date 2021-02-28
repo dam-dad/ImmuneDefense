@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane fx:id="view" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="tituloL" alignment="CENTER" text="Como Jugar" textAlignment="CENTER">
+            <Label fx:id="tituloL" alignment="TOP_LEFT">
                <font>
-                  <Font size="42.0" />
+                  <Font size="30.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </Label>
          </children>
+         <BorderPane.margin>
+            <Insets left="149.0" />
+         </BorderPane.margin>
       </HBox>
    </top>
    <left>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="howB" mnemonicParsing="false" onAction="#onHow" prefWidth="139.0" text="Como se Juega" />
             <Button fx:id="baseB" mnemonicParsing="false" onAction="#onBase" prefWidth="139.0" text="Base" />
@@ -34,15 +41,22 @@
          </children>
       </VBox>
    </left>
-   <center>
-      <HBox BorderPane.alignment="CENTER">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="60.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="imgIcon" />
-            <TextArea fx:id="desText" editable="false" />
+            <Button fx:id="volverB" mnemonicParsing="false" text="Volver al menú principal" />
          </children>
       </HBox>
-   </center>
-   <bottom>
-      <HBox prefHeight="60.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+            <TextArea fx:id="desText" editable="false" prefHeight="248.0" prefWidth="451.0" />
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+   </center>
 </BorderPane>

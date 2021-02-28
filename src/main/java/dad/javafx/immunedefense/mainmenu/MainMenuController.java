@@ -70,7 +70,7 @@ public class MainMenuController implements Initializable {
 			audio.open(AudioSystem.getAudioInputStream(ruta));
 			
 			FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(-10.0f);
+			gainControl.setValue(-30.0f);
 			
 			audio.loop(Clip.LOOP_CONTINUOUSLY);
 			
@@ -163,12 +163,16 @@ public class MainMenuController implements Initializable {
 	public void changeFromMenuToLevelMusic() {
 		audio.stop();
 		audioLevels.setFramePosition(0);
+		FloatControl gainControl = (FloatControl) audioLevels.getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(-30.0f);
 		audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	
 	public void changeFromLevelToMenuMusic() {
 		audioLevels.stop();
 		audio.setFramePosition(0);
+		FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(-30.0f);
 		audio.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 }

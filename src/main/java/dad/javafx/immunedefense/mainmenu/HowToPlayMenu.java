@@ -7,9 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 	import javafx.scene.control.Label;
 	import javafx.scene.control.TextArea;
-	import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
 	public class HowToPlayMenu  {
+		
+		private Image changeImg;
 
 	    @FXML
 	    private BorderPane view;
@@ -39,7 +43,10 @@ import javafx.scene.control.Button;
 	    private Button winB;
 
 	    @FXML
-	    private Label imgIcon;
+	    private Button volverB;
+	    
+	    @FXML
+	    private ImageView imgIcon;
 
 	    @FXML
 	    private TextArea desText;
@@ -93,12 +100,12 @@ import javafx.scene.control.Button;
 			return winB;
 		}
 
-		public Label getImgIcon() {
+		public ImageView getImgIcon() {
 			return imgIcon;
 		}
 
 
-		public void setImgIcon(Label imgIcon) {
+		public void setImgIcon(ImageView imgIcon) {
 			this.imgIcon = imgIcon;
 		}
 
@@ -111,41 +118,64 @@ import javafx.scene.control.Button;
 		public void setDesText(TextArea desText) {
 			this.desText = desText;
 		}
-
-
-		@FXML
-	    void onBase(ActionEvent event) {
-
-	    }
+		
+		public Button getVolverB() {
+			return volverB;
+		}
 
 	    @FXML
 	    void onHow(ActionEvent event) {
-
+	    		tituloL.setText("¿Cómo se juega?");
+	    		changeImg=new Image(getClass().getResourceAsStream("/Images/Logo.png"));
+	    		imgIcon.setImage(changeImg);
+	    		desText.textProperty().set("Immune Defense es un juego tower defense, en el que tendrás"
+	    									+ " que resistir el \nataque de numerosos virus que quieren"
+	    									+ " acabar con tu sistema inmunitario. \nPara defenderte de los"
+	    									+ " numerosos ataques de estos pequeños, pero mortales \nseres, contarás con"
+	    									+ " la ayuda de muros de plaquetas y torretas de anticuerpos \nque te ayudarán a proteger tu base.");
 	    }
+
+		@FXML
+	    void onBase(ActionEvent event) {
+			tituloL.setText("¿Qué es la base?");
+			changeImg=new Image(getClass().getResourceAsStream("/mapImages/Base.png"));
+			imgIcon.setImage(changeImg);
+	    }
+
 
 	    @FXML
 	    void onPosition(ActionEvent event) {
-
+	    	tituloL.setText("¿Qué son los posicionamientos?");
+	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/wallPlacement.png"));
+	    	imgIcon.setImage(changeImg);
 	    }
 
 	    @FXML
 	    void onTurret(ActionEvent event) {
-
+	    	tituloL.setText("¿Qué son las torretas?");
+	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Turret1.png"));
+	    	imgIcon.setImage(changeImg);
 	    }
 
 	    @FXML
 	    void onVirusB(ActionEvent event) {
-
+	    	tituloL.setText("¿Qué son los virus?");
+	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/Virus Guille1.png"));
+	    	imgIcon.setImage(changeImg);
 	    }
 
 	    @FXML
 	    void onWall(ActionEvent event) {
-
+	    	tituloL.setText("¿Que función tienen los muros?");
+	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/muro.png"));
+	    	imgIcon.setImage(changeImg);
 	    }
 
 	    @FXML
 	    void onWin(ActionEvent event) {
-
+	    	tituloL.setText("¿Cómo ganar?");
+	    	changeImg=new Image(getClass().getResourceAsStream("/mapImages/you_win.png"));
+	    	imgIcon.setImage(changeImg);
 	    }
 
 	}

@@ -102,6 +102,8 @@ public class App extends Application {
 				howToController= new HowToPlayMenu();
 				howToScene= new Scene(howToController.getView());
 				primaryStage.setScene(howToScene);
+				
+				tutorialBack(primaryStage);
 			}catch(IOException er) {
 				er.printStackTrace();
 			}
@@ -203,6 +205,11 @@ public class App extends Application {
 
 			primaryStage.setScene(scene);
 
+		});
+	}
+	private void tutorialBack(Stage primaryStage) {
+		howToController.getVolverB().setOnAction((Event)->{
+			primaryStage.setScene(scene);
 		});
 	}
 
