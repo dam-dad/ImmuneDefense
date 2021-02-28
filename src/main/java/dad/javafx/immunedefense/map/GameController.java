@@ -72,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 4;
+	private int startTime = 180;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -352,7 +352,7 @@ public class GameController extends AnimationTimer implements Initializable {
 				botonLugarTorreta7.setDisable(true);
 				break;
 
-			// nivel que ya tenemos hecho el chungo
+			// nivel dificil
 			case 2:
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/PanelJuegoFX.fxml"));
 				loader.setController(this);
@@ -386,30 +386,22 @@ public class GameController extends AnimationTimer implements Initializable {
 		timeline.setOnFinished(e -> {
 			SoundEffects.Win();
 			youWinPane.setVisible(true);
-			System.out.println("La animación terminó");
 			stop();
 		});
 		timeline.play();
 
-		// System.out.println(timeSeconds.get());
+	
 
 		timeSeconds.addListener((obv, ov, nv) -> {
 			if (ov != nv) {
 				etiquetaTiempo.setText("Tiempo -> " + nv);
-				// System.out.println(nv);
+				
 			}
 		});
 
 		spritesPrincipales();
 
 		lastNanoTime = System.nanoTime();
-
-		// intento de poner el tiempo pero no recuerdo como bindearlo
-		// etiquetaTiempo.setText(lastNanoTime+"");
-		// textProperty().bindBidirectional(tiempoMenu+"");
-		// etiquetaDinero.textProperty().bind(new SimpleStringProperty("")
-		// .concat(moneda.getmoneda()));
-
 		vida.setImage(new Image("/mapImages/3vidas.png"));
 
 		// quitar los bordes del boton

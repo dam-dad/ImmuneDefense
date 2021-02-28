@@ -20,7 +20,7 @@
          <children>
             <HBox fx:id="menuPane" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#ColocarTorretaDoble" text="torreta 2 (7)">
+                  <Button mnemonicParsing="false" onAction="#ColocarTorretaDoble" text="Torreta Simple (7)">
                      <tooltip>
                         <Tooltip text="Poner torreta doble " />
                      </tooltip>
@@ -42,7 +42,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#onColocarTorretaCuadruple" text="Torreta 4 (15)">
+                  <Button mnemonicParsing="false" onAction="#onColocarTorretaCuadruple" text="Torreta Cruzada (15)">
                      <tooltip>
                         <Tooltip text="Poner torreta cuadruple" />
                      </tooltip>
@@ -83,7 +83,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../mapImages/CoinIcon.gif" />
+                        <Image url="@../mapImages/bloodCoin.png" />
                      </image>
                   </ImageView>
                </graphic></Label>

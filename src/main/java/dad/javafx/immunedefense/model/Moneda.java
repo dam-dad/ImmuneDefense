@@ -9,7 +9,7 @@ public class Moneda {
 	
 	
 	public Moneda(){
-		setMoneda(50);	
+		setMoneda(100);	
 	}
 	
 	
