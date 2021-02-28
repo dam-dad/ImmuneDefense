@@ -72,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 120;
+	private int startTime = 4;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -140,7 +140,10 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private Button continuarButton;
-
+	
+	@FXML
+    private Button buttonCreditos;
+	
 	@FXML
 	private Pane backgroundYouWinPane;
 
@@ -497,6 +500,14 @@ public class GameController extends AnimationTimer implements Initializable {
 		return volverMenuButton;
 	}
 	
+	public Button getButtonCreditos() {
+		return buttonCreditos;
+	}
+
+	public void setButtonCreditos(Button buttonCreditos) {
+		this.buttonCreditos = buttonCreditos;
+	}
+
 	public void setBotonReintentar(Button botonReintentar) {
 		this.botonReintentar = botonReintentar;
 	}

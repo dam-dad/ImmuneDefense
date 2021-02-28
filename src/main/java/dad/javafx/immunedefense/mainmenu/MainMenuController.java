@@ -26,8 +26,10 @@ public class MainMenuController implements Initializable {
 	// Sonido
 	private Clip audio;
 	private Clip audioLevels;
+	private Clip audioCredits;
 	private InputStream ruta;
 	private InputStream rutaLevels;
+	private InputStream rutaCredits;
 	private Image offMusic = new Image(getClass().getResourceAsStream("/Images/no_musica.png"));
 	private Image onMusic = new Image(getClass().getResourceAsStream("/Images/musica.png"));
 
@@ -64,6 +66,7 @@ public class MainMenuController implements Initializable {
 		
 		ruta = getClass().getResourceAsStream("/SoundTrack/MainMenu.wav");
 		rutaLevels = getClass().getResourceAsStream("/SoundTrack/NormalLevel.wav");
+		rutaCredits = getClass().getResourceAsStream("/SoundTrack/Credits.wav");
 		
 		try {
 			audio = AudioSystem.getClip();
@@ -83,14 +86,9 @@ public class MainMenuController implements Initializable {
 			audioLevels.open(AudioSystem.getAudioInputStream(rutaLevels));
 			options.getVolumenSlider().setValue(audioLevels.getLevel()*100);
 			
-			/*options.getVolumenSlider().valueProperty().addListener(new InvalidationListener() {
-				@Override
-				public void invalidated(Observable observable) {
-					FloatControl volume = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
-					volume.setValue((float) options.getVolumenSlider().getValue());
-					System.out.println(audio.getLevel()+" "+options.getVolumenSlider().getValue());
-				}
-			});*/
+			audioCredits = AudioSystem.getClip();
+			audioCredits.open(AudioSystem.getAudioInputStream(rutaCredits));
+			options.getVolumenSlider().setValue(audioCredits.getLevel()*100);
 			
 		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 			e.printStackTrace();
@@ -102,11 +100,14 @@ public class MainMenuController implements Initializable {
 					audioLevels.stop();
 				imagenSonido.setImage(offMusic);
 			} else {
-				if (audio.isOpen()) {
+				if (audio.isActive()) {
 					audio.loop(Clip.LOOP_CONTINUOUSLY);
 				}
-				else {
+				else if (audioLevels.isActive()) {
 					audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
+				}
+				else {
+					audioCredits.loop(Clip.LOOP_CONTINUOUSLY);
 				}
 				
 				imagenSonido.setImage(onMusic);
@@ -122,9 +123,12 @@ public class MainMenuController implements Initializable {
 		return audio;
 	}
 	
-
 	public Clip getAudioLevels() {
 		return audioLevels;
+	}
+
+	public Clip getAudioCredits() {
+		return audioCredits;
 	}
 
 	public InputStream getRuta() {
@@ -174,5 +178,18 @@ public class MainMenuController implements Initializable {
 		FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl.setValue(-30.0f);
 		audio.loop(Clip.LOOP_CONTINUOUSLY);
+	}
+
+	public void changeFromLevelToCreditsMusic() {
+		if (audioLevels.isActive()) {
+			audioLevels.stop();
+		}
+		else if (audio.isActive()) {
+			audio.stop();
+		}
+		audioCredits.setFramePosition(0);
+		FloatControl gainControl = (FloatControl) audioCredits.getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(-30.0f);
+		audioCredits.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 }
