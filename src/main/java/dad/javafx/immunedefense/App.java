@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -125,6 +126,16 @@ public class App extends Application {
 	}
 	
 	private void setOnActionEasyLevel(Stage primaryStage) {
+		gameControllerEasy.getBotonReintentar().setOnAction((Event) -> {
+			Button[] buttons = cloneButtonsGameController(gameControllerEasy.getNivel());
+			gameControllerEasy = new GameController(0);
+			gameControllerEasy.setBotonReintentar(buttons[0]);
+			gameControllerEasy.setBotonReintentar(buttons[1]);
+			gameControllerEasy.setBotonReintentar(buttons[2]);
+			gameControllerEasy.setBotonReintentar(buttons[3]);
+			primaryStage.getScene().setRoot(gameControllerEasy.getView());
+		});
+		
 		gameControllerEasy.getBotonReiniciar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
@@ -132,7 +143,6 @@ public class App extends Application {
 		// avanzar de nivel
 		gameControllerEasy.getContinuarButton().setOnAction((Event) -> {
 			gameControllerMedium = new GameController(1);
-			// nivel++;
 			primaryStage.setScene(new Scene(gameControllerMedium.getView()));
 			setOnActionMediumLevel(primaryStage);
 			controller.changeFromLevelToMenuMusic();
@@ -144,6 +154,16 @@ public class App extends Application {
 	}
 	
 	private void setOnActionMediumLevel(Stage primaryStage) {
+		gameControllerMedium.getBotonReintentar().setOnAction(((Event) -> {
+			Button[] buttons = cloneButtonsGameController(gameControllerMedium.getNivel());
+			gameControllerMedium = new GameController(0);
+			gameControllerMedium.setBotonReintentar(buttons[0]);
+			gameControllerMedium.setBotonReintentar(buttons[1]);
+			gameControllerMedium.setBotonReintentar(buttons[2]);
+			gameControllerMedium.setBotonReintentar(buttons[3]);
+			primaryStage.getScene().setRoot(gameControllerMedium.getView());
+		}));
+		
 		gameControllerMedium.getBotonReiniciar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
@@ -165,6 +185,15 @@ public class App extends Application {
 	}
 	
 	private void setOnActionHardLevel(Stage primaryStage) {
+		gameControllerHard.getBotonReintentar().setOnAction(((Event) -> {
+			Button[] buttons = cloneButtonsGameController(gameControllerHard.getNivel());
+			gameControllerHard = new GameController(0);
+			gameControllerHard.setBotonReintentar(buttons[0]);
+			gameControllerHard.setBotonReintentar(buttons[1]);
+			gameControllerHard.setBotonReintentar(buttons[3]);
+			primaryStage.getScene().setRoot(gameControllerHard.getView());
+		}));
+		
 		gameControllerHard.getBotonReiniciar().setOnAction((Event) -> {
 			volverMenuDesdeJuego(primaryStage);
 		});
@@ -174,6 +203,34 @@ public class App extends Application {
 		});
 	}
 
+	private Button[] cloneButtonsGameController(int nivel) {
+		Button[] buttons = new Button[4];
+		switch (nivel) {
+		case (0):
+			buttons[0] = gameControllerEasy.getBotonReintentar();
+			buttons[1] = gameControllerEasy.getBotonReiniciar();
+			buttons[2] = gameControllerEasy.getContinuarButton();
+			buttons[3] = gameControllerEasy.getBotonReiniciarGanar();
+		break;
+		
+		case (1):
+			buttons[0] = gameControllerMedium.getBotonReintentar();
+			buttons[1] = gameControllerMedium.getBotonReiniciar();
+			buttons[2] = gameControllerMedium.getContinuarButton();
+			buttons[3] = gameControllerMedium.getBotonReiniciarGanar();
+		break;
+		
+		case (2):
+			buttons[0] = gameControllerMedium.getBotonReintentar();
+			buttons[1] = gameControllerMedium.getBotonReiniciar();
+			buttons[2] = null;
+			buttons[3] = gameControllerMedium.getBotonReiniciarGanar();
+		break;
+		}
+		return buttons;
+	}
+
+	
 	private void transition() {
 
 		fadeOut.setAutoReverse(true);
