@@ -3,6 +3,7 @@ package dad.javafx.immunedefense.mainmenu;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 import javax.sound.sampled.AudioSystem;
@@ -11,6 +12,8 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -67,15 +70,24 @@ public class MainMenuController implements Initializable {
 		ruta = getClass().getResourceAsStream("/SoundTrack/MainMenu.wav");
 		rutaLevels = getClass().getResourceAsStream("/SoundTrack/NormalLevel.wav");
 		rutaCredits = getClass().getResourceAsStream("/SoundTrack/Credits.wav");
-		
+		NumberFormat nf = NumberFormat.getNumberInstance();
+		nf.setMaximumFractionDigits(0);
 		try {
 			audio = AudioSystem.getClip();
 			audio.open(AudioSystem.getAudioInputStream(ruta));
 			
 			FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(-30.0f);
-			options.getVolumenText().textProperty().set(String.valueOf(100+gainControl.getValue()));
+			options.getVolumenText().textProperty().set(String.valueOf(100+(int)gainControl.getValue()));
 			options.getVolumenSlider().setValue(100+gainControl.getValue());
+			options.getVolumenSlider().valueProperty().addListener(new InvalidationListener() {
+				
+				@Override
+				public void invalidated(Observable observable) {
+					gainControl.setValue((float)options.getVolumenSlider().getValue()-100);
+					options.getVolumenText().textProperty().set(String.valueOf(100+(int)gainControl.getValue()));
+				}
+			});
 			
 			audio.loop(Clip.LOOP_CONTINUOUSLY);
 				
@@ -156,7 +168,7 @@ public class MainMenuController implements Initializable {
 		audio.stop();
 		audioLevels.setFramePosition(0);
 		FloatControl gainControl = (FloatControl) audioLevels.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f);
+		gainControl.setValue((float)options.getVolumenSlider().getValue()-100);
 		audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	
@@ -164,7 +176,7 @@ public class MainMenuController implements Initializable {
 		audioLevels.stop();
 		audio.setFramePosition(0);
 		FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f);
+		gainControl.setValue((float)options.getVolumenSlider().getValue()-100);
 		audio.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
@@ -177,7 +189,7 @@ public class MainMenuController implements Initializable {
 		}
 		audioCredits.setFramePosition(0);
 		FloatControl gainControl = (FloatControl) audioCredits.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f);
+		gainControl.setValue((float)options.getVolumenSlider().getValue()-100);
 		audioCredits.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 }
