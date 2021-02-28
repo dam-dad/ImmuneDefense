@@ -44,6 +44,9 @@ private double timeShoot = 0;
 	 * @param fireRate Es una variable dirigida a la cantidad de balas las cuales
 	 *                 puede disparar una torreta por segundo, en caso de las
 	 *                 torretas tipo daño constante, la misma será -1.
+	 * 
+	 * @param nimberDirections Es una variable que indica el numero de direcciones en el cual
+	 * 						   dispara la torreta. Si es más de 2, usará un spirte diferente               
 	 */
 	public Turret(int damage, double fireRate,  int numberDirections ) {
 		super("/mapImages/Turret1.png");

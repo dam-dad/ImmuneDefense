@@ -72,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 4;
+	private int startTime = 180;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -759,7 +759,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	public void ponerImagenVida() {
 		if (base.getHealth() == 4) {
 
-			vida.setImage(new Image("/mapImages/vida2.png"));
+			vida.setImage(new Image("/mapImages/4vidas.png"));
 
 		}
 
