@@ -49,7 +49,7 @@ import javafx.scene.layout.BorderPane;
 	    private ImageView imgIcon;
 
 	    @FXML
-	    private TextArea desText;
+	    private Label desText;
 	    
 		public HowToPlayMenu() throws IOException {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menus/HowToPlayMenu.fxml"));
@@ -110,12 +110,12 @@ import javafx.scene.layout.BorderPane;
 		}
 
 
-		public TextArea getDesText() {
+		public Label getDesText() {
 			return desText;
 		}
 
 
-		public void setDesText(TextArea desText) {
+		public void setDesText(Label desText) {
 			this.desText = desText;
 		}
 		
