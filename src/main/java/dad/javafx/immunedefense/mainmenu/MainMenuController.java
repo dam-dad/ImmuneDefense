@@ -168,7 +168,7 @@ public class MainMenuController implements Initializable {
 		audio.stop();
 		audioLevels.setFramePosition(0);
 		FloatControl gainControl = (FloatControl) audioLevels.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-30.0f);
+		gainControl.setValue(-10.0f);
 		audioLevels.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	
@@ -176,7 +176,7 @@ public class MainMenuController implements Initializable {
 		audioLevels.stop();
 		audio.setFramePosition(0);
 		FloatControl gainControl = (FloatControl) audio.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-30.0f);
+		gainControl.setValue(-10.0f);
 		audio.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
@@ -189,7 +189,7 @@ public class MainMenuController implements Initializable {
 		}
 		audioCredits.setFramePosition(0);
 		FloatControl gainControl = (FloatControl) audioCredits.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-30.0f);
+		gainControl.setValue(-10.0f);
 		audioCredits.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 }
