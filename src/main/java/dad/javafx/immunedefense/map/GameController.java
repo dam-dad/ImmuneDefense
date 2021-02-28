@@ -72,7 +72,7 @@ public class GameController extends AnimationTimer implements Initializable {
 	private double lastNanoTime;
 
 	private Timeline timeline;
-	private int startTime = 180;
+	private int startTime = 4;
 	private IntegerProperty timeSeconds;
 
 	private double timeCoins = 0.0;
@@ -92,9 +92,6 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	@FXML
 	private AnchorPane gameOver;
-	
-	@FXML
-    private Button botonReintentar;
 
 	@FXML
 	private Pane backgroundGameOverPane;
@@ -367,7 +364,6 @@ public class GameController extends AnimationTimer implements Initializable {
 				break;
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -476,10 +472,6 @@ public class GameController extends AnimationTimer implements Initializable {
 		return view;
 	}
 	
-	public Button getBotonReintentar() {
-		return botonReintentar;
-	}
-	
 	public Button getBotonReiniciar() {
 		return botonReiniciar;
 	}
@@ -498,10 +490,6 @@ public class GameController extends AnimationTimer implements Initializable {
 
 	public void setButtonCreditos(Button buttonCreditos) {
 		this.buttonCreditos = buttonCreditos;
-	}
-
-	public void setBotonReintentar(Button botonReintentar) {
-		this.botonReintentar = botonReintentar;
 	}
 
 	public void setBotonReiniciar(Button botonReiniciar) {
@@ -588,9 +576,7 @@ public class GameController extends AnimationTimer implements Initializable {
 				if (base.getHealth() < 1) {
 					timeline.stop();
 					SoundEffects.GameOver();
-					botonReintentar.setDisable(false);
 					botonReiniciar.setVisible(true);
-					botonReiniciar.setDisable(false);
 					gameOver.setVisible(true);
 					stop();
 				}
