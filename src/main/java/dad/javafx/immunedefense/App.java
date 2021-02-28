@@ -63,6 +63,9 @@ public class App extends Application {
 	 */
 	public void start(Stage primaryStage) throws Exception {
 		controller = new MainMenuController();
+		//Creación de la escena de opciones
+		optionController= controller.getOptions();
+		optionScene= new Scene(optionController.getView());
 
 		//Controlador de las transiciones del principio
 		menuTransition = new MenuTransition();
@@ -93,8 +96,6 @@ public class App extends Application {
 
 		//setOnAction dedicado al cambio de escena a las opciones
 		controller.getAjustesB().setOnAction(e -> {
-			optionController = controller.getOptions();
-			optionScene = new Scene(optionController.getView());
 			primaryStage.setScene(optionScene);
 
 			volverMenuDesdeOpciones(primaryStage);
