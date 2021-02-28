@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"dad.javafx.immunedefense","l":"App"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"dad.javafx.immunedefense","l":"App"},{"p":"dad.javafx.immunedefense.map","l":"GameController"},{"p":"dad.javafx.immunedefense","l":"Main"}];updateSearchResults();
