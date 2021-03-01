@@ -15,11 +15,11 @@
 		<maven.compiler.target>14</maven.compiler.target>
 		<maven.compiler.source>14</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<exec.mainClass>dad.immuneDefense.Main</exec.mainClass>
+		<exec.mainClass>dad.javafx.immunedefense.Main</exec.mainClass>
 	</properties>
 	<build>
 	<plugins>	
-	<plugin>
+<plugin>
 	<groupId>io.github.fvarrui</groupId>
 	<artifactId>javapackager</artifactId>
 	<version>1.5.1</version>
@@ -31,11 +31,11 @@
 			</goals>
 			<configuration>
 				<!-- mandatory -->
-				<mainClass>dad.immuneDefense.Main</mainClass>
+				<mainClass>dad.javafx.immunedefense.Main</mainClass>
 			</configuration>
 		</execution>
 	</executions>
-	</plugin>
+</plugin>
 	</plugins>
 	</build>
 	
