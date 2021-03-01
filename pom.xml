@@ -17,7 +17,29 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<exec.mainClass>dad.immuneDefense.Main</exec.mainClass>
 	</properties>
-
+	<build>
+	<plugins>	
+	<plugin>
+	<groupId>io.github.fvarrui</groupId>
+	<artifactId>javapackager</artifactId>
+	<version>1.5.1</version>
+	<executions>
+		<execution>
+			<phase>package</phase>
+			<goals>
+				<goal>package</goal>
+			</goals>
+			<configuration>
+				<!-- mandatory -->
+				<mainClass>dad.immuneDefense.Main</mainClass>
+			</configuration>
+		</execution>
+	</executions>
+	</plugin>
+	</plugins>
+	</build>
+	
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.openjfx</groupId>
