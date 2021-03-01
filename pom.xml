@@ -1,8 +1,8 @@
 
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<project xmlns="http://maven.apache.org/POM/4.0.0"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ImmuneDefense</groupId>
 	<artifactId>ImmuneDefense</artifactId>
@@ -18,33 +18,28 @@
 		<exec.mainClass>dad.javafx.immunedefense.Main</exec.mainClass>
 	</properties>
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>io.github.fvarrui</groupId>
-				<artifactId>javapackager</artifactId>
-				<version>1.5.1</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>package</goal>
-						</goals>
-						<configuration>
-							<!-- mandatory -->
-							<mainClass>dad.javafx.immunedefense.Main</mainClass>
-							<!-- optional -->
-							<bundleJre>true</bundleJre>
-							<generateInstaller>true</generateInstaller>
-							<administratorRequired>true</administratorRequired>
-							<platform>windows</platform>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+	<plugins>	
+<plugin>
+	<groupId>io.github.fvarrui</groupId>
+	<artifactId>javapackager</artifactId>
+	<version>1.5.1</version>
+	<executions>
+		<execution>
+			<phase>package</phase>
+			<goals>
+				<goal>package</goal>
+			</goals>
+			<configuration>
+				<!-- mandatory -->
+				<mainClass>dad.javafx.immunedefense.Main</mainClass>
+			</configuration>
+		</execution>
+	</executions>
+</plugin>
+	</plugins>
 	</build>
-
-
+	
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.openjfx</groupId>
